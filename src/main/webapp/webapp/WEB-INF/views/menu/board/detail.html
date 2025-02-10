@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지 보기</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .title {
+      font-size: 13px;
+      font-weight: bold;
+      position: relative;
+      text-align: left;
+      padding-bottom: 5px;
+    }
+    .container {
+      position: relative;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 600px;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    .container h2 {
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      resize: vertical;
+    }
+    .form-group select {
+      width: 35%;
+      padding: 6px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 40%;
+    }
+    .buttons .edit {
+      background-color: #333;
+      color: white;
+    }
+    .buttons .cancel {
+      background-color: #d9534f;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="title">
+  <div class="see-notice">
+    <label for="notice">공지 보기</label>
+  </div>
+  <div class="container">
+    <div class="form-group">
+      <label for="title" class="title-label">제목</label>
+      <label for="day">금요일</label>
+    </div>
+    <div class="form-group">
+      <label for="id">아이디 (닉네임)</label>
+      <input type="text" id="id" value="배태선">
+    </div>
+    <div class="form-group">
+      <label for="date">작성날짜</label>
+      <input type="text" id="date" value="0000-00-00 00:00:00" readonly>
+    </div>
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea id="content" rows="3" >ㅋㅋㅋㅋ</textarea>
+    </div>
+    <div class="form-group">
+      <label for="notice">공지 여부</label>
+      <select id="notice" >
+        <option value="Y" selected>Y</option>
+        <option value="N">N</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <button class="edit">수정</button>
+      <button class="cancel">취소</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
