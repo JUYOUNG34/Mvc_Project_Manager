@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 채팅</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .con {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header .button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .header .button:hover {
+            background-color: #0056b3;
+        }
+        .header .nickname {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .chat-box {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+        }
+        .chat-message .nickname {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .chat-message .text {
+            display: inline-block;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .header .nickname {
+                font-size: 1em;
+            }
+            .header .button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header .nickname {
+                margin-bottom: 10px;
+            }
+            .chat-message .text {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+<div class="con">
+    <div class="header">
+        <div class="nickname">대화 상대 닉네임 : 하하하하하</div>
+        <a href="#" class="button">상대 정보 보기</a>
+    </div>
+    <div class="chat-box">
+        <div class="chat-message" th:each="message : ${messages}">
+            <span class="nickname">유저 닉네임 [[${message.userId}]]:</span>
+            <span class="text">[[${message.messageContent}]]</span><br>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
