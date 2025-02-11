@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 수정</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 30em;
+      max-width: 500px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 25px;
+      font-size: 1.75em;
+      color: #333333;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 0.9em;
+    }
+    .form-group input[type="text"]::placeholder,
+    .form-group input[type="password"]::placeholder {
+      color: #aaaaaa;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 0.8em;
+    }
+    .able {
+      color: green;
+      font-size: 0.8em;
+    }
+    /* 반응형 스타일 */
+    @media (max-width: 480px) {
+      .form-container {
+        width: 95%;
+        margin: 10px;
+        padding: 15px;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="password"],
+      .form-group select {
+        padding: 8px;
+      }
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function passValidation() {
+      let pass = $('#pass').val();
+      let pattern = /^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[a-z\d!@#$%^&*]{8,}$/;
+      let passValidation = $('#passValidation');
+      if (!pattern.test(pass)) {
+        passValidation.removeClass('able');
+        passValidation.addClass('error');
+        passValidation.text('비밀번호는 영문 소문자, 숫자, 특수문자를 포함해야 합니다.');
+        return false;
+      } else {
+        passValidation.removeClass('error');
+        passValidation.text('사용 가능한 비밀번호입니다.').addClass('able');
+        return true;
+      }
+    }
+
+    function passConfirm() {
+      let pass = $('#pass').val();
+      let confirmPass = $('#confirm-password').val();
+      let passConfirm = $('#passConfirm');
+      if (pass !== confirmPass) {
+        passConfirm.removeClass('able');
+        passConfirm.addClass('error');
+        passConfirm.text('비밀번호가 일치하지 않습니다.')
+        return false;
+      } else {
+        passConfirm.removeClass('error');
+        passConfirm.addClass('able');
+        passConfirm.text('비밀번호가 일치합니다.');
+        return true;
+      }
+    }
+
+    $(document).ready(function(){
+      $('#managerModifyBTN').click(function(event){
+        if (!passPattern() || !passConfirm()) {
+          event.preventDefault();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<form action="/" method="get">
+  <div class="form-container">
+    <h2>관리자 수정</h2>
+    <div class="form-group">
+      <label for="name">이름</label>
+      <input type="text" id="name" placeholder="이름을 입력하세요" readonly value="이름">
+    </div>
+    <div class="form-group">
+      <label for="id">아이디</label>
+      <input type="text" id="id" placeholder="아이디를 입력하세요" readonly value="아이디">
+    </div>
+    <div class="form-group">
+      <label for="pass">비밀번호</label>
+      <input type="password" id="pass" name="pass" placeholder="비밀번호를 입력하세요" required onkeyup="passValidation()">
+      <span id="passValidation"></span>
+    </div>
+    <div class="form-group">
+      <label for="confirm-password">비밀번호 확인</label>
+      <input type="password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요" required onkeyup="passConfirm()">
+      <span id="passConfirm"></span>
+    </div>
+    <div class="form-group">
+      <label for="rank">등급</label>
+      <select id="rank">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" id="managerModifyBTN">수정</button>
+    </div>
+  </div>
+</form>
+</body>
+</html>
