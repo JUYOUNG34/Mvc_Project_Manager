@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지 수정</title>
+    <title>공지 추가</title>
     <style>
 
         body {
@@ -16,10 +16,13 @@
             margin: 0;
         }
         .title {
-            font-size: 13px;
+            font-size: 14px;
             position: relative;
             text-align: left;
-            padding-bottom: 5px;
+        }
+        .notice-add {
+            font-weight: bold;
+            margin-left: 15px;
         }
         .container {
             position: relative;
@@ -29,14 +32,18 @@
             width: 600px;
             margin-top: 5px;
             font-size: 12px;
+
         }
         .container h2 {
             margin-top: 0;
         }
+        .id{
+            font-size: 18px;
+            font-weight: bold;
+        }
         .form-group {
             margin-bottom: 15px;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 5px;
@@ -65,6 +72,8 @@
             border-radius: 4px;
             cursor: pointer;
             width: 40%;
+            margin-top: 40px;
+            margin-bottom: 30px;
         }
         .buttons .edit {
             background-color: #333;
@@ -78,21 +87,17 @@
 </head>
 <body>
 <div class="title">
-    <div class="see-notice">
+    <div class="notice-add">
         <label for="notice">공지 추가</label>
     </div>
     <div class="container">
         <div class="form-group">
-            <label for="title" class="title-label">아이디</label>
-            <label for="day">ㅋㅋㅋㅋㅋ</label>
+            <label for="id" class="id">아이디</label>
+            <label for="user-id" class="user-id">ㅋㅋㅋㅋㅋ</label>
         </div>
         <div class="form-group">
-            <label for="id">아이디 (닉네임)</label>
-            <input type="text" id="id" value="배태선">
-        </div>
-        <div class="form-group">
-            <label for="date">작성날짜</label>
-            <input type="text" id="date" value="0000-00-00 00:00:00" readonly>
+            <label for="title">제목</label>
+            <input type="text" id="id" value="value">
         </div>
         <div class="form-group">
             <label for="content">내용</label>
