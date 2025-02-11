@@ -16,13 +16,13 @@ public class UserController {
     public String userDetail(){
         return "menu/user/userDetail";
     }
-    @GetMapping("/chattingList")
-    public String chattingList(){
-        return "menu/user/chattingList";
+    @GetMapping("/chat/detail")
+    public String chatdetail(){
+        return "menu/user/chat/detail";
     }
-    @GetMapping("/chattingDetail")
-    public String chattingDetail(){
-        return "menu/user/chattingDetail";
+    @GetMapping("/chat/List")
+    public String chatList(){
+        return "menu/user/chat/List";
     }
 
 }

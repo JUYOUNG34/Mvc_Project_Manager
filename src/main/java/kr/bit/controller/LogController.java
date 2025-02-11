@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/menu/log")
 public class LogController {
-    @GetMapping("/logManage")
-    public String logManage(){
-        return "menu/log/logManage";
+    @GetMapping("/list")
+    public String logList(){
+        return "menu/log/list";
     }
 
 }

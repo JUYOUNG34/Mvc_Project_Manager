@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/menu/manager")
 public class AdminController {
 
-    @GetMapping("/managerList")
+    @GetMapping("/list")
     public String managerList(){
-        return "menu/manager/managerList";
+        return "menu/manager/list";
     }
-    @GetMapping("/managerModify")
-    public String managerModify(){
-        return "menu/manager/managerModify";
+    @GetMapping("/detail")
+    public String managerDetail(){
+        return "menu/manager/detail";
     }
-    @GetMapping("/managerRegister")
-    public String managerRegister(){
-        return "menu/manager/managerRegister";
+    @GetMapping("/block")
+    public String managerBlock(){
+        return "menu/manager/blcok";
     }
 }
