@@ -16,10 +16,13 @@
       margin: 0;
     }
     .title {
-      font-size: 13px;
+      font-size: 14px;
       position: relative;
       text-align: left;
-      padding-bottom: 5px;
+    }
+    .notice-detail {
+      font-weight: bold;
+      margin-left: 15px;
     }
     .container {
       position: relative;
@@ -29,14 +32,21 @@
       width: 600px;
       margin-top: 5px;
       font-size: 12px;
+
     }
     .container h2 {
       margin-top: 0;
     }
+    .title-label{
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .day{
+      color: #a1a1a1;
+    }
     .form-group {
       margin-bottom: 15px;
     }
-
     .form-group label {
       display: block;
       margin-bottom: 5px;
@@ -69,6 +79,7 @@
     .buttons .edit {
       background-color: #333;
       color: white;
+      margin-left: 15px;
     }
     .buttons .cancel {
       background-color: #d9534f;
@@ -78,13 +89,13 @@
 </head>
 <body>
 <div class="title">
-  <div class="see-notice">
-    <label for="notice">공지 수정</label>
+  <div class="notice-detail">
+    <label for="notice">공지 보기</label>
   </div>
   <div class="container">
     <div class="form-group">
       <label for="title" class="title-label">제목</label>
-      <label for="day">금요일</label>
+      <label for="day" class="day">금요일</label>
     </div>
     <div class="form-group">
       <label for="id">아이디 (닉네임)</label>
