@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 로그 페이지</title>
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: center; /* 가로로 가운데 정렬 */
+      align-items: center;
+      min-height: 60vh;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+    .table-container-left {
+      flex: 1;
+      max-width: 20%; /* 테이블 크기 조정 */
+      background-color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+    .table-container-right {
+      flex: 1;
+      max-width: 40%; /* 테이블 크기 조정 */
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #dddddd;
+      text-align: center;
+    }
+    th {
+      background-color: #333333;
+      color: white;
+    }
+    .listCol1{
+      width: 40%;
+    }
+    .listCol2{
+      width: 30%;
+    }
+    .detailCol1{
+      width: 20%;
+    }
+    .detailCol2{
+      width: 20%;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    .pagination a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+    .pagination a:hover {
+      background-color: #f0f0f0;
+    }
+    .pagination a.active {
+      background-color: #007bff;
+      color: white;
+    }
+    .logDetailButton {
+      display: inline-block;
+      padding: 6px 12px; /* 버튼의 너비를 줄이기 위해 패딩 조절 */
+      margin: 4px;
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.8em; /* 반응형을 위해 글자 크기 줄임 */
+      white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+      border: 0;
+    }
+    .logDetailButton:hover {
+      background-color: #0056b3;
+    }
+    #logDetail{
+      visibility: hidden;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center; /* 작은 화면에서는 세로로 가운데 정렬 */
+      }
+      .table-container {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      th, td {
+        padding: 8px;
+      }
+      .pagination a {
+        padding: 6px 8px;
+      }
+    }
+  </style>
+  <script>
+     function logDetail(){
+        let logDetail = document.getElementById('logDetail');
+        logDetail.style.visibility='visible';
+     }
+  </script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+
+  <!-- 관리자 로그 테이블 (왼쪽) -->
+  <div class="table-container-left">
+    <h2>관리자 로그</h2>
+    <table>
+      <thead>
+      <tr>
+        <th class="listCol1">날짜</th>
+        <th class="listCol2">세부정보</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>2025-02-04</td>
+        <td><button class="logDetailButton" id="logDetailButton" onclick="logDetail()">보기</button></td>
+      </tr>
+      <!-- 더 많은 행 추가 -->
+      </tbody>
+    </table>
+    <div class="pagination">
+      <a href="#">&laquo; 이전</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">다음 &raquo;</a>
+    </div>
+  </div>
+
+  <!-- 세부정보 보기 테이블 (오른쪽) -->
+  <div class="table-container-right" id="logDetail" >
+    <h2>2025-02-05</h2>
+    <table>
+      <thead>
+      <tr>
+        <th class="detailCol1">Timestamp</th>
+        <th class="detailCol2">관리자</th>
+        <th class="detailCol3">이벤트</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>2025-02-05 <br> 14:45:00</td>
+        <td>Admin</td>
+        <td>페이지이동#230</td>
+      </tr>
+      <!-- 더 많은 행 추가 -->
+      </tbody>
+    </table>
+    <div class="pagination">
+      <a href="#">&laquo; 이전</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">다음 &raquo;</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
