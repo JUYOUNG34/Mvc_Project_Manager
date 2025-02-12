@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 리스트</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+<div class="con">
+    <div class="button-container" style="justify-content: flex-end;">
+        <a href="#" class="button register">추가</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>사번</th>
+            <th>생성일자</th>
+            <th>등급</th>
+            <th class="remark-column">수정/삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${리스트}">
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td class="remark-column">
+                <div class="button-container">
+                    <a href="#" class="button update">수정</a>
+                    <a href="#" class="button delete">삭제</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <select>
+                <option value="아이디">아이디</option>
+                <option value="닉네임">닉네임</option>
+                <option value="성별">성별</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <a href="#">&laquo; Previous</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Next &raquo;</a>
+    </div>
+</div>
+</div>
+</body>
+</html>

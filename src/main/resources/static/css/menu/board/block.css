@@ -1,0 +1,21 @@
+.content-area {
+    min-height: 200px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 4px;
+}
+.blind-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.blind-btn:hover {
+    background-color: #c82333;
+}
+.report-count {
+    color: #dc3545;
+    font-weight: bold;
+}
