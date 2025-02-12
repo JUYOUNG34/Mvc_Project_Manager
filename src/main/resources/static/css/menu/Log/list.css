@@ -1,0 +1,115 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.table-container-left {
+    flex: 1;
+    max-width: 20%;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+.table-container-right {
+    flex: 1;
+    max-width: 40%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+th {
+    background-color: #333333;
+    color: white;
+}
+.listCol1{
+    width: 40%;
+}
+.listCol2{
+    width: 30%;
+}
+.detailCol1{
+    width: 20%;
+}
+.detailCol2{
+    width: 20%;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.pagination a {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+.logDetailButton {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    border: 0;
+}
+.logDetailButton:hover {
+    background-color: #0056b3;
+}
+#logDetail{
+    visibility: hidden;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .table-container {
+        max-width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    th, td {
+        padding: 8px;
+    }
+    .pagination a {
+        padding: 6px 8px;
+    }
+}
