@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공지 보기</title>
+
+</head>
+<body>
+<div class="title">
+  <div class="notice-detail">
+    <label for="notice">공지 보기</label>
+  </div>
+  <div class="container">
+    <div class="form-group">
+      <label for="title" class="title-label">제목</label>
+      <label for="day" class="day">금요일</label>
+    </div>
+    <div class="form-group">
+      <label for="id">아이디 (닉네임)</label>
+      <input type="text" id="id" value="배태선">
+    </div>
+    <div class="form-group">
+      <label for="date">작성날짜</label>
+      <input type="text" id="date" value="0000-00-00 00:00:00" readonly>
+    </div>
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea id="content" rows="3" >ㅋㅋㅋㅋ</textarea>
+    </div>
+    <div class="form-group">
+      <label for="notice">공지 여부</label>
+      <select id="notice" >
+        <option value="Y" selected>Y</option>
+        <option value="N">N</option>
+      </select>
+    </div>
+    <div class="buttons">
+      <button class="edit">수정</button>
+      <button class="cancel">취소</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
