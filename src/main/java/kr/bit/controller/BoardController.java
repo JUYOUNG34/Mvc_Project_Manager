@@ -12,4 +12,9 @@ public class BoardController {
     public String boardList(){
         return "menu/manager/list";
     }
+
+    @GetMapping("/block")
+    public String boardBlock(){
+        return "menu/board/block";
+    }
 }
