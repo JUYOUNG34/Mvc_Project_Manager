@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신고 내역</title>
-
+    <link th:style="stylesheet" th:href="css/report/detail.css">
 </head>
 <body>
 <div class="container">
@@ -20,70 +20,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>6</td>
-            <td>○○○○○○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리중</td>
-            <td>보기</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>○○○○○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리 완료</td>
-            <td>보기</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>○○○○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리중</td>
-            <td>보기</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>○○○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리중</td>
-            <td>보기</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>○○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리중</td>
-            <td>보기</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>○</td>
-            <td><a href="#">Sarah Eastern</a></td>
-            <td>2023/09/17 00:00:00</td>
-            <td>처리중</td>
-            <td>보기</td>
+        <tr th:each="report : ${reports}">
+            <td th:text="${report.id}"></td>
+            <td th:text="${report.reporter_id}"></td>
+            <td><a th:href="@{/user/{id}(id=${report.reported_id})}" th:text="${report.reported_id}"></a></td>
+            <td th:text="${#temporals.format(report.report_date, 'yyyy/MM/dd HH:mm:ss')}"></td>
+            <td th:text="${report.status}"></td>
+            <td th:text="${report.report_content}"></td>
         </tr>
         </tbody>
     </table>
 </div>
 
-
 <div class="search-bar">
-    <button type="button" id="reporting-user">신고한 유저</button>
-    <input type="text">
+    <button type="button" id="reporter_id">신고한 유저</button>
+    <input type="text" th:value="${searchKeyword}">
     <button type="button" id="search">검색</button>
 </div>
 
-
 <div class="pagination">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
+    <button th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'active' : ''"></button>
 </div>
 </body>
 </html>
