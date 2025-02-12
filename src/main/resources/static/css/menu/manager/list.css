@@ -52,14 +52,8 @@ a.button {
     font-size: 0.8em;
     white-space: nowrap;
 }
-a.button.block{
-    background-color: #ed2e12;
-}
 a.button:hover {
     background-color: #0056b3;
-}
-a.button.block:hover {
-    background-color: #ca230c;
 }
 .button-container {
     display: flex;
@@ -152,4 +146,13 @@ a.button.block:hover {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 20px;
+}
+a.button.register{
+    background-color: black;
+}
+a.button.delete{
+    background-color: #ed2e12;
+}
+a.button.delete:hover {
+    background-color: #ca230c;
 }

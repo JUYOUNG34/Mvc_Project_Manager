@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.container {
+    width: 90%;
+    background-color: #fff;
+    padding: px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    position: relative;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5px;
+    border: none;
+}
+th, td {
+    border: none;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    font-size: 14px;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid rgb(237, 237, 237);
+}
+td {
+    font-size: 13px;
+}
+.search-bar {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 5px;
+    width: 90%;
+}
+.search-bar input[type="text"] {
+    padding: 5px;
+    width: 130px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.search-bar button  {
+    padding: 5px 10px;
+    border: 1px solid;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-bar #reporting-user {
+    background-color: #d2cdcd;
+    border-radius: 0%;
+}
+.search-bar  #reporting-user::after {
+    content: ' \25BD';
+    color: #007bff;
+}
+.search-bar #search:hover {
+    background-color: #575757;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.pagination button {
+    padding: 3px 5px;
+    margin: 0 5px;
+    border: none;
+    background-color: #c8c8c8;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+.pagination button:hover {
+    background-color: #3c96f5;
+}
