@@ -4,32 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지 추가</title>
-
+    <link th:style="stylesheet" th:href="css/board/notice/add.css">div>
 </head>
 <body>
-<div class="title">
-    <div class="notice-add">
+<div class="head">
+    <div class="notice-update">
         <label for="notice">공지 추가</label>
     </div>
     <div class="container">
         <div class="form-group">
-            <label for="id" class="id">아이디</label>
-            <label for="user-id" class="user-id">ㅋㅋㅋㅋㅋ</label>
+            <h1>아이디</h1>
+            <label for="writer_id" class="writer_id" th:text="${board.writer_id}"></label>
         </div>
         <div class="form-group">
             <label for="title">제목</label>
-            <input type="text" id="id" value="value">
+            <input type="text" id="title" th:text="${board.title}">
         </div>
         <div class="form-group">
             <label for="content">내용</label>
-            <textarea id="content" rows="3" >ㅋㅋㅋㅋ</textarea>
-        </div>
-        <div class="form-group">
-            <label for="notice">공지 여부</label>
-            <select id="notice" >
-                <option value="Y" selected>Y</option>
-                <option value="N">N</option>
-            </select>
+            <textarea id="content" rows="3" th:text="${board.content}"></textarea>
         </div>
         <div class="buttons">
             <button class="edit">수정</button>
