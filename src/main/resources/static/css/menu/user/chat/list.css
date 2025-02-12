@@ -4,7 +4,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 .con {
     background-color: #ffffff;
     padding: 20px;
@@ -33,7 +32,7 @@ td {
     font-size: 0.9em;
 }
 .remark-column {
-    width: 150px; /* 비고 부분의 너비 조정 */
+    width: 150px;
 }
 tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -43,39 +42,37 @@ tr:hover {
 }
 a.button {
     display: inline-block;
-    padding: 6px 12px; /* 버튼의 너비를 줄이기 위해 패딩 조절 */
+    padding: 6px 12px;
     margin: 4px;
     background-color: #007bff;
     color: white;
     text-align: center;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 0.8em; /* 반응형을 위해 글자 크기 줄임 */
-    white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+    font-size: 0.8em;
+    white-space: nowrap;
 }
 a.button:hover {
     background-color: #0056b3;
 }
-/* 버튼 컨테이너 */
 .button-container {
     display: flex;
     justify-content: center;
-    gap: 5px; /* 버튼 간의 간격을 줄이기 위해 조절 */
+    gap: 5px;
 }
-/* 페이지 네비게이션 */
 .pagination {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 .pagination a {
-    margin: 0 3px; /* 좌우 간격 조정 */
-    padding: 4px 8px; /* 패딩 줄이기 */
+    margin: 0 3px;
+    padding: 4px 8px;
     text-decoration: none;
     color: #007bff;
     border: 1px solid #dddddd;
     border-radius: 4px;
-    font-size: 0.8em; /* 글자 크기 줄이기 */
+    font-size: 0.8em;
 }
 .pagination a:hover {
     background-color: #f0f0f0;
@@ -84,44 +81,42 @@ a.button:hover {
     background-color: #007bff;
     color: white;
 }
-/* 반응형 스타일 */
 @media (max-width: 768px) {
     th, td {
-        font-size: 0.8em; /* 작은 화면에서 글자 크기 줄임 */
+        font-size: 0.8em;
     }
     a.button {
-        font-size: 0.7em; /* 작은 화면에서 버튼 글자 크기 줄임 */
-        padding: 4px 8px; /* 작은 화면에서 버튼 패딩 줄임 */
+        font-size: 0.7em;
+        padding: 4px 8px;
     }
     .pagination a {
-        font-size: 0.7em; /* 작은 화면에서 글자 크기 줄임 */
-        padding: 3px 6px; /* 작은 화면에서 패딩 줄임 */
+        font-size: 0.7em;
+        padding: 3px 6px;
     }
 }
 @media (max-width: 480px) {
     th, td {
-        font-size: 0.7em; /* 더 작은 화면에서 글자 크기 줄임 */
+        font-size: 0.7em;
         padding: 8px;
     }
     a.button {
-        font-size: 0.6em; /* 더 작은 화면에서 버튼 글자 크기 줄임 */
-        padding: 3px 6px; /* 더 작은 화면에서 버튼 패딩 줄임 */
-        white-space: nowrap; /* 텍스트를 한 줄로 유지 */
+        font-size: 0.6em;
+        padding: 3px 6px;
+        white-space: nowrap;
     }
     .remark-column {
-        width: 100px; /* 더 작은 화면에서 비고 부분의 너비 조정 */
+        width: 100px;
     }
     .pagination a {
-        font-size: 0.6em; /* 더 작은 화면에서 글자 크기 줄임 */
-        padding: 2px 4px; /* 더 작은 화면에서 패딩 줄임 */
+        font-size: 0.6em;
+        padding: 2px 4px;
     }
 }
-/* 검색바 스타일 */
 .search-bar {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* 왼쪽 정렬로 변경 */
-    align-items: center; /* 요소들을 세로로 정렬 */
+    justify-content: flex-start;
+    align-items: center;
     margin-bottom: 20px;
 }
 .search-bar select, .search-bar input[type="text"], .search-bar button {
@@ -129,25 +124,24 @@ a.button:hover {
     font-size: 0.9em;
     border: 1px solid #dddddd;
     border-radius: 4px;
-    margin-right: 0px; /* 공백 제거 */
+    margin-right: 0px;
 }
 .search-bar select {
     background-color: #ffffff;
 }
 .search-bar input[type="text"] {
-    margin-left: -1px; /* 공백 제거 */
+    margin-left: -1px;
 }
 .search-bar button {
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
-    margin-left: -1px; /* 공백 제거 */
+    margin-left: -1px;
 }
 .search-bar button:hover {
     background-color: #0056b3;
 }
-/* 검색바 위치 변경 */
 .search-bar-container {
     display: flex;
     justify-content: flex-start;
