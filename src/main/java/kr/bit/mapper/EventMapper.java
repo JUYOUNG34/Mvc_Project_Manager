@@ -21,14 +21,11 @@ public interface EventMapper {
     @Select(" select * from events where id =#{id}")
     Events getEventById(int id);
 
-    @Update({
-            "UPDATE events " +
-                    "SET name = #{name}, " +
-                    "    image_url = #{image_url}, " +
-                    "    start_date = #{start_date}, " +
-                    "    end_date = #{end_date} " +
-                    "WHERE id = #{id}"
-    })
+    @Update("UPDATE events SET name = #{name}, " +
+            "image_url = CASE WHEN #{image_url} IS NOT NULL THEN #{image_url} ELSE image_url END, " +
+            "start_date = #{start_date}, " +
+            "end_date = #{end_date} " +
+            "WHERE id = #{id}")
     int updateEvent(Events event);
 
 
