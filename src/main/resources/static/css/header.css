@@ -1,21 +1,28 @@
-.header-head{
+.header-head {
     background-color: black;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
-.header-a-tag{
+
+.header-a-tag {
     text-decoration: none;
-    font-size:small;
+    font-size: small;
     color: #c5c3c3;
 }
-.header-logo{
+
+.header-logo {
     font-size: 24px;
     margin-left: 3%;
 }
-.header-right{
+
+.header-right {
     margin-right: 3%;
     color: white;
     margin-left: 10px;
