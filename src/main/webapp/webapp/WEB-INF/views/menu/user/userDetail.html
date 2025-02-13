@@ -1,91 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>상세정보</title>
     <link rel="stylesheet" th:href="@{/css/header.css}">
-
-    <link rel="stylesheet" th:href="@{/css/menu/user/userList.css}">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .con {
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            width: 85%;
-            max-width: 600px;
-            margin: 30px auto;
-        }
-        .section {
-            margin-bottom: 15px;
-        }
-        .section-title {
-            font-size: 1.1em;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        .section-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .section-content div {
-            flex: 1 1 45%;
-            margin-bottom: 8px;
-        }
-        .profile-picture {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        .profile-picture img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .button-container {
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        .button {
-            padding: 6px 12px;
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9em;
-            cursor: pointer;
-            border: 0;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        @media (max-width: 768px) {
-            .section-content div {
-                flex: 1 1 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/menu/user/userDetail.css}">
 
 </head>
 <body>
@@ -93,57 +12,63 @@
 <div class="container">
     <div class="con">
         <!-- 사용자 정보 -->
+        <form action="" method="post">
         <div class="section">
-            <form>
+
                 <div class="section-title">사용자 정보</div>
                 <div class="section-content">
                     <div>
-                        <label for="userId">아이디</label>
-                        <input type="text" id="userId" name="userId" value="id1" readonly>
+                        <label for="user_Id">아이디</label>
+                        <input type="text" id="user_Id" name="user_Id" th:value="${userProfile.user_id}" readonly>
                     </div>
                     <div>
                         <label for="nickname">닉네임</label>
-                        <input type="text" id="nickname" name="nickname" value="nick1" readonly>
+                        <input type="text" id="nickname" name="nickname" th:value="${userProfile.nickname}" readonly>
                     </div>
                     <div>
                         <label for="points">보유 포인트</label>
-                        <input type="number" id="points" name="points" value="1000">
+                        <input class="point_modify" type="number" id="points" name="points" th:value="${point.points}" min="0">
+                    </div>
+                    <div>
+                        <label for="reading_glass">보유 돋보기</label>
+                        <input class="point_modify" type="number" id="reading_glass" name="reading_glass" th:value="${point.reading_glass}" min="0">
                     </div>
                     <div>
                         <label for="firewood">보유 장작</label>
-                        <input type="number" id="firewood" name="firewood" value="5">
-                    </div>
-                    <div>
-                        <label for="reading_glass">보유 돋보기기</label>
-                        <input type="number" id="reading_glass" name="reading_glass" value="0">
+                        <input class="point_modify" type="number" id="firewood" name="firewood" th:value="${point.firewood}" min="0">
                     </div>
                 </div>
-                <div class="button-container">
-                    <a href="#" class="button">대화목록</a>
-                    <button id="userModify" class="button">수정</button>
-                </div>
-            </form>
+
         </div>
-        <!-- 프로필 정보 -->
+        <!-- 포토 정보 -->
         <div class="section profile-picture">
-            <img src="/path/to/profile-picture.png" alt="유저 사진">
+            <img th:src="@{${userProfile.photo_image_url}}" alt="유저 사진" onclick="imageModify()">
+            <input type="file" name="photo_image_url" accept="image/*" th:value="${userProfile.photo_image_url}">
+            <!--accept="image/*mage/* 값은 MIME 타입을 사용하여 이미지 파일 형식을 지정합니다 -->
         </div>
+            <div class="button-container">
+                <a th:href="@{/controller/menu/user/chat/list(user_id=${userProfile.user_id})}" class="button">대화목록</a>
+                <button id="userModify" class="button">수정</button>
+            </div>
+        </form>
         <!-- 기타 정보 -->
         <div class="section">
             <div class="section-title">기타 정보</div>
             <div class="section-content">
-                <div>성별: 남자</div>
-                <div>생년월일: 0000.00.00</div>
-                <div>몸무게: 000kg</div>
-                <div>키: 000cm</div>
-                <div>MBTI: ISTP</div>
-                <div>종교: 무교</div>
-                <div>술 빈도: 가끔 마심</div>
-                <div>흡연: 흡연</div>
-                <div>취미: 드라마, 영화</div>
+                <div th:text="'성별: ' + (${userProfile.gender} == 'male' ? '남자' : (${userProfile.gender} == 'female' ? '여자' : ''))"></div>
+                <div th:text="'생년월일: '+${userProfile.birth_date}">생년월일: 0000.00.00</div>
+                <div th:text="'키: '+${userProfile.height}+'cm'">키: 000cm</div>
+                <div th:text="'몸무게: '+${userProfile.weight}+'kg'">몸무개: 00kg</div>
+                <div th:text="'종교: '+${userProfile.religion}">종교: 무교</div>
+                <div th:text="'MBTI: '+${userProfile.mbti}">MBTI: ISTP</div>
+                <div th:text="'술 빈도: '+${userProfile.drinking_level}">술 빈도: 가끔 마심</div>
+                <div th:text="'흡연: '+${userProfile.smoking_status}">흡연: 흡연</div>
+                <div th:text="'취미: '+${hobbies}">취미: 드라마, 영화</div>
             </div>
         </div>
     </div>
 </div>
+
+
 </body>
 </html>
