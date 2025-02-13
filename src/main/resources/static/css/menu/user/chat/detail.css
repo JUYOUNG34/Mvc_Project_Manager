@@ -56,6 +56,10 @@ body {
     background-color: #f1f1f1;
     border-radius: 5px;
 }
+#userListTap{
+    font-weight: bolder;
+    background-color: #575757;
+}
 @media (max-width: 768px) {
     .header .nickname {
         font-size: 1em;
