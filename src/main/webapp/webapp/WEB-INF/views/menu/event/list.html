@@ -9,29 +9,30 @@
     <title>이벤트 관리</title>
 </head>
 <body>
-<div th:replace="~{fragments/header :: headerFragment}"></div>
-<main style="display: flex;">
-    <div th:replace="~{fragments/sider :: sidebarFragment}"></div>
-    <div class="event-container" th:action="/menu/event" th:method="post">
-        <button type="button" class="add-button" th:onclick="@{/event/add}" data-toggle="modal" data-target="#addModal" th:method="post">추가</button>
-        <div class="event-item" th:each="event : ${event}">
-            <img class="event-image" th:src="${event.image_url}" th:alt="${event.name}">
-            <div class="event-info">
-                <div class="event-title" th:text="${event.name}">이벤트 제목</div>
-                <div class="event-date">
-                    <span th:text="${#temporals.format(event.start_date, 'yyyy-MM-dd')}"></span>
-                    ~
-                    <span th:text="${#temporals.format(event.end_date, 'yyyy-MM-dd')}"></span>
-                </div>
-            </div>
-            <div class="event-buttons">
-                <button type="button" th:href="@{/event/update/{id}(id=${event.id})}" class="btn btn-primary">수정</button>
-                <form th:action="@{/event/delete/{id}(id=${event.id})}" th:method="post" style="display: inline;">
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
-                </form>
+
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/sider :: sidebar}"></div>
+<a th:href="@{/menu/event/add}" class="add-button">추가</a>
+
+<div class="event-container"  th:method="post">
+    <div class="event-item" th:each="event : ${event}">
+        <img class="event-image" th:src="${event.image_url}" th:alt="${event.name}">
+        <div class="event-info">
+            <div class="event-title" th:text="${event.name}">이벤트 제목</div>
+            <div class="event-date">
+                <span th:text="${event.start_date}"></span> ~
+                <span th:text="${event.end_date}"></span>
             </div>
         </div>
+        <div class="event-buttons">
+            <a th:href="@{/menu/event/update (id=${event.id})}" class="btn btn-primary">수정</a>
+            <form th:action="@{/menu/event/delete/{id}(id=${event.id})}" method="post" style="display: inline;">
+
+                <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+            </form>
+        </div>
     </div>
-</main>
+</div>
 </body>
 </html>
