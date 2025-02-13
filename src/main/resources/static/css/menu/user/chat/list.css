@@ -81,6 +81,10 @@ a.button:hover {
     background-color: #007bff;
     color: white;
 }
+#userListTap{
+    font-weight: bolder;
+    background-color: #575757;
+}
 @media (max-width: 768px) {
     th, td {
         font-size: 0.8em;
