@@ -1,20 +1,25 @@
 package kr.bit.controller;
 
+import kr.bit.service.BoardService;
+import kr.bit.service.EventService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/menu/board")
+@RequiredArgsConstructor
 public class BoardController {
+    @Autowired
+    private BoardService boardService;
 
-    @GetMapping("/list")
-    public String boardList(){
-        return "menu/manager/list";
-    }
-
-    @GetMapping("/block")
-    public String boardBlock(){
-        return "menu/board/block";
+    @PostMapping("/block/{id}")
+    public String blockBoard(@PathVariable int id) {
+        boardService.blockBoard(id);
+        return "redirect:/menu/board/list";
     }
 }
