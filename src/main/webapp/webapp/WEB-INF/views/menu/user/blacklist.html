@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>사용자 차단 목록</title>
+    <link rel="stylesheet" th:href="@{/css/menu/user/blacklist.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div th:insert="fragments/sider :: sidebar"></div>
+<div class="container">
+    <h1>사용자 차단 목록</h1>
+
+    <table class="blacklist-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>닉네임</th>
+            <th>차단 날짜</th>
+            <th>신고 사유</th>
+           
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blacklist : ${blacklists}">
+            <td th:text="${blacklist.id}">사용자 ID</td>
+            <td th:text="${blacklist.nickname}">닉네임</td>
+            <td th:text="${#dates.format(blacklist.blockedAt, 'yyyy-MM-dd HH:mm:ss')}">차단 날짜</td>
+            <td th:text="${blacklist.reportReason}">신고 사유</td>
+            <td>
+                <button class="btn btn-unblock" th:data-user-id="${blacklist.id}">차단 해제</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${#lists.isEmpty(blacklists)}" class="no-blacklist">
+        현재 차단된 사용자가 없습니다.
+    </div>
+
+    <div class="pagination" th:if="${blacklists != null and blacklists.size() > 0}">
+        <button th:if="${currentPage > 1}" th:onclick="'goToPage(' + (${currentPage} - 1) + ')'">이전</button>
+        <span th:text="${currentPage} + ' / ' + ${totalPages}">1 / 10</span>
+        <button th:if="${currentPage < totalPages}" th:onclick="'goToPage(' + (${currentPage} + 1) + ')'">다음</button>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const unblockButtons = document.querySelectorAll('.btn-unblock');
+
+        unblockButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-user-id');
+
+                fetch('/menu/user/blacklist/unblock', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': /*[[${_csrf.token}]]*/ ''
+                    },
+                    body: JSON.stringify({ userId: userId })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('사용자 차단 해제 완료');
+                            location.reload();
+                        } else {
+                            alert('차단 해제 중 오류가 발생했습니다: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('차단 해제 중 네트워크 오류가 발생했습니다.');
+                    });
+            });
+        });
+    });
+
+
+</script>
+</body>
+</html>

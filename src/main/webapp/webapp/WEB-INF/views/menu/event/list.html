@@ -9,25 +9,26 @@
     <title>이벤트 관리</title>
 </head>
 <body>
-
 <div th:replace="~{fragments/header :: header}"></div>
 <div th:replace="~{fragments/sider :: sidebar}"></div>
 <a th:href="@{/menu/event/add}" class="add-button">추가</a>
 
-<div class="event-container"  th:method="post">
+<div class="event-container">
     <div class="event-item" th:each="event : ${event}">
-        <img class="event-image" th:src="${event.image_url}" th:alt="${event.name}">
+        <img class="event-image"
+             th:src="${event.image_url != null && !event.image_url.isEmpty() ? event.image_url : '/controller/images/events/default-event.jpg'}"
+             th:alt="${event.name}"
+             onerror="this.onerror=null; this.src='/controller/images/events/default-event.jpg';">
         <div class="event-info">
             <div class="event-title" th:text="${event.name}">이벤트 제목</div>
             <div class="event-date">
-                <span th:text="${event.start_date}"></span> ~
-                <span th:text="${event.end_date}"></span>
+                <span th:text="${#strings.substring(event.start_date,0,10)}"></span> ~
+                <span th:text="${#strings.substring(event.end_date,0,10)}"></span>
             </div>
         </div>
         <div class="event-buttons">
-            <a th:href="@{/menu/event/update (id=${event.id})}" class="btn btn-primary">수정</a>
+            <a th:href="@{/menu/event/update/{id}(id=${event.id})}" class="btn btn-primary">수정</a>
             <form th:action="@{/menu/event/delete/{id}(id=${event.id})}" method="post" style="display: inline;">
-
                 <button type="submit" class="btn btn-danger"
                         onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
             </form>
