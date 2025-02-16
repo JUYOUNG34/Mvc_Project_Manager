@@ -45,13 +45,6 @@ public class EventController {
                            @RequestParam(value = "file", required = false) MultipartFile file,
                            Model model) {
 
-
-
-        System.out.println("========== 이벤트 추가 시작 ==========");
-        System.out.println("이벤트 이름: " + name);
-        System.out.println("시작일: " + startDate);
-        System.out.println("종료일: " + endDate);
-
         if (name == null || name.trim().isEmpty()) {
             model.addAttribute("error", "이벤트 제목을 입력해주세요.");
             return "menu/event/add";
@@ -65,9 +58,8 @@ public class EventController {
 
             // 파일 업로드 처리
             if (file != null && !file.isEmpty()) {
-
-                String projectPath = System.getProperty("user.dir");
-                String uploadDir = projectPath + "/src/main/resources/static/images/events";
+                // 절대 경로 설정
+                String uploadDir = "C:/Mvc_Project_Manager/src/main/resources/static/images/events";
                 File uploadPath = new File(uploadDir);
 
                 if (!uploadPath.exists()) {
@@ -81,11 +73,11 @@ public class EventController {
                 Path targetPath = Paths.get(uploadDir, fileName);
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
-                // 웹 경로 수정
-                event.setImage_url("/src/main/resources/static/images/events/" + fileName);
+                // 웹 경로로 저장
+                event.setImage_url("/controller/images/events/" + fileName);
             } else {
-
-                event.setImage_url("/src/main/resources/static/images/events/default-event.jpg");
+                // 기본 이미지 경로 설정
+                event.setImage_url("/controller/images/events/default-event.jpg");
             }
 
             int result = eventService.insertEvent(event);
