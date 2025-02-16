@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>채팅 리스트</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/menu/user/chat/list.css}">
+
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="container">
+<div class="con">
+    <table>
+        <thead>
+        <tr>
+            <th class="listCol1">번호</th>
+            <th class="listCol2">유저닉네임</th>
+            <th class="listCol3">채팅날짜</th>
+            <th class="remark-column">채팅보기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${리스트}">
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td th:text="${item}">2</td>
+            <td class="remark-column">
+                <div class="button-container">
+                    <a th:href="@{/menu/user/chat/detail}" class="button">보기</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <select>
+                <option value="아이디">아이디</option>
+                <option value="닉네임">닉네임</option>
+                <option value="성별">성별</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <a href="#">&laquo; Previous</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Next &raquo;</a>
+    </div>
+</div>
+</div>
+</body>
+</html>

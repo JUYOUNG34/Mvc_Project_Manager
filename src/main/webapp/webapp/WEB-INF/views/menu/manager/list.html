@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 리스트</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/menu/manager/list.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+<div class="con">
+    <div class="button-container" style="justify-content: flex-end;">
+        <a th:href="@{/menu/manager/register}" class="button register">추가</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>사번</th>
+            <th>생성일자</th>
+            <th>등급</th>
+            <th class="remark-column">수정/삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="admin : ${admins}">
+            <td th:text="${admin.id}">2</td>
+            <td th:text="${admin.name}">2</td>
+            <td th:text="${admin.employee_number}">2</td>
+            <td th:text="${admin.created_at}">2</td>
+            <td th:text="${admin.admin_level}">2</td>
+            <td class="remark-column">
+                <div class="button-container">
+                    <a th:href="@{/menu/manager/modify}" class="button update">수정</a>
+                    <a href="#" class="button delete">삭제</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="search-bar-container">
+
+        <div class="search-bar">
+            <form th:action="@{/menu/manager/list}" method="get" th:object="${criteria}">
+            <select title="type" th:field="*{type}">
+                <option value="id" th:selected="${criteria.type == 'id'}">아이디</option>
+                <option value="name" th:selected="${criteria.type == 'name'}">이름</option>
+                <option value="created_at" th:selected="${criteria.type == 'created_at'}">생성일자</option>
+            </select>
+            <input title="keyword" type="text" th:field="*{keyword}" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <a href="#">&laquo; Previous</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">Next &raquo;</a>
+    </div>
+</div>
+</div>
+</body>
+</html>
