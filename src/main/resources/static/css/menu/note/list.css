@@ -1,0 +1,129 @@
+.note-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 250px; /* 사이드바 너비만큼 여백 */
+}
+
+/* 제목 스타일 */
+.note-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* 쪽지 목록 섹션 스타일 */
+.note-list {
+    margin-bottom: 40px;
+}
+
+.note-list h3 {
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #f8f9fa;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* 테이블 행 호버 효과 */
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* 읽지 않은 쪽지 스타일 */
+.unread {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* 링크 스타일 */
+a {
+    color: #495057;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.btn-write {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-write:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/* 빈 목록 메시지 스타일 */
+tr td[colspan="4"] {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+
+/* 읽음/안읽음 상태 스타일 */
+td:last-child {
+    color: #6c757d;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .note-container {
+        margin: 10px;
+        padding: 10px;
+        margin-left: 0;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .button-group {
+        text-align: center;
+        margin: 15px 0;
+    }
+}
+
+/* 테이블 컬럼 너비 조정 */
+table th:nth-child(1) { width: 15%; } /* 보낸/받는 사람 */
+table th:nth-child(2) { width: 50%; } /* 제목 */
+table th:nth-child(3) { width: 20%; } /* 시간 */
+table th:nth-child(4) { width: 15%; } /* 읽음 여부 */

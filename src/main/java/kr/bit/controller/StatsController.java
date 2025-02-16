@@ -13,5 +13,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/menu")
 public class StatsController {
-
+    @GetMapping("/stats")
+    public String stats() {
+        return "menu/stats";
+    }
 }
