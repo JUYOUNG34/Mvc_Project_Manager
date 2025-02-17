@@ -1,0 +1,122 @@
+/* 전체 컨테이너 스타일 */
+.note-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 250px; /* 사이드바 너비만큼 여백 */
+}
+
+/* 쪽지 헤더 스타일 */
+.note-header {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.note-header h2 {
+    color: #333;
+    margin: 0;
+}
+
+/* 쪽지 정보 스타일 */
+.note-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.note-info p {
+    margin: 8px 0;
+    color: #495057;
+}
+
+.label {
+    display: inline-block;
+    width: 80px;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* 쪽지 제목 스타일 */
+.note-title {
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.note-title h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2em;
+}
+
+/* 쪽지 내용 스타일 */
+.note-body {
+    padding: 20px 0;
+    min-height: 200px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+    margin-top: 30px;
+    text-align: right;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-reply, .btn-back {
+    display: inline-block;
+    padding: 8px 20px;
+    margin-left: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-reply {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-reply:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-back {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-back:hover {
+    background-color: #545b62;
+    color: white;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .note-container {
+        margin: 10px;
+        padding: 15px;
+        margin-left: 0;
+    }
+
+    .label {
+        width: 70px;
+        font-size: 0.9em;
+    }
+
+    .button-group {
+        text-align: center;
+    }
+
+    .btn-reply, .btn-back {
+        margin: 5px;
+    }
+}

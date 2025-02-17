@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,45 +37,64 @@ public class EventController {
         model.addAttribute("event", new Events());
         return "menu/event/add";
     }
+
     @PostMapping("/add")
-    public String addEvent(@RequestParam("name") String name,
-                           @RequestParam("start_date") String startDate,
-                           @RequestParam("end_date") String endDate,
-                           @RequestParam("file") MultipartFile file) {
+    public String addEvent(@RequestParam(value = "name", required = false) String name,
+                           @RequestParam(value = "start_date", required = false) String startDate,
+                           @RequestParam(value = "end_date", required = false) String endDate,
+                           @RequestParam(value = "file", required = false) MultipartFile file,
+                           Model model) {
 
-        Events event = new Events();
-        event.setName(name);
-        event.setStart_date(startDate);
-        event.setEnd_date(endDate);
-
-        // 이미지 처리
-        if (file != null && !file.isEmpty()) {
-            try {
-                String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-                String uploadDir = "src/main/resources/static/images/events/";
-                Path uploadPath = Paths.get(uploadDir);
-
-                if (!Files.exists(uploadPath)) {
-                    Files.createDirectories(uploadPath);
-                }
-
-                Path filePath = uploadPath.resolve(fileName);
-                Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
-
-                event.setImage_url("/images/events/" + fileName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (name == null || name.trim().isEmpty()) {
+            model.addAttribute("error", "이벤트 제목을 입력해주세요.");
+            return "menu/event/add";
         }
 
-        // 데이터 확인 로그
-        System.out.println("Name: " + event.getName());
-        System.out.println("Start Date: " + event.getStart_date());
-        System.out.println("End Date: " + event.getEnd_date());
-        System.out.println("Image URL: " + event.getImage_url());
+        try {
+            Events event = new Events();
+            event.setName(name);
+            event.setStart_date(startDate);
+            event.setEnd_date(endDate);
 
-        eventService.insertEvent(event);
-        return "redirect:/menu/event/list";
+            // 파일 업로드 처리
+            if (file != null && !file.isEmpty()) {
+                // 절대 경로 설정
+                String uploadDir = "C:/Mvc_Project_Manager/src/main/resources/static/images/events";
+                File uploadPath = new File(uploadDir);
+
+                if (!uploadPath.exists()) {
+                    uploadPath.mkdirs();
+                }
+
+                String originalFilename = file.getOriginalFilename();
+                String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
+                String fileName = UUID.randomUUID().toString() + fileExtension;
+
+                Path targetPath = Paths.get(uploadDir, fileName);
+                Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // 웹 경로로 저장
+                event.setImage_url("/controller/images/events/" + fileName);
+            } else {
+                // 기본 이미지 경로 설정
+                event.setImage_url("/controller/images/events/default-event.jpg");
+            }
+
+            int result = eventService.insertEvent(event);
+            System.out.println("이벤트 추가 결과: " + result);
+
+            if (result > 0) {
+                return "redirect:/menu/event/list";
+            } else {
+                model.addAttribute("error", "이벤트 등록에 실패했습니다.");
+                return "menu/event/add";
+            }
+        }
+        catch (Exception e) {
+            log.error("이벤트 추가 중 에러 발생", e);
+            model.addAttribute("error", "이벤트 등록에 실패했습니다: " + e.getMessage());
+            return "menu/event/add";
+        }
     }
 
     @GetMapping("/update/{id}")
