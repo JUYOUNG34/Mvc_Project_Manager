@@ -61,4 +61,13 @@ public class UserController {
         return "menu/user/chat/list";
     }
 
+
+
+
+
+    @GetMapping("/blacklist")
+    public String blackList(){
+        return "menu/user/blacklist";
+    }
+
 }

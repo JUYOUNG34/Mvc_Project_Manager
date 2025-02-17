@@ -11,8 +11,8 @@
     <link rel="stylesheet" th:href="@{/css/sider.css}">
 </head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
-<div th:replace="~{fragments/sider :: sidebar}"></div>
+<div th:insert="fragments/header :: header"></div>
+<div th:insert="fragments/sider :: sidebar"></div>
 <div class="main-wrapper">
 
     <div class="container">
@@ -118,7 +118,7 @@
         }
     });
 
-    // 성별 분포 차트
+
     new Chart(document.getElementById('genderChart'), {
         type: 'doughnut',
         data: {
@@ -141,5 +141,6 @@
         }
     });
 </script>
+</div>
 </body>
 </html>

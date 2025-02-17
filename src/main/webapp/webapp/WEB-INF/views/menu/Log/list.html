@@ -2,79 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>관리자 로그 페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" th:href="@{/css/header.css}">
-  <link rel="stylesheet" th:href="@{/css/menu/Log/list.css}">
-
-
-  <script>
-     function logDetail(){
-        let logDetail = document.getElementById('logDetail');
-        logDetail.style.visibility='visible';
-     }
-  </script>
+  <link rel="stylesheet" th:href="@{/css/sider.css}">
+  <link rel="stylesheet" th:href="@{/css/event/list.css}">
+  <title>이벤트 관리</title>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
-
-<div class="container">
-
-  <!-- 관리자 로그 테이블 (왼쪽) -->
-  <div class="table-container-left">
-    <h2>관리자 로그</h2>
-    <table>
-      <thead>
-      <tr>
-        <th class="listCol1">날짜</th>
-        <th class="listCol2">세부정보</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>2025-02-04</td>
-        <td><button class="logDetailButton" id="logDetailButton" onclick="logDetail()">보기</button></td>
-      </tr>
-      <!-- 더 많은 행 추가 -->
-      </tbody>
-    </table>
-    <div class="pagination">
-      <a href="#">&laquo; 이전</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">다음 &raquo;</a>
+<div th:replace="~{fragments/header :: headerFragment}"></div>
+<main style="display: flex;">
+  <div th:replace="~{fragments/sider :: sidebarFragment}"></div>
+  <div class="event-container" th:action="/menu/event" th:method="post">
+    <button type="button" class="add-button" th:onclick="@{/event/add}" data-toggle="modal" data-target="#addModal" th:method="post">추가</button>
+    <div class="event-item" th:each="event : ${event}">
+      <img class="event-image" th:src="${event.image_url}" th:alt="${event.name}">
+      <div class="event-info">
+        <div class="event-title" th:text="${event.name}">이벤트 제목</div>
+        <div class="event-date">
+          <span th:text="${#temporals.format(event.start_date, 'yyyy-MM-dd')}"></span>
+          ~
+          <span th:text="${#temporals.format(event.end_date, 'yyyy-MM-dd')}"></span>
+        </div>
+      </div>
+      <div class="event-buttons">
+        <a th:href="@{/menu/event/update/{id}(id=${event.id})}" class="btn btn-primary">수정</a>
+        <form th:action="@{/menu/event/delete/{id}(id=${event.id})}" method="post" style="display: inline;">
+          <button type="submit" class="btn btn-danger" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+        </form>
+      </div>
     </div>
   </div>
-
-  <!-- 세부정보 보기 테이블 (오른쪽) -->
-  <div class="table-container-right" id="logDetail" >
-    <h2>2025-02-05</h2>
-    <table>
-      <thead>
-      <tr>
-        <th class="detailCol1">Timestamp</th>
-        <th class="detailCol2">관리자</th>
-        <th class="detailCol3">이벤트</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>2025-02-05 <br> 14:45:00</td>
-        <td>Admin</td>
-        <td>페이지이동#230</td>
-      </tr>
-      <!-- 더 많은 행 추가 -->
-      </tbody>
-    </table>
-    <div class="pagination">
-      <a href="#">&laquo; 이전</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">다음 &raquo;</a>
-    </div>
-  </div>
-
-</div>
+</main>
 </body>
 </html>
