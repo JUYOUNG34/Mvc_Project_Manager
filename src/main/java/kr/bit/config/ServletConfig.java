@@ -36,6 +36,13 @@ public class ServletConfig implements WebMvcConfigurer {
     }
 
     @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(10485760); // 10MB
+        return multipartResolver;
+    }
+
+    @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/views/");
@@ -48,10 +55,30 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // static 리소스 처리
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");  // static 폴더에 있는 리소스를 처리하도록 설정
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");  // 모든 정적 리소스를 포함하도록 설정
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations(
+                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/",
+                        "classpath:/static/images/"
+                );
+
+        registry.addResourceHandler("/controller/images/**")
+                .addResourceLocations(
+                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/",
+                        "classpath:/static/images/"
+                );
+
+        registry.addResourceHandler("/css/**", "/controller/css/**")
+                .addResourceLocations(
+                        "file:C:/Mvc_Project_Manager/src/main/resources/static/css/",
+                        "classpath:/static/css/"
+                );
+
+        registry.addResourceHandler("/resources/**", "/controller/resources/**")
+                .addResourceLocations("/resources/");
+
+        registry.addResourceHandler("/static/**", "/controller/static/**")
+                .addResourceLocations("classpath:/static/");
+    }
     }
     @Bean
     public MultipartResolver multipartResolver() {
@@ -63,5 +90,3 @@ public class ServletConfig implements WebMvcConfigurer {
     }
 
 
-
-}
