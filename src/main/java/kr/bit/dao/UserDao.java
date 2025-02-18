@@ -27,8 +27,24 @@ public class UserDao {
     public List<Hobbies> getHobbies(int user_id){
         return userMapper.getHobbies(user_id);
     }
-    public List<Chat_rooms> getChat_rooms(int user_id){
-        return userMapper.getChat_rooms(user_id);
+    public List<Chat_rooms> getChat_rooms(int user_id, Criteria criteria){
+        return userMapper.getChat_rooms(user_id,criteria);
+    }
+    public int getChat_roomsCount(int user_id, Criteria criteria){
+        return userMapper.getChat_roomsCount(user_id,criteria);
     }
 
+    public int modifyPoints(Points points){
+        return userMapper.modifyPoints(points);
+    }
+    public int modifyPhoto_image_url(String photo_image_url, int user_id){
+        return userMapper.modifyPhoto_image_url(photo_image_url,user_id);
+    }
+
+    public List<Messages> getMessages(int room_id){
+        return userMapper.getMessages(room_id);
+    }
+    public Users oneUser(int room_id, int user_id){
+        return userMapper.oneUser(room_id,user_id);
+    }
 }

@@ -1,5 +1,8 @@
 package kr.bit.entity;
 
+import lombok.Data;
+
+@Data
 public class Users {
     private int user_id;
     private String google_id;
