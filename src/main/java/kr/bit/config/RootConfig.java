@@ -11,13 +11,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+
 import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement
 @MapperScan(basePackages = {"kr.bit.mapper"})
 @PropertySource({"classpath:db.properties"})
 public class RootConfig {

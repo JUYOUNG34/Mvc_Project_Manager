@@ -11,9 +11,10 @@
     <link rel="stylesheet" th:href="@{/css/sider.css}">
 </head>
 <body>
-<div th:insert="fragments/header :: headerFragment"></div>
+<div th:insert="fragments/header :: header"></div>
+<div th:insert="fragments/sider :: sidebar"></div>
 <div class="main-wrapper">
-    <div th:insert="fragments/sider :: sidebarFragment"></div>
+
     <div class="container">
         <input type="hidden" id="userStatsData" value='{"data":[]}'>
         <input type="hidden" id="genderStatsData" value='{"male":0,"female":0}'>
@@ -118,7 +119,7 @@
         }
     });
 
-    // 성별 분포 차트
+
     new Chart(document.getElementById('genderChart'), {
         type: 'doughnut',
         data: {
@@ -141,5 +142,6 @@
         }
     });
 </script>
+</div>
 </body>
 </html>

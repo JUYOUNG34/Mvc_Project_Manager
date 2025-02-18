@@ -126,6 +126,7 @@ public class UserController {
         return "menu/user/chat/list";
     }
 
+
     @GetMapping("/chat/detail")
     public String chatDetail(@RequestParam("room_id") int room_id,@RequestParam("user_id")int user_id ,Model model){
         List<Messages> messages = userService.getMessages(room_id);
@@ -134,6 +135,17 @@ public class UserController {
         model.addAttribute("messages",messages);
         model.addAttribute("user",user);
         return "menu/user/chat/detail";
+    }
+
+
+
+
+
+
+
+    @GetMapping("/blacklist")
+    public String blackList(){
+        return "menu/user/blacklist";
     }
 
 
