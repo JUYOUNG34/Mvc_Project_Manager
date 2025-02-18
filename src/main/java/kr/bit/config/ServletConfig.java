@@ -80,4 +80,13 @@ public class ServletConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/");
     }
     }
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSize(20971520);  // 최대 업로드 크기 20MB
+        resolver.setMaxUploadSizePerFile(41943040); // 한번에 업로드 가능한 최대 크기 40MB
+        resolver.setMaxInMemorySize(20971520); // 메모리 임계값
+        return resolver;
+    }
+
 
