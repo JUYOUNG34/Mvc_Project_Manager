@@ -20,3 +20,12 @@
     color: white;
     margin-left: 10px;
 }
+.modal-header h5#headerModalTitle{
+    color: #1a1a1a;
+}
+.modal-body p#modalBodyId{
+    color: #1a1a1a;
+}
+.modal-body p#modalBodyPass{
+    color: #1a1a1a;
+}
