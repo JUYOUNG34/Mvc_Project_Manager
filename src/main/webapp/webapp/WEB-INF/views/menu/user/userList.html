@@ -46,7 +46,7 @@
         </thead>
         <tbody>
         <tr th:each="userProfile, iter : ${userProfiles}">
-            <td th:text="${iter.index + 1}"></td>
+            <td th:text="${totalCount - (iter.index + ((pageCre.criteria.current_page - 1) * pageCre.criteria.perPageNum))}"></td>
             <td th:text="${userProfile.user_id}"></td>
             <td th:text="${userProfile.nickname}"></td>
             <td th:text="${userProfile.gender}"></td>

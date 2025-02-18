@@ -64,9 +64,13 @@ a.button:hover {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+    list-style: none;
+    padding: 0;
 }
-.pagination a {
+.pagination li {
     margin: 0 3px;
+}
+.pagination li a {
     padding: 4px 8px;
     text-decoration: none;
     color: #007bff;
@@ -74,10 +78,10 @@ a.button:hover {
     border-radius: 4px;
     font-size: 0.8em;
 }
-.pagination a:hover {
+.pagination li a:hover {
     background-color: #f0f0f0;
 }
-.pagination a.active {
+.pagination li a.active {
     background-color: #007bff;
     color: white;
 }
@@ -93,7 +97,7 @@ a.button:hover {
         font-size: 0.7em;
         padding: 4px 8px;
     }
-    .pagination a {
+    .pagination li a {
         font-size: 0.7em;
         padding: 3px 6px;
     }
@@ -111,7 +115,7 @@ a.button:hover {
     .remark-column {
         width: 100px;
     }
-    .pagination a {
+    .pagination li a {
         font-size: 0.6em;
         padding: 2px 4px;
     }
