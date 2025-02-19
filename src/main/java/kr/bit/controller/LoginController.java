@@ -8,10 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class LoginController {
 
     @Autowired
@@ -30,25 +28,26 @@ public class LoginController {
 
 
 
-    @PostMapping("/auth/login")
-    public String auth(@ModelAttribute("admin") Admins admin, BindingResult result) {
-        if (result.hasErrors()) {
-            return "auth/login";
+    @GetMapping("/login")
+    public String loginPage(@RequestParam(value = "error", required = false) String error,
+                            @RequestParam(value = "logout", required = false) String logout,
+                            Model model) {
+
+        if (error != null) {
+            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다.");
         }
 
-        Admins loginResult = loginService.adminLogin(admin);
-        if (loginResult != null) {
-            Admins.setLoginStatus(true);
-            return "redirect:/menu/stats";
+        if (logout != null) {
+            model.addAttribute("message", "로그아웃되었습니다.");
         }
-        return "redirect:/auth/login?fail=true";
+
+        return "auth/login";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
-
-        session.invalidate();
-        Admins.setLoginStatus(false);
-        return "redirect:/auth/login";
+    public String logoutPage() {
+        return "auth/login";
     }
+
+
 }

@@ -4,6 +4,7 @@ import kr.bit.dao.AdminDao;
 import kr.bit.entity.Admins;
 import kr.bit.entity.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,5 +17,8 @@ public class AdminService {
     public List<Admins> getAdmins(Criteria criteria){
         return adminDao.getAdmins(criteria);
     }
+
+
+
 
 }
