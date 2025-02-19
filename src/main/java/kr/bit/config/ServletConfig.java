@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -17,7 +17,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"kr.bit.controller", "kr.bit.service", "kr.bit.dao", "kr.bit.mapper"})
+@ComponentScan(basePackages = {"kr.bit.controller", "kr.bit.service", "kr.bit.dao", "kr.bit.mapper", "kr.bit.security"})
 public class ServletConfig implements WebMvcConfigurer {
 
     @Bean
@@ -32,6 +32,8 @@ public class ServletConfig implements WebMvcConfigurer {
     public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
+        // Spring Security 태그 활성화
+        templateEngine.addDialect(new org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect());
         return templateEngine;
     }
 
@@ -55,13 +57,8 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations(
-                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/",
-                        "classpath:/static/images/"
-                );
-
-        registry.addResourceHandler("/controller/images/**")
+        // 정적 리소스 루트 경로 및 controller 경로 둘 다 매핑
+        registry.addResourceHandler("/images/**", "/controller/images/**")
                 .addResourceLocations(
                         "file:C:/Mvc_Project_Manager/src/main/resources/static/images/",
                         "classpath:/static/images/"
@@ -79,5 +76,12 @@ public class ServletConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**", "/controller/static/**")
                 .addResourceLocations("classpath:/static/");
     }
-    }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        // 보안 인터셉터 추가
+        registry.addInterceptor(new kr.bit.security.SecurityInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
+    }
+}

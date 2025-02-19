@@ -7,11 +7,9 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface LoginMapper {
 
-    @Select("select * " +
-            "from admins " +
-            "where id = #{id} and pass = #{pass}")
-    Admins getLoginAdmin(Admins admins);
-
-    @Select("select * from admins where id = #{id}")
+    @Select("SELECT * FROM admins WHERE id = #{id}")
     Admins findById(String id);
+
+    @Select("SELECT * FROM admins WHERE id = #{id} AND pass = #{pass}")
+    Admins getLoginAdmin(Admins admin);
 }
