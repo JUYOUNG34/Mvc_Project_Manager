@@ -17,4 +17,23 @@ public class AdminDao {
         return adminMapper.getAdmins(criteria);
     }
 
+    public boolean registerAdmin(Admins admin) {
+        return adminMapper.registerAdmin(admin) > 0;
+    }
+
+    public boolean updateAdmin(Admins admin) {
+        return adminMapper.updateAdmin(admin) > 0;
+    }
+
+    public boolean deleteAdmin(int adminId) {
+        return adminMapper.deleteAdmin(adminId) > 0;
+    }
+
+    public Admins getAdminById(int adminId) {
+        return adminMapper.getAdminById(adminId);
+    }
+
+    public boolean isIdDuplicate(String id) {
+        return adminMapper.countById(id) > 0;
+    }
 }

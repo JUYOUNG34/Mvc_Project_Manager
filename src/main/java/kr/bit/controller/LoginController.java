@@ -15,18 +15,10 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping
+    @GetMapping("")
     public String root() {
         return "redirect:/auth/login";
     }
-
-    @GetMapping("/auth/login")
-    public String loginForm(Model model) {
-        model.addAttribute("admin", new Admins());
-        return "auth/login";
-    }
-
-
 
     @GetMapping("/login")
     public String loginPage(@RequestParam(value = "error", required = false) String error,
@@ -41,6 +33,7 @@ public class LoginController {
             model.addAttribute("message", "로그아웃되었습니다.");
         }
 
+        model.addAttribute("admin", new Admins());
         return "auth/login";
     }
 
@@ -48,6 +41,4 @@ public class LoginController {
     public String logoutPage() {
         return "auth/login";
     }
-
-
 }

@@ -22,8 +22,7 @@ public class AdminUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 실제로 데이터베이스에서 관리자 조회
-        // 여기서 username은 아이디임.
+        // 데이터베이스 조회
         Admins foundAdmin = loginMapper.findById(username);
 
         if (foundAdmin == null) {
@@ -32,24 +31,29 @@ public class AdminUserDetailsService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        // 실제 관리자의 권한 수준에 따라 권한 설정
-//        switch (foundAdmin.getAdmin_level()) {
-//            case "master":
-//                authorities.add(new SimpleGrantedAuthority("ROLE_master"));
-//                break;
-//            case "service_manager":
-//                authorities.add(new SimpleGrantedAuthority("ROLE_service_manager"));
-//                break;
-//            default:
-//                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//                break;
-//        }
+        // 권한 설정
+        switch (foundAdmin.getAdmin_level()) {
+            case "master":
+                authorities.add(new SimpleGrantedAuthority("ROLE_master"));
+                break;
+            case "service_manager":
+                authorities.add(new SimpleGrantedAuthority("ROLE_service_manager"));
+                break;
+            default:
+                authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                break;
+        }
 
-        // 실제 관리자의 ID와 비밀번호를 사용하여 UserDetails 객체 생성
+        // 로그 출력 (디버깅용)
+        System.out.println("로그인 시도 - 아이디: " + foundAdmin.getId());
+        System.out.println("권한: " + authorities);
+        System.out.println("DB 비밀번호: " + foundAdmin.getPass());
+
         return new User(
                 foundAdmin.getId(),
-                foundAdmin.getPass(), // 이미 암호화된 비밀번호여야 함
+                foundAdmin.getPass(),
                 authorities
         );
+
     }
 }
