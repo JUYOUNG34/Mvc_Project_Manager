@@ -31,22 +31,6 @@ public interface UserMapper {
     int modifyPhoto_image_url(@Param("photo_image_url")String photo_image_url,@Param("user_id") int user_id);
 
 
-//    @Select("SELECT " +
-//            "m.id, " +
-//            "m.room_id, " +
-//            "cr.participant_1_id AS user_id, " +
-//            "u1.nickname AS sender_nickname, " +
-//            "cr.participant_2_id AS receiver_id, " +
-//            "u2.nickname AS receiver_nickname, " +
-//            "m.message_content, " +
-//            "m.created_at, " +
-//            "cr.topic " +
-//            "FROM messages m " +
-//            "JOIN chat_rooms cr ON m.room_id = cr.id " +
-//            "JOIN users u1 ON cr.participant_1_id = u1.user_id " +
-//            "JOIN users u2 ON cr.participant_2_id = u2.user_id " +
-//            "WHERE m.room_id = #{room_id} " +
-//            "ORDER BY m.created_at ASC")
     @Select("select * from messages m join users u on m.user_id = u.user_id where m.room_id = #{room_id}")
     List<Messages> getMessages(@Param("room_id") int room_id);
 
