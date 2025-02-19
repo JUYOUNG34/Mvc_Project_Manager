@@ -4,6 +4,7 @@ import kr.bit.entity.Boards;
 import kr.bit.entity.Criteria;
 import kr.bit.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
