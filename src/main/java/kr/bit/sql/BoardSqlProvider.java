@@ -53,9 +53,14 @@ public class BoardSqlProvider {
                         break;
                 }
             }
-            ORDER_BY("b.is_notice DESC, b.created_at DESC");
+            // 정렬 기준과 순서 반영
+            if (criteria.getSort() != null && criteria.getOrder() != null) {
+                ORDER_BY(criteria.getSort() + " " + criteria.getOrder());
+            } else {
+                ORDER_BY("b.is_notice DESC, b.created_at DESC");
+            }
         }}.toString();
-        sql += " LIMIT #{criteria.pageStart}, #{criteria.perPageNum}";
+        sql += " LIMIT #{criteria.page}, #{criteria.size}";
         return sql;
     }
 

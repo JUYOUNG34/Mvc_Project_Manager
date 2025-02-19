@@ -35,12 +35,13 @@ public class ServletConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(10485760); // 10MB
-        return multipartResolver;
-    }
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(10485760); // 10MB
+//        return multipartResolver;
+//    }
+
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -78,8 +79,9 @@ public class ServletConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/**", "/controller/static/**")
                 .addResourceLocations("classpath:/static/");
+
     }
-    }
+
     @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
@@ -88,5 +90,9 @@ public class ServletConfig implements WebMvcConfigurer {
         resolver.setMaxInMemorySize(20971520); // 메모리 임계값
         return resolver;
     }
+
+    }
+
+
 
 
