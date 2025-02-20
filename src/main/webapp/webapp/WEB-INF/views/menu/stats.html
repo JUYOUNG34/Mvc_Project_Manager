@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,120 +28,119 @@
         </div>
 
         <div class="dashboard-grid">
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>전체 회원 수</h5>
-            </div>
-            <div class="card-body text-center">
-                <div class="count mb-2" id="totalUsersCount">0</div>
-                <p class="text-muted mb-0">총 등록 회원</p>
-            </div>
-        </div>
-
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>월별 가입자</h5>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="signupChart"></canvas>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>전체 회원 수</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="count mb-2" id="totalUsersCount">0</div>
+                    <p class="text-muted mb-0">총 등록 회원</p>
                 </div>
             </div>
-        </div>
 
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>성별 분포</h5>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>월별 가입자</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="signupChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="genderChart"></canvas>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>성별 분포</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="genderChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
-<script>
+    <script>
 
-    function safeJSONParse(value, defaultValue) {
-        try {
-            return JSON.parse(value) || defaultValue;
-        } catch (e) {
-            console.warn('JSON 파싱 에러:', e);
-            return defaultValue;
+        function safeJSONParse(value, defaultValue) {
+            try {
+                return JSON.parse(value) || defaultValue;
+            } catch (e) {
+                console.warn('JSON 파싱 에러:', e);
+                return defaultValue;
+            }
         }
-    }
 
-    const userStats = safeJSONParse(document.getElementById('userStatsData').value, []);
-    const genderStats = safeJSONParse(document.getElementById('genderStatsData').value, {male: 0, female: 0});
-    const totalUsers = document.getElementById('totalUsersData').value || '0';
+        const userStats = safeJSONParse(document.getElementById('userStatsData').value, []);
+        const genderStats = safeJSONParse(document.getElementById('genderStatsData').value, {male: 0, female: 0});
+        const totalUsers = document.getElementById('totalUsersData').value || '0';
 
-    document.getElementById('totalUsersCount').textContent = totalUsers;
+        document.getElementById('totalUsersCount').textContent = totalUsers;
 
-    new Chart(document.getElementById('signupChart'), {
-        type: 'line',
-        data: {
-            labels: Array.isArray(userStats.data) ? userStats.data.map(item => item?.month || '없음') : [],
-            datasets: [{
-                label: '가입자 수',
-                data: userStats.data.map(item => item.count || 0),
-                borderColor: '#0066ff',
-                backgroundColor: 'rgba(0, 102, 255, 0.1)',
-                tension: 0.3,
-                fill: true,
-                pointBackgroundColor: '#0066ff',
-                pointRadius: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                }
+        new Chart(document.getElementById('signupChart'), {
+            type: 'line',
+            data: {
+                labels: Array.isArray(userStats.data) ? userStats.data.map(item => item?.month || '없음') : [],
+                datasets: [{
+                    label: '가입자 수',
+                    data: userStats.data.map(item => item.count || 0),
+                    borderColor: '#0066ff',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    tension: 0.3,
+                    fill: true,
+                    pointBackgroundColor: '#0066ff',
+                    pointRadius: 4
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0,0,0,0.04)'
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 },
-                x: {
-                    grid: {
-                        display: false
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.04)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 
 
-    new Chart(document.getElementById('genderChart'), {
-        type: 'doughnut',
-        data: {
-            labels: ['남성', '여성'],
-            datasets: [{
-                data: [genderStats.male || 0, genderStats.female || 0],
-                backgroundColor: ['#0066ff', '#ff4d4d'],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
+        new Chart(document.getElementById('genderChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['남성', '여성'],
+                datasets: [{
+                    data: [genderStats.male || 0, genderStats.female || 0],
+                    backgroundColor: ['#0066ff', '#ff4d4d'],
+                    borderWidth: 0
+                }]
             },
-            cutout: '75%'
-        }
-    });
-</script>
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                cutout: '75%'
+            }
+        });
+    </script>
 </div>
 </body>
 </html>
