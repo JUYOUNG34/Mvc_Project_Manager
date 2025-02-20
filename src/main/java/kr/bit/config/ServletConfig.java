@@ -37,13 +37,12 @@ public class ServletConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-//    @Bean
-//    public MultipartResolver multipartResolver() {
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(10485760); // 10MB
-//        return multipartResolver;
-//    }
-
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(10485760); // 10MB
+        return multipartResolver;
+    }
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -76,9 +75,7 @@ public class ServletConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/**", "/controller/static/**")
                 .addResourceLocations("classpath:/static/");
-
     }
-
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -88,19 +85,3 @@ public class ServletConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
     }
 }
-
-
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSize(20971520);  // 최대 업로드 크기 20MB
-        resolver.setMaxUploadSizePerFile(41943040); // 한번에 업로드 가능한 최대 크기 40MB
-        resolver.setMaxInMemorySize(20971520); // 메모리 임계값
-        return resolver;
-    }
-
-    }
-
-
-
-
