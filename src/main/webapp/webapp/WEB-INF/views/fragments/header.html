@@ -4,8 +4,13 @@
     </div>
     <div class="header-right" >
         <span>Admin님 환영합니다</span>
+
+        <a th:href="@{/auth/logout}" class="logout-button">logout</a>&nbsp;&nbsp;
+        <a class="header-a-tag" href="/logout" >정보수정</a>
+
         &nbsp;&nbsp;<a class="header-a-tag" th:href="@{/logout}">Logout</a>&nbsp;&nbsp;
         <a class="header-a-tag" href="javascript:modifyMyModal()" >정보수정</a>
+
     </div>
 
     <div class="modal" id="headerModal" tabindex="-1">

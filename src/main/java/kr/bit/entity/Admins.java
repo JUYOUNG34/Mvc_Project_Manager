@@ -14,11 +14,11 @@ public class Admins {
 
     private static boolean isLoggedIn = false;
 
-    public static void setLoginStatus(boolean status) {
-        isLoggedIn = status;
-    }
-
-    public static boolean isLoggedIn() {
-        return isLoggedIn;
-    }
+//    public static void setLoginStatus(boolean status) {
+//        isLoggedIn = status;
+//    }
+//
+//    public static boolean isLoggedIn() {
+//        return isLoggedIn;
+//    }
 }
