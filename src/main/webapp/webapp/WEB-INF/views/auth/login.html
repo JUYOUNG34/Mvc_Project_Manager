@@ -2,25 +2,39 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/auth/login.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>블라인드 타임</title>
 
+    <link rel="stylesheet" th:href="@{/css/auth/login.css}">
 
 </head>
 <body>
 <div class="login-container">
-    <form class="login-form" th:action="@{/auth/login}" method="post" th:object="${admin}">
+    <form class="login-form" th:action="@{/auth/login}" method="post">
+        <!-- CSRF 토큰 제거 -->
         <h2 style="text-align: center;">블라인드 타임</h2>
+
         <div class="form-group">
-            <input type="text" th:field="*{id}" placeholder="ID" required>
+            <input type="text" id="id" name="id" placeholder="ID" required>
         </div>
+
         <div class="form-group">
-            <input type="password" th:field="*{pass}" placeholder="Password" required>
+            <input type="password" id="pass" name="pass" placeholder="Password" required>
         </div>
-        <div th:if="${param.fail}" class="alert alert-danger">
+
+        <div th:if="${param.error}" class="alert alert-danger">
             아이디 또는 비밀번호가 잘못되었습니다.
         </div>
-        <button type="submit" class="sign-in-btn">Sign in</button>
+
+        <div th:if="${param.denied}" class="alert alert-warning">
+            접근 권한이 없습니다. 로그인이 필요합니다.
+        </div>
+
+        <div th:if="${param.expired}" class="alert alert-info">
+            세션이 만료되었습니다. 다시 로그인해주세요.
+        </div>
+
+        <button type="submit" class="sign-in-btn">로그인</button>
     </form>
 </div>
 </body>
