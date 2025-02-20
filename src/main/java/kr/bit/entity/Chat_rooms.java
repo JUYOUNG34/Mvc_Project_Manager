@@ -13,5 +13,6 @@ public class Chat_rooms {
     private boolean is_continue_2;
     private String session_status;
     private String end_time;
-
+    private String created_at;
+    private String nickname; // 추가한 필드
 }

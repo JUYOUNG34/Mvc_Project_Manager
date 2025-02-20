@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>채팅 리스트</title>
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/menu/user/chat/list.css}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let pageFrm = $("#pageFrm");
+            $(".paginate_button a").on("click", function(e) {
+                e.preventDefault();
+                let page = $(this).attr("href").split('=')[1]; // 페이지 번호 추출
+                pageFrm.find("#page").val(page);
+                pageFrm.submit();
+            });
+        });
+    </script>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
@@ -21,13 +32,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${리스트}">
-            <td th:text="${item}">2</td>
-            <td th:text="${item}">2</td>
-            <td th:text="${item}">2</td>
+        <tr th:each="chatRoom, iter : ${chatRooms}">
+            <td th:text="${iter.index+1}">2</td>
+            <td th:text="${chatRoom.nickname}">2</td>
+            <td th:text="${chatRoom.created_at}">2</td>
             <td class="remark-column">
                 <div class="button-container">
-                    <a th:href="@{/menu/user/chat/detail}" class="button">보기</a>
+                    <a th:href="@{/menu/user/chat/detail(room_id=${chatRoom.id},user_id=${user_id})}" class="button">보기</a>
                 </div>
             </td>
         </tr>
@@ -36,24 +47,45 @@
 
     <div class="search-bar-container">
         <div class="search-bar">
-            <select>
-                <option value="아이디">아이디</option>
-                <option value="닉네임">닉네임</option>
-                <option value="성별">성별</option>
-            </select>
-            <input type="text" placeholder="검색어를 입력하세요">
-            <button>검색</button>
+            <form class="form-inline" th:action="@{/menu/user/chat/list}" th:object="${criteria}" method="get">
+                <select title="type" th:field="*{type}">
+                    <option value="nickname" th:selected="${criteria.type == 'nickname'}">닉네임</option>
+                    <option value="created_at" th:selected="${criteria.type == 'created_at'}">일자</option>
+                </select>
+                <input title="keyword" type="text" th:field="*{keyword}" placeholder="검색어를 입력하세요">
+                <button type="submit">검색</button>
+            </form>
         </div>
     </div>
 
-    <div class="pagination">
-        <a href="#">&laquo; Previous</a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">Next &raquo;</a>
-    </div>
+    <!-- 페이지네이션 -->
+    <ul class="pagination">
+        <!-- 이전처리 -->
+        <li class="paginate_button previous" th:if="${pageCre.prev}">
+            <a class="page-link" th:href="@{/menu/user/chat/list(page=${pageCre.startPage - 1})}">&laquo; Previous</a>
+        </li>
+        <!-- 페이지번호 처리 -->
+        <li class="paginate_button" th:each="pageNum : ${#numbers.sequence(pageCre.startPage, pageCre.endPage)}"
+            th:classappend="${pageCre.criteria.current_page == pageNum} ? 'active'">
+            <a class="page-link" th:href="@{/menu/user/chat/list(page=${pageNum})}" th:text="${pageNum}">1</a>
+        </li>
+        <!-- 다음처리 -->
+        <li class="paginate_button next" th:if="${pageCre.next}">
+            <a class="page-link" th:href="@{/menu/user/chat/list(page=${pageCre.endPage + 1})}">Next &raquo;</a>
+        </li>
+    </ul>
+
+    <form id="pageFrm" th:action="@{/menu/user/chat/list}" method="get">
+        <!-- 게시물 번호(idx) 추가 -->
+        <input type="hidden" id="page" name="current_page" th:value="${pageCre.criteria.current_page}" />
+        <input type="hidden" name="perPageNum" th:value="${pageCre.criteria.perPageNum}" />
+        <input type="hidden" name="type" th:value="${pageCre.criteria.type}" />
+        <input type="hidden" name="keyword" th:value="${pageCre.criteria.keyword}" />
+    </form>
+
+
 </div>
+
 </div>
 </body>
 </html>
