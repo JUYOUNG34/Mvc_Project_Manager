@@ -16,9 +16,9 @@
 <div class="main-wrapper">
 
     <div class="container">
+        <input type="hidden" id="totalUsersData" th:value="${totalUsersData}">
         <input type="hidden" id="userStatsData" value='{"data":[]}'>
-        <input type="hidden" id="genderStatsData" value='{"male":0,"female":0}'>
-        <input type="hidden" id="totalUsersData" value="0">
+        <input type="hidden" id="genderUsersData" th:value="${maleUsersData + ',' + femaleUsersData}">
 
         <div class="d-flex align-items-center mb-4">
             <div>
@@ -33,7 +33,7 @@
                     <h5>전체 회원 수</h5>
                 </div>
                 <div class="card-body text-center">
-                    <div class="count mb-2" id="totalUsersCount">0</div>
+                    <div class="count mb-2" id="totalUsersChart" ></div>
                     <p class="text-muted mb-0">총 등록 회원</p>
                 </div>
             </div>
@@ -62,9 +62,12 @@
         </div>
     </div>
 
-    <script>
 
+
+    <script>
         function safeJSONParse(value, defaultValue) {
+            if (typeof value === 'number') return value;
+
             try {
                 return JSON.parse(value) || defaultValue;
             } catch (e) {
@@ -73,19 +76,33 @@
             }
         }
 
-        const userStats = safeJSONParse(document.getElementById('userStatsData').value, []);
-        const genderStats = safeJSONParse(document.getElementById('genderStatsData').value, {male: 0, female: 0});
-        const totalUsers = document.getElementById('totalUsersData').value || '0';
 
-        document.getElementById('totalUsersCount').textContent = totalUsers;
+        const totalUsers = document.getElementById('totalUsersData').value;
+        document.getElementById('totalUsersChart').textContent = totalUsers;
+
+        const userStatsElement = document.getElementById('userStatsData');
+        let userStatsData = [];
+
+        try {
+            if (userStatsElement && userStatsElement.value) {
+                if (typeof userStatsElement.value === 'string' && userStatsElement.value.startsWith('[')) {
+                    userStatsData = JSON.parse(userStatsElement.value);
+                } else {
+                    userStatsData = userStatsElement.value;
+                }
+            }
+        } catch (e) {
+            console.warn('사용자 통계 데이터 파싱 오류:', e);
+            userStatsData = [];
+        }
 
         new Chart(document.getElementById('signupChart'), {
             type: 'line',
             data: {
-                labels: Array.isArray(userStats.data) ? userStats.data.map(item => item?.month || '없음') : [],
+                labels: Array.isArray(userStatsData) ? userStatsData.map(item => item?.month || '없음') : [],
                 datasets: [{
                     label: '가입자 수',
-                    data: userStats.data.map(item => item.count || 0),
+                    data: Array.isArray(userStatsData) ? userStatsData.map(item => item.count || 0) : [],
                     borderColor: '#0066ff',
                     backgroundColor: 'rgba(0, 102, 255, 0.1)',
                     tension: 0.3,
@@ -118,13 +135,19 @@
             }
         });
 
+       //
+        const genderData = document.getElementById('genderUsersData').value.split(',');
+        // 콤마로 구분된 문자열인 "male수, female수"
+        const maleCount = parseInt(genderData[0]) || 0;
+        const femaleCount = parseInt(genderData[1]) || 0;
+        //genderData[1]은 이 배열의 두 번째 요소/ 여성 사용자 수
 
         new Chart(document.getElementById('genderChart'), {
             type: 'doughnut',
             data: {
                 labels: ['남성', '여성'],
                 datasets: [{
-                    data: [genderStats.male || 0, genderStats.female || 0],
+                    data: [maleCount, femaleCount],
                     backgroundColor: ['#0066ff', '#ff4d4d'],
                     borderWidth: 0
                 }]
