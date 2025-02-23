@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>블라인드 타임</title>
-
     <link rel="stylesheet" th:href="@{/css/auth/login.css}">
-
 </head>
 <body>
 <div class="login-container">
     <form class="login-form" th:action="@{/auth/login}" method="post">
-        <!-- CSRF 토큰 제거 -->
         <h2 style="text-align: center;">블라인드 타임</h2>
 
         <div class="form-group">

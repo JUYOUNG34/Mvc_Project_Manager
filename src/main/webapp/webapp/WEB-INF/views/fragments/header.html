@@ -1,46 +1,12 @@
-<header class="header-head" th:fragment="header">
+
+<header class="header-head" th:fragment="header" >
     <div class="header-logo">
         블라인드 타임
     </div>
     <div class="header-right" >
         <span>Admin님 환영합니다</span>
-
         <a th:href="@{/auth/logout}" class="logout-button">logout</a>&nbsp;&nbsp;
         <a class="header-a-tag" href="/logout" >정보수정</a>
-
-        &nbsp;&nbsp;<a class="header-a-tag" th:href="@{/logout}">Logout</a>&nbsp;&nbsp;
-        <a class="header-a-tag" href="javascript:modifyMyModal()" >정보수정</a>
-
     </div>
-
-    <div class="modal" id="headerModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="headerModalTitle">내 정보수정</h5>
-                </div>
-                <div class="modal-body">
-                    <p id="modalBodyId">아이디</p>
-                    <input title="myId" type="text" id="myId">
-                    <p id="modalBodyPass">비밀번호</p>
-                    <input title="myPass" type="password" id="myPass">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="goAdminModify()">확인</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-    function modifyMyModal(){
-     $('#headerModal').modal('show');
-    }
-
-
-    function goAdminModify(){
-    let myId=$("#myId").val();
-    window.location.href='/controller/menu/manager/modify?id='+myId;
-    }
-   </script>
 </header>
+
