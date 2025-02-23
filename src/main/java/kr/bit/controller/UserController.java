@@ -1,9 +1,7 @@
 package kr.bit.controller;
 
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.oreilly.servlet.multipart.FileRenamePolicy;
+
 import kr.bit.entity.*;
 import kr.bit.service.UserService;
 import org.apache.ibatis.annotations.Param;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +16,9 @@
 <div class="main-wrapper">
 
     <div class="container">
+        <input type="hidden" id="totalUsersData" th:value="${totalUsersData}">
         <input type="hidden" id="userStatsData" value='{"data":[]}'>
-        <input type="hidden" id="genderStatsData" value='{"male":0,"female":0}'>
-        <input type="hidden" id="totalUsersData" value="0">
+        <input type="hidden" id="genderUsersData" th:value="${maleUsersData + ',' + femaleUsersData}">
 
         <div class="d-flex align-items-center mb-4">
             <div>
@@ -28,120 +28,142 @@
         </div>
 
         <div class="dashboard-grid">
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>전체 회원 수</h5>
-            </div>
-            <div class="card-body text-center">
-                <div class="count mb-2" id="totalUsersCount">0</div>
-                <p class="text-muted mb-0">총 등록 회원</p>
-            </div>
-        </div>
-
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>월별 가입자</h5>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="signupChart"></canvas>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>전체 회원 수</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="count mb-2" id="totalUsersChart" ></div>
+                    <p class="text-muted mb-0">총 등록 회원</p>
                 </div>
             </div>
-        </div>
 
-        <div class="dashboard-card">
-            <div class="card-header">
-                <h5>성별 분포</h5>
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>월별 가입자</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="signupChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="genderChart"></canvas>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>성별 분포</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="genderChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
-<script>
 
-    function safeJSONParse(value, defaultValue) {
-        try {
-            return JSON.parse(value) || defaultValue;
-        } catch (e) {
-            console.warn('JSON 파싱 에러:', e);
-            return defaultValue;
+
+    <script>
+        function safeJSONParse(value, defaultValue) {
+            if (typeof value === 'number') return value;
+
+            try {
+                return JSON.parse(value) || defaultValue;
+            } catch (e) {
+                console.warn('JSON 파싱 에러:', e);
+                return defaultValue;
+            }
         }
-    }
 
-    const userStats = safeJSONParse(document.getElementById('userStatsData').value, []);
-    const genderStats = safeJSONParse(document.getElementById('genderStatsData').value, {male: 0, female: 0});
-    const totalUsers = document.getElementById('totalUsersData').value || '0';
 
-    document.getElementById('totalUsersCount').textContent = totalUsers;
+        const totalUsers = document.getElementById('totalUsersData').value;
+        document.getElementById('totalUsersChart').textContent = totalUsers;
 
-    new Chart(document.getElementById('signupChart'), {
-        type: 'line',
-        data: {
-            labels: Array.isArray(userStats.data) ? userStats.data.map(item => item?.month || '없음') : [],
-            datasets: [{
-                label: '가입자 수',
-                data: userStats.data.map(item => item.count || 0),
-                borderColor: '#0066ff',
-                backgroundColor: 'rgba(0, 102, 255, 0.1)',
-                tension: 0.3,
-                fill: true,
-                pointBackgroundColor: '#0066ff',
-                pointRadius: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
+        const userStatsElement = document.getElementById('userStatsData');
+        let userStatsData = [];
+
+        try {
+            if (userStatsElement && userStatsElement.value) {
+                if (typeof userStatsElement.value === 'string' && userStatsElement.value.startsWith('[')) {
+                    userStatsData = JSON.parse(userStatsElement.value);
+                } else {
+                    userStatsData = userStatsElement.value;
                 }
+            }
+        } catch (e) {
+            console.warn('사용자 통계 데이터 파싱 오류:', e);
+            userStatsData = [];
+        }
+
+        new Chart(document.getElementById('signupChart'), {
+            type: 'line',
+            data: {
+                labels: Array.isArray(userStatsData) ? userStatsData.map(item => item?.month || '없음') : [],
+                datasets: [{
+                    label: '가입자 수',
+                    data: Array.isArray(userStatsData) ? userStatsData.map(item => item.count || 0) : [],
+                    borderColor: '#0066ff',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    tension: 0.3,
+                    fill: true,
+                    pointBackgroundColor: '#0066ff',
+                    pointRadius: 4
+                }]
             },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: {
-                        color: 'rgba(0,0,0,0.04)'
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 },
-                x: {
-                    grid: {
-                        display: false
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.04)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 
+       //
+        const genderData = document.getElementById('genderUsersData').value.split(',');
+        // 콤마로 구분된 문자열인 "male수, female수"
+        const maleCount = parseInt(genderData[0]) || 0;
+        const femaleCount = parseInt(genderData[1]) || 0;
+        //genderData[1]은 이 배열의 두 번째 요소/ 여성 사용자 수
 
-    new Chart(document.getElementById('genderChart'), {
-        type: 'doughnut',
-        data: {
-            labels: ['남성', '여성'],
-            datasets: [{
-                data: [genderStats.male || 0, genderStats.female || 0],
-                backgroundColor: ['#0066ff', '#ff4d4d'],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
+        new Chart(document.getElementById('genderChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['남성', '여성'],
+                datasets: [{
+                    data: [maleCount, femaleCount],
+                    backgroundColor: ['#0066ff', '#ff4d4d'],
+                    borderWidth: 0
+                }]
             },
-            cutout: '75%'
-        }
-    });
-</script>
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                cutout: '75%'
+            }
+        });
+    </script>
 </div>
 </body>
 </html>

@@ -12,19 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import org.springframework.core.env.Environment;
-
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
-
-
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.multipart.support.StandardServletMultipartResolver;
-
-
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
-
 
 import javax.sql.DataSource;
 
@@ -58,13 +49,8 @@ public class RootConfig implements TransactionManagementConfigurer {
     }
 
     @Bean
-
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
-
-    public MultipartResolver multipartResolver() {
-        return new StandardServletMultipartResolver();
-
     }
 
     @Override

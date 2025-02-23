@@ -27,7 +27,7 @@ public class EventService {
         }
     }
 
-    // 기존의 다른 메서드들 유지
+
     public List<Events> getAllEvents() {
         return eventMapper.getAllEvents();
     }
