@@ -17,7 +17,7 @@
 
     <div class="container">
         <input type="hidden" id="totalUsersData" th:value="${totalUsersData}">
-        <input type="hidden" id="userStatsData" value='{"data":[]}'>
+        <input type="hidden" id="userStatsData" th:value="${userStatsData}">
         <input type="hidden" id="genderUsersData" th:value="${maleUsersData + ',' + femaleUsersData}">
 
         <div class="d-flex align-items-center mb-4">
@@ -135,7 +135,7 @@
             }
         });
 
-       //
+        //
         const genderData = document.getElementById('genderUsersData').value.split(',');
         // 콤마로 구분된 문자열인 "male수, female수"
         const maleCount = parseInt(genderData[0]) || 0;
