@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface Statsmapper {
-    @Select("select gender, COUNT(*) as count " +
+    @Select("select gender, count(*) as count " +
             "from user_profiles " +
             "group by gender")
     List<Map<String, Object>> getGenderStats();
