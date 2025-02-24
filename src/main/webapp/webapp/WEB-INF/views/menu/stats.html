@@ -17,7 +17,7 @@
 
     <div class="container">
         <input type="hidden" id="totalUsersData" th:value="${totalUsersData}">
-        <input type="hidden" id="userStatsData" value='{"data":[]}'>
+        <input type="hidden" id="userStatsData" th:value="${userStatsData}">
         <input type="hidden" id="genderUsersData" th:value="${maleUsersData + ',' + femaleUsersData}">
 
         <div class="d-flex align-items-center mb-4">
@@ -65,6 +65,7 @@
 
 
     <script>
+
         function safeJSONParse(value, defaultValue) {
             if (typeof value === 'number') return value;
 
@@ -80,29 +81,53 @@
         const totalUsers = document.getElementById('totalUsersData').value;
         document.getElementById('totalUsersChart').textContent = totalUsers;
 
-        const userStatsElement = document.getElementById('userStatsData');
-        let userStatsData = [];
 
-        try {
-            if (userStatsElement && userStatsElement.value) {
-                if (typeof userStatsElement.value === 'string' && userStatsElement.value.startsWith('[')) {
-                    userStatsData = JSON.parse(userStatsElement.value);
-                } else {
-                    userStatsData = userStatsElement.value;
-                }
+        function parseUserStats(value) {
+            if (!value) return [];
+
+            try {
+                // 1. 대괄호 제거 및 객체 분리
+                const objects = value
+                    .replace(/^\[|\]$/g, '')  // 바깥쪽 대괄호 제거
+                    .split('}, {')  // 객체들을 분리
+                    .map(str => str.replace(/^{|}$/g, ''));  // 각 객체의 중괄호 제거
+
+                // 2. 각 객체를 파싱하여 JavaScript 객체로 변환
+                const parsedData = objects.map(obj => {
+                    const pairs = obj.split(', ');
+                    const result = {};
+
+                    pairs.forEach(pair => {
+                        const [key, value] = pair.split('=');
+                        // 숫자인 경우 숫자로 변환, 그 외는 문자열로 유지
+                        result[key] = isNaN(value) ? value : Number(value);
+                    });
+
+                    return result;
+                });
+
+                return parsedData;
+            } catch (e) {
+                console.error('데이터 파싱 실패:', e);
+                return [];
             }
-        } catch (e) {
-            console.warn('사용자 통계 데이터 파싱 오류:', e);
-            userStatsData = [];
         }
 
+        const userStatsElement = document.getElementById('userStatsData');
+        const userStatsData = parseUserStats(userStatsElement?.value);
+
+        // 디버깅용 로그
+        console.log('원본 데이터:', userStatsElement?.value);
+        console.log('파싱된 데이터:', userStatsData);
+
+        // 차트 생성
         new Chart(document.getElementById('signupChart'), {
             type: 'line',
             data: {
-                labels: Array.isArray(userStatsData) ? userStatsData.map(item => item?.month || '없음') : [],
+                labels: userStatsData.map(item => item.month || "없음"),
                 datasets: [{
                     label: '가입자 수',
-                    data: Array.isArray(userStatsData) ? userStatsData.map(item => item.count || 0) : [],
+                    data: userStatsData.map(item => item.count || 0),
                     borderColor: '#0066ff',
                     backgroundColor: 'rgba(0, 102, 255, 0.1)',
                     tension: 0.3,
@@ -134,8 +159,7 @@
                 }
             }
         });
-
-       //
+        //
         const genderData = document.getElementById('genderUsersData').value.split(',');
         // 콤마로 구분된 문자열인 "male수, female수"
         const maleCount = parseInt(genderData[0]) || 0;

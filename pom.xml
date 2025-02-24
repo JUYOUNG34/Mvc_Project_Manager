@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <!-- CGLIB (AOP 프록시 생성용) -->
         <dependency>
             <groupId>cglib</groupId>
