@@ -37,12 +37,7 @@ public class ServletConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(10485760); // 10MB
-        return multipartResolver;
-    }
+
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -57,12 +52,12 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // 정적 리소스 루트 경로 및 controller 경로 둘 다 매핑
-        registry.addResourceHandler("/images/**", "/controller/images/**")
+        registry.addResourceHandler("/images/events/**", "/controller/images/events/**")
                 .addResourceLocations(
-                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/",
-                        "classpath:/static/images/"
+                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/events/",
+                        "classpath:/static/images/events/"
                 );
+
 
         registry.addResourceHandler("/css/**", "/controller/css/**")
                 .addResourceLocations(
@@ -79,9 +74,16 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 보안 인터셉터 추가
-        registry.addInterceptor(new kr.bit.security.SecurityInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
+//        registry.addInterceptor(new kr.bit.security.SecurityInterceptor())
+//                .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
     }
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setMaxUploadSize(20971520);  // 최대 업로드 크기 20MB
+        resolver.setMaxUploadSizePerFile(41943040); // 한번에 업로드 가능한 최대 크기 40MB
+        resolver.setMaxInMemorySize(20971520); // 메모리 임계값
+        return resolver;
+    }
+
 }

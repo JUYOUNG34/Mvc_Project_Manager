@@ -11,8 +11,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -37,6 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
+//    @Override 암호화
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(adminUserDetailsService)
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance());
+//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -63,8 +67,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+
+
+                .csrf()
+                .disable() // 비활성화
                 .authorizeRequests()
-                .antMatchers("/auth/login", "/controller/auth/login").permitAll()
+                .antMatchers("/auth/login").permitAll()
                 .antMatchers("/menu/manager/**", "/controller/menu/manager/**").hasRole("master")
                 .antMatchers("/menu/stats", "/controller/menu/stats").hasAnyRole("master", "service_manager")
                 // 이 부분이 중요 - 모든 다른 요청은 인증 필요
@@ -96,46 +104,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .expiredUrl("/auth/login?expired=true")
                 .maxSessionsPreventsLogin(false)
                 .and()
-                .sessionFixation().migrateSession()
-        ;
+                .sessionFixation().migrateSession();
 
-        // 디버깅 필터
-        http.addFilterAfter(new org.springframework.web.filter.OncePerRequestFilter() {
-            @Override
-            protected void doFilterInternal(HttpServletRequest request,
-                                            HttpServletResponse response,
-                                            javax.servlet.FilterChain filterChain)
-                    throws javax.servlet.ServletException, IOException {
-
-                Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-                boolean isAuthenticated = auth != null &&
-                        auth.isAuthenticated() &&
-                        !(auth instanceof org.springframework.security.authentication.AnonymousAuthenticationToken);
-
-                System.out.println("=== 보안 필터 확인 ===");
-                System.out.println("요청 URI: " + request.getRequestURI());
-                System.out.println("인증 상태: " + isAuthenticated);
-                if (isAuthenticated) {
-                    System.out.println("인증된 사용자: " + auth.getName());
-                    System.out.println("권한: " + auth.getAuthorities());
-                }
-
-                // 인증되지 않은 상태에서 보호된 URL에 직접 접근하는 경우 차단
-                if (!isAuthenticated &&
-                        !request.getRequestURI().contains("/auth/login") &&
-                        !request.getRequestURI().contains("/css/") &&
-                        !request.getRequestURI().contains("/images/") &&
-                        !request.getRequestURI().contains("/resources/") &&
-                        !request.getRequestURI().contains("/static/")) {
-
-                    System.out.println("인증되지 않은 접근 시도 차단!");
-                    response.sendRedirect(request.getContextPath() + "/auth/login");
-                    return;
-                }
-
-                filterChain.doFilter(request, response);
-            }
-        }, org.springframework.security.web.authentication.AnonymousAuthenticationFilter.class);
     }
 
     @Bean
@@ -149,14 +119,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 System.out.println("로그인 성공! 사용자: " + authentication.getName());
 
-                // 기본 대시보드로 리다이렉트
-                String targetUrl = "/menu/stats";
-                // 컨텍스트 경로가 '/controller'인 경우 고려
-                if (request.getRequestURI().startsWith("/controller")) {
-                    targetUrl = "/controller" + targetUrl;
-                }
-
-                getRedirectStrategy().sendRedirect(request, response, targetUrl);
+                getRedirectStrategy().sendRedirect(request, response, "/menu/stats");
             }
         };
     }
@@ -186,6 +149,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        // BCryptPasswordEncode 암호화처리시
+        return NoOpPasswordEncoder.getInstance();
     }
 }

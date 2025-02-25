@@ -23,15 +23,15 @@ public class AdminService {
 
     public boolean registerAdmin(Admins admin) {
         // 비밀번호 암호화
-        admin.setPass(passwordEncoder.encode(admin.getPass()));
+//        admin.setPass(passwordEncoder.encode(admin.getPass()));
         return adminDao.registerAdmin(admin);
     }
 
     public boolean updateAdmin(Admins admin) {
         // 비밀번호 암호화
-        if (admin.getPass() != null && !admin.getPass().isEmpty()) {
-            admin.setPass(passwordEncoder.encode(admin.getPass()));
-        }
+//        if (admin.getPass() != null && !admin.getPass().isEmpty()) {
+//            admin.setPass(passwordEncoder.encode(admin.getPass()));
+//        }
         return adminDao.updateAdmin(admin);
     }
 
