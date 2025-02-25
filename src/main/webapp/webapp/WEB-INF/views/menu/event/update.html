@@ -11,7 +11,7 @@
     <h2>이벤트 수정</h2>
     <!-- form action URL 수정 -->
     <form th:action="@{|/menu/event/update/${event.id}|}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="_method" value="PUT">
+
         <input type="hidden" name="id" th:value="${event.id}" />
 
         <div class="form-group">
