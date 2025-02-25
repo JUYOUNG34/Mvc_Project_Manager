@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @Slf4j
 @Controller
-@RequestMapping("/menu/event")
+@RequestMapping({"/menu/event", "/controller/menu/event"})
 public class EventController {
 
     @Autowired
@@ -44,6 +44,7 @@ public class EventController {
                            @RequestParam(value = "end_date", required = false) String endDate,
                            @RequestParam(value = "file", required = false) MultipartFile file,
                            Model model) {
+
 
         if (name == null || name.trim().isEmpty()) {
             model.addAttribute("error", "이벤트 제목을 입력해주세요.");
@@ -74,7 +75,7 @@ public class EventController {
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
                 // 웹 경로로 저장
-                event.setImage_url("/controller/images/events/" + fileName);
+                event.setImage_url("/images/events/" + fileName);
             } else {
                 // 기본 이미지 경로 설정
                 event.setImage_url("/controller/images/events/default-event.jpg");
@@ -105,10 +106,55 @@ public class EventController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateEvent(@PathVariable int id, @ModelAttribute Events event){
-        event.setId(id);
-        eventService.updateEvent(event);
-        return "redirect:/menu/event/list";
+    public String updateEvent(@PathVariable int id,
+                              @RequestParam(value = "name", required = false) String name,
+                              @RequestParam(value = "start_date", required = false) String startDate,
+                              @RequestParam(value = "end_date", required = false) String endDate,
+                              @RequestParam(value = "image", required = false) MultipartFile file,
+                              @RequestParam(value = "image_url", required = false) String imageUrl,
+                              Model model) {
+
+        log.info("updateEvent 메소드 호출됨! ID: " + id);
+
+        try {
+            Events event = new Events();
+            event.setId(id);
+            event.setName(name);
+            event.setStart_date(startDate);
+            event.setEnd_date(endDate);
+
+            // 파일 업로드 처리
+            if (file != null && !file.isEmpty()) {
+                // 절대 경로 설정
+                String uploadDir = "C:/Mvc_Project_Manager/src/main/resources/static/images/events";
+                File uploadPath = new File(uploadDir);
+
+                if (!uploadPath.exists()) {
+                    uploadPath.mkdirs();
+                }
+
+                String originalFilename = file.getOriginalFilename();
+                String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
+                String fileName = UUID.randomUUID().toString() + fileExtension;
+
+                Path targetPath = Paths.get(uploadDir, fileName);
+                Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+
+                // 웹 경로로 저장
+                event.setImage_url("/controller/images/events/" + fileName);
+            } else {
+                // 기존 이미지 URL 유지
+                event.setImage_url(imageUrl);
+            }
+
+            eventService.updateEvent(event);
+            return "redirect:/menu/event/list";
+        } catch (Exception e) {
+            log.error("이벤트 수정 중 에러 발생", e);
+            model.addAttribute("error", "이벤트 수정에 실패했습니다: " + e.getMessage());
+            model.addAttribute("event", eventService.getEventById(id));
+            return "menu/event/update";
+        }
     }
 
     @PostMapping("/delete/{id}")
@@ -116,5 +162,4 @@ public class EventController {
         eventService.deleteEvent(id);
         return "redirect:/menu/event/list";
     }
-
 }

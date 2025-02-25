@@ -17,8 +17,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
-import javax.sql.DataSource;
 
+import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = false) // JDK 동적 프록시 사용
 @MapperScan(basePackages = {"kr.bit.mapper"})
@@ -30,27 +30,30 @@ public class RootConfig implements TransactionManagementConfigurer {
     private Environment env;
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setDriverClassName(env.getProperty("jdbc.driver"));
         hikariConfig.setJdbcUrl(env.getProperty("jdbc.url"));
         hikariConfig.setUsername(env.getProperty("jdbc.user"));
         hikariConfig.setPassword(env.getProperty("jdbc.password"));
 
-        HikariDataSource hikariDataSource= new HikariDataSource(hikariConfig);
+        HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
         return hikariDataSource;
     }
 
     @Bean
-    public SqlSessionFactory sessionFactory() throws Exception{
+    public SqlSessionFactory sessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         return sessionFactoryBean.getObject();
     }
 
     @Bean
+
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
+
+
     }
 
     @Override
