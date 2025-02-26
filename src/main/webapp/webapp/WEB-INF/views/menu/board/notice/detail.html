@@ -3,36 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/sider.css}">
   <title>공지 보기</title>
-  <link th:style="stylesheet" th:href="css/board/notice/detail.css">div>
+  <link rel="stylesheet" th:href="@{/css/menu/board/notice/detail.css}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
+
+<!--<script>-->
+<!--  function updateHiddenStatus() {-->
+<!--    let selectedValue = document.getElementById("statusSelect").value;-->
+<!--    document.getElementById("hiddenStatus").value = selectedValue;-->
+<!--    document.getElementById("selectedStatus").value = selectedValue;-->
+<!--  }-->
+<!--</script>-->
+
+
 <body>
 <div class="head">
   <div class="notice-detail">
-    <label for="notice">공지 보기</label>
+    <label>공지 보기</label>
   </div>
   <div class="container">
     <div class="form-group">
       <h1>제목</h1>
-      <label for="title" class="title" th:text="${board.title}"></label>
+      <label class="title" th:text="${notices.title}"></label>
     </div>
     <div class="form-group">
       <label for="writer_id">아이디 (닉네임)</label>
-      <input type="text" id="writer_id" th:value="${board.writer_id}" readonly>
+      <input type="text" id="writer_id" name="writer_id" th:value="${notices.writer_id}">
     </div>
     <div class="form-group">
       <label for="create_at">작성날짜</label>
-      <input type="text" id="create_at" th:value="${#temporals.format(board.created_at, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+      <input type="text" id="create_at" name="create_at" th:value="${notices.created_at}">
     </div>
     <div class="form-group">
       <label for="content">내용</label>
-      <textarea id="content" rows="3" th:text="${board.content}" readonly></textarea>
+      <textarea id="content" name="content" rows="3" th:text="${notices.content}"></textarea>
     </div>
     <div class="buttons">
-      <button class="edit">수정</button>
+
+      <button  id="edit" name=th:data-id="${notices.id}>수정</button>
       <button class="cancel">취소</button>
     </div>
+<!--      <button class="edit" name=th:data-id="${notices.id}">수정</button>-->
+<!--      <button class="cancel">취소</button>-->
+    </div>
   </div>
-</div>
+
+
+<!-- JavaScript 코드 -->
+<!--<script>-->
+<!--  $(document).ready(function() {-->
+<!--    // 수정 버튼 클릭 시 update.html로 이동-->
+<!--    $(".edit").click(function() {-->
+<!--      var boardId = $(this).data("id");  // 공지 ID 가져오기-->
+<!--      window.location.href = "/menu/notice/update/" + boardId;-->
+<!--    });-->
+
+<!--    // 취소 버튼 클릭 시 list.html로 이동-->
+<!--    $(".cancel").click(function() {-->
+<!--      window.location.href = "/menu/notice/list";-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+
 </body>
 </html>

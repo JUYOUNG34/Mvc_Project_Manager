@@ -20,26 +20,26 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="report : ${reports}">
-            <td th:text="${report.id}"></td>
-            <td th:text="${report.reporter_id}"></td>
-            <td><a th:href="@{/user/{id}(id=${report.reported_id})}" th:text="${report.reported_id}"></a></td>
-            <td th:text="${#temporals.format(report.report_date, 'yyyy/MM/dd HH:mm:ss')}"></td>
-            <td th:text="${report.status}"></td>
-            <td th:text="${report.report_content}"></td>
+        <tr th:each="reports : ${reports}">
+            <td th:text="${reports.id}"></td>
+            <td th:text="${reports.reporter_id}"></td>
+            <td th:text="${reports.reported_id}"></td>
+            <td th:text="${reports.report_date}"></td>
+            <td th:text="${reports.status}"></td>
+            <td th:text="${reports.report_content}"></td>
         </tr>
         </tbody>
     </table>
 </div>
 
-<div class="search-bar">
-    <button type="button" id="reporter_id">신고한 유저</button>
-    <input type="text" th:value="${searchKeyword}">
-    <button type="button" id="search">검색</button>
-</div>
+<!--<div class="search-bar">-->
+<!--    <button type="button" id="reporter_id">신고한 유저</button>-->
+<!--    <input type="text" th:value="${searchKeyword}">-->
+<!--    <button type="button" id="search">검색</button>-->
+<!--</div>-->
 
-<div class="pagination">
-    <button th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'active' : ''"></button>
-</div>
+<!--<div class="pagination">-->
+<!--    <button th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'active' : ''"></button>-->
+<!--</div>-->
 </body>
 </html>
