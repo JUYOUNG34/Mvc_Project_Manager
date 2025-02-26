@@ -1,13 +1,9 @@
 package kr.bit.mapper;
 
 import kr.bit.entity.Boards;
-
 import kr.bit.entity.Criteria;
 import kr.bit.sql.BoardSqlProvider;
 import org.apache.ibatis.annotations.*;
-
-import kr.bit.entity.Events;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

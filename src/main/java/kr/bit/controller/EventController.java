@@ -3,7 +3,6 @@ package kr.bit.controller;
 import kr.bit.entity.Events;
 import kr.bit.service.EventService;
 import lombok.extern.slf4j.Slf4j;
-;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -74,8 +72,8 @@ public class EventController {
                 Path targetPath = Paths.get(uploadDir, fileName);
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
-                // 웹 경로로 저장
-                event.setImage_url("/images/events/" + fileName);
+                // 웹 경로로 저장 - 경로 수정
+                event.setImage_url("/controller/images/events/" + fileName);
             } else {
                 // 기본 이미지 경로 설정
                 event.setImage_url("/controller/images/events/default-event.jpg");
