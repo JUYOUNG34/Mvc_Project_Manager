@@ -1,6 +1,6 @@
 package kr.bit.mapper;
 
-import com.mysql.cj.protocol.x.Notice;
+
 import kr.bit.entity.Reports;
 import org.apache.ibatis.annotations.Select;
 
