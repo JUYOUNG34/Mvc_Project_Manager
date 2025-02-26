@@ -74,8 +74,8 @@ public class EventController {
                 Path targetPath = Paths.get(uploadDir, fileName);
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
-                // 웹 경로로 저장
-                event.setImage_url("/images/events/" + fileName);
+                // 웹 경로로 저장 - 경로 수정
+                event.setImage_url("/controller/images/events/" + fileName);
             } else {
                 // 기본 이미지 경로 설정
                 event.setImage_url("/controller/images/events/default-event.jpg");
