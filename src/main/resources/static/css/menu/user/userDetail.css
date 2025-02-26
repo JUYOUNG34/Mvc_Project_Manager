@@ -71,6 +71,13 @@ input[type="text"], input[type="number"] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+input.point_modify{
+    color: #838080;
+}
+#userListTap{
+    font-weight: bolder;
+    background-color: #575757;
+}
 @media (max-width: 768px) {
     .section-content div {
         flex: 1 1 100%;

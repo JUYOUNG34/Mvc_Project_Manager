@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LogController {
     @GetMapping("/list")
     public String logList(){
-        return "menu/log/list";
+        return "menu/Log/list";
+    }
+    @GetMapping("/detail")
+    public String logDetail(){
+        return "menu/Log/detail";
     }
 
 }

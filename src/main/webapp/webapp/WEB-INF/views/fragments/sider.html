@@ -1,16 +1,16 @@
 <body>
-<div class="header-head" th:fragment="header" >
+<div class="sidebar" th:fragment="sidebar" >
 
-<div class="sidebar">
-    <a href="#">통계 <span class="arrow-icon">▶</span></a>
-    <a href="#">이벤트 관리 <span class="arrow-icon">▶</span></a>
-    <a href="#">사용자 관리 <span class="arrow-icon">▶</span></a>
-    <a href="#">신고 내역 <span class="arrow-icon">▶</span></a>
-    <a href="#">관리자 목록 <span class="arrow-icon">▶</span></a>
-    <a href="#">로그 관리 <span class="arrow-icon">▶</span></a>
-    <a href="#">게시판 관리 <span class="arrow-icon">▶</span></a>
-    <a href="#">공지사항 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/stats}">통계 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/note/list}">쪽지 관리 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/event/list}">이벤트 관리 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/user/userList}">사용자 관리 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/report/list}">신고 내역 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/manager/list}">관리자 목록 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/Log/list}">로그 관리 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{/menu/board/boardList}">게시판 관리 <span class="arrow-icon">▶</span></a>
+    <a href="#" th:href="@{menu/board/notice/detail}">공지사항 <span class="arrow-icon">▶</span></a>
 
-</div>
+
 </div>
 </body>
