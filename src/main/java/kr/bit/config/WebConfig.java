@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import kr.bit.service.LogService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
@@ -21,7 +22,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { RootConfig.class, SecurityConfig.class };
+        return new Class<?>[] { AopConfig.class ,RootConfig.class, SecurityConfig.class };
     }
 
     @Override
@@ -75,4 +76,6 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
     }
+
+
 }

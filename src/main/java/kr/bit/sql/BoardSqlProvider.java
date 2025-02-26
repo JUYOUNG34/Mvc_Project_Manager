@@ -33,7 +33,8 @@ public class BoardSqlProvider {
             LEFT_OUTER_JOIN("users u ON b.writer_id = u.user_id");
             LEFT_OUTER_JOIN("admins a ON b.admin_writer_id = a.admin_id");
             WHERE("(b.writer_id IS NOT NULL OR b.admin_writer_id IS NOT NULL)");
-            if (criteria.getType() != null && !criteria.getType().isEmpty()) {
+            if (criteria.getSort() != null && !criteria.getSort().isEmpty() &&
+                    criteria.getOrder() != null && !criteria.getOrder().isEmpty()) {
                 switch (criteria.getType()) {
                     case "id":
                         AND();
@@ -54,13 +55,14 @@ public class BoardSqlProvider {
                 }
             }
             // 정렬 기준과 순서 반영
-            if (criteria.getSort() != null && criteria.getOrder() != null) {
+            if (criteria.getSort() != null && !criteria.getSort().isEmpty() &&
+                    criteria.getOrder() != null && !criteria.getOrder().isEmpty()) {
                 ORDER_BY(criteria.getSort() + " " + criteria.getOrder());
             } else {
                 ORDER_BY("b.is_notice DESC, b.created_at DESC");
             }
         }}.toString();
-        sql += " LIMIT #{criteria.page}, #{criteria.size}";
+        sql += " LIMIT #{criteria.pageStart}, #{criteria.perPageNum}";
         return sql;
     }
 

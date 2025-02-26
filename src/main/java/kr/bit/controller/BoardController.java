@@ -1,14 +1,22 @@
 package kr.bit.controller;
 
+
 import kr.bit.entity.Boards;
 import kr.bit.entity.Criteria;
+import kr.bit.entity.PageCre;
 import kr.bit.service.BoardService;
+import kr.bit.service.LogService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,36 +26,77 @@ import java.util.Map;
 public class BoardController {
 
     @Autowired
-    private BoardService boardService;
+    private BoardService boardService;;
 
-  @GetMapping("/boardList")
-  public String boardList(){
-      return "menu/board/boardList";
-  }
+    @Autowired
+    private LogService logService;
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    boolean isAuthenticated = auth != null &&
+            auth.isAuthenticated() &&
+            !(auth instanceof AnonymousAuthenticationToken);
+
+    // 사용자 ID 가져오기
+    String adminId = isAuthenticated ? auth.getName() : "Anonymous";
+
+    @GetMapping("/boardList")
+    public String boardList(Criteria criteria, Model model){
+        List<Boards> boards = boardService.getBoards(criteria);
+        model.addAttribute("boards",boards);
+        int totalCount = boardService.getTotalCount(criteria);
+        model.addAttribute("totalCount",totalCount);
+
+        PageCre pageCre = new PageCre();
+        pageCre.setCriteria(criteria);
+        pageCre.setTotalCount(totalCount);
+        model.addAttribute("pageCre", pageCre);
+
+        return "menu/board/boardList";
+    }
 
     @GetMapping("/block")
     public String boardBlock(){
         return "menu/board/block";
     }
-    @PostMapping("/ajaxBoards")
+
+    @GetMapping("/ajaxBoards")
     @ResponseBody
-    public Map<String,Object> ajaxBoards(@RequestBody Criteria criteria){
-      List<Boards> boards =boardService.getBoards(criteria);
-      int totalCount = boardService.getTotalCount(criteria);
+    public Map<String,Object> ajaxBoards(Criteria criteria){
 
-      Map<String, Object> result = new HashMap<>();
-      result.put("boards",boards);
-      result.put("totalCount",totalCount);
-      return result;
+//        Criteria criteria = new Criteria();
+//               criteria.setCurrent_page(Integer.parseInt(paramMap.get("current_page")));
+//               criteria.setType(paramMap.get("type"));
+//               criteria.setKeyword(paramMap.get("keyword"));
+
+
+        List<Boards> boards = boardService.getBoards(criteria);
+        int totalCount = boardService.getTotalCount(criteria);
+        System.out.println(boards);
+        PageCre pageCre = new PageCre();
+        pageCre.setCriteria(criteria);
+        pageCre.setTotalCount(totalCount);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("boards", boards);
+        result.put("totalCount", totalCount);
+        result.put("pageCre",pageCre);
+        return result;
     }
 
-    @GetMapping("/detailBoard/{user_id}")
-    public @ResponseBody Boards detailBoard(@PathVariable("user_id")int user_id){
-       return boardService.getDetailBoard(user_id);
+    @GetMapping("/detailBoard/{id}")
+    public @ResponseBody Boards detailBoard(@PathVariable("id")int id){
+       return boardService.getDetailBoard(id);
     }
-    @PutMapping("/boardBlind/{user_id}")
-    public @ResponseBody int boardBlind(@PathVariable("user_id")int user_id){
-        return boardService.updateBoardBlind(user_id);
+    @PutMapping("/blindProc/{id}")
+    public @ResponseBody int boardBlind(@PathVariable("id")int board_id){
+
+        String logMessage = String.format("%s|%s|%s|%s",
+                LocalDateTime.now().format(formatter),adminId,"게시물 블라인드 : "+board_id,"");
+        logService.logAction(logMessage);
+
+        return boardService.updateBoardBlind(board_id);
     }
     @GetMapping("/notice/detail")
     public String noticeDetail(@Param("admin_writer_id")int admin_writer_id, Model model){

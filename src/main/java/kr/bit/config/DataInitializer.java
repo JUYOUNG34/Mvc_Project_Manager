@@ -1,17 +1,17 @@
-package kr.bit.config;
-
-import kr.bit.dao.AdminDao;
-import kr.bit.entity.Admins;
-import kr.bit.mapper.LoginMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.annotation.PostConstruct;
-
-@Configuration
-public class DataInitializer {
-
+//package kr.bit.config;
+//
+//import kr.bit.dao.AdminDao;
+//import kr.bit.entity.Admins;
+//import kr.bit.mapper.LoginMapper;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//
+//import javax.annotation.PostConstruct;
+//
+//@Configuration
+//public class DataInitializer {
+//
 //    @Autowired
 //    private AdminDao adminDao;
 //
@@ -54,4 +54,4 @@ public class DataInitializer {
 //            e.printStackTrace();
 //        }
 //    }
-}
+//}

@@ -1,12 +1,27 @@
-
-<header class="header-head" th:fragment="header" >
+<header class="header-head" th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="header-logo">
         블라인드 타임
     </div>
     <div class="header-right" >
-        <span>Admin님 환영합니다</span>
-        <a th:href="@{/auth/logout}" class="logout-button">logout</a>&nbsp;&nbsp;
-        <a class="header-a-tag" href="/logout" >정보수정</a>
+        <span sec:authentication="name"></span>님 환영합니다
+        &nbsp;&nbsp;<a class="header-a-tag" th:href="@{/logout}">Logout</a>&nbsp;&nbsp;
+        <a class="header-a-tag" href="javascript:modifyMyModal()" >정보수정</a>
     </div>
-</header>
 
+    <script th:inline="javascript">
+
+        let authenticatedUserId ="";
+        function modifyMyModal(){
+            authenticatedUserId = /*[[${#authentication.name}]]*/ 'guest';
+            $("#myId").val(authenticatedUserId);
+            $('#headerModal').modal('show');
+        }
+
+
+        function goAdminModify(){
+            let myId=$("#myId").val();
+            window.location.href='/controller/menu/manager/modify?id='+myId;
+        }
+    </script>
+
+</header>

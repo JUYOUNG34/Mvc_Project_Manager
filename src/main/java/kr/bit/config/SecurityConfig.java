@@ -1,6 +1,10 @@
 package kr.bit.config;
 
+import kr.bit.customHandler.CustomLoginFailHandler;
+import kr.bit.customHandler.CustomLoginSuccessHandler;
+import kr.bit.customHandler.CustomLogoutSuccessHandler;
 import kr.bit.security.AdminUserDetailsService;
+import kr.bit.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +19,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +35,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AdminUserDetailsService adminUserDetailsService;
+
+    private final CustomLoginSuccessHandler customLoginSuccessHandler;
+    private final CustomLoginFailHandler customLoginFailureHandler;
+    private final CustomLogoutSuccessHandler customLogoutSuccessHandler;
+    private final LogService logService; // 로그 기록 서비스 추가
+
+    public SecurityConfig(CustomLoginSuccessHandler customLoginSuccessHandler,
+                          CustomLoginFailHandler customLoginFailureHandler,
+                          CustomLogoutSuccessHandler customLogoutSuccessHandler,
+                          LogService logService) {
+        this.customLoginSuccessHandler = customLoginSuccessHandler;
+        this.customLoginFailureHandler = customLoginFailureHandler;
+        this.customLogoutSuccessHandler = customLogoutSuccessHandler;
+        this.logService = logService;
+    }
 
     @Bean
     @Override
@@ -66,23 +87,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding("UTF-8");
+        encodingFilter.setForceEncoding(true); // security 수행될 때 글 깨질 까봐 인코딩
+        http.addFilterBefore(encodingFilter, CsrfFilter.class); //csrf 보안 처리전 실행되도록
+
         http
-
-
-                .csrf()
-                .disable() // 비활성화
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll()
-                .antMatchers("/menu/manager/**", "/controller/menu/manager/**").hasRole("master")
-                .antMatchers("/menu/stats", "/controller/menu/stats").hasAnyRole("master", "service_manager")
-                // 이 부분이 중요 - 모든 다른 요청은 인증 필요
+                .antMatchers("/menu/manager/**").hasRole("master")
+                .antMatchers("/menu/manager/modify").hasAnyRole("service_manager","master")
+                .antMatchers("/menu/stats").hasAnyRole("master", "service_manager")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/login")
-                .successHandler(authenticationSuccessHandler())
-                .failureUrl("/auth/login?error=true")
+                .successHandler(customLoginSuccessHandler)
+                .failureHandler(customLoginFailureHandler)
                 .usernameParameter("id")
                 .passwordParameter("pass")
                 .permitAll()
@@ -92,7 +116,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
-                .logoutSuccessHandler(logoutSuccessHandler())
+                .logoutSuccessHandler(customLogoutSuccessHandler)
                 .permitAll()
                 .and()
                 .exceptionHandling()

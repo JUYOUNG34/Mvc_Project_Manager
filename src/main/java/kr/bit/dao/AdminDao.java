@@ -16,24 +16,27 @@ public class AdminDao {
     public List<Admins> getAdmins(Criteria criteria){
         return adminMapper.getAdmins(criteria);
     }
+    public int getTotalCount(Criteria criteria){return adminMapper.getTotalCount(criteria);}
 
-    public boolean registerAdmin(Admins admin) {
-        return adminMapper.registerAdmin(admin) > 0;
+    public Admins oneAdmin(String id){
+        return adminMapper.oneAdmin(id);
+    }
+    // 마지막 사번 조회 메서드
+    public int getLastEmployeeNumber() {
+        String lastEmployeeNumber = adminMapper.getLastEmployeeNumber();
+        if (lastEmployeeNumber == null) {
+            return 0; // 초기 값 설정 (없을 경우)
+        }
+        return Integer.parseInt(lastEmployeeNumber.replace("EMP", ""));
     }
 
-    public boolean updateAdmin(Admins admin) {
-        return adminMapper.updateAdmin(admin) > 0;
+    public int insertAdmin(Admins admin) {
+        return adminMapper.insertAdmin(admin);
     }
-
-    public boolean deleteAdmin(int adminId) {
-        return adminMapper.deleteAdmin(adminId) > 0;
+    public int updateAdmin(Admins admin){
+        return adminMapper.updateAdmin(admin) ;
     }
-
-    public Admins getAdminById(int adminId) {
-        return adminMapper.getAdminById(adminId);
-    }
-
-    public boolean isIdDuplicate(String id) {
-        return adminMapper.countById(id) > 0;
+    public int deleteAdmin(String id){
+        return adminMapper.deleteAdmin(id);
     }
 }

@@ -3,6 +3,8 @@ package kr.bit.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -14,6 +16,8 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -36,8 +40,6 @@ public class ServletConfig implements WebMvcConfigurer {
         templateEngine.addDialect(new org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect());
         return templateEngine;
     }
-
-
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -71,12 +73,15 @@ public class ServletConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**", "/controller/static/**")
                 .addResourceLocations("classpath:/static/");
     }
-
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(new MappingJackson2HttpMessageConverter());
+    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
 //        registry.addInterceptor(new kr.bit.security.SecurityInterceptor())
 //                .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
-    }
+//    }
     @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();

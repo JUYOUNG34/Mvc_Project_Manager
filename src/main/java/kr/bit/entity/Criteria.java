@@ -10,15 +10,14 @@ public class Criteria {
 
     //검색기능 변수
     private String type;
-    private String keyword="";
-    private String sort="id";  // 정렬 기준
-    private String order="desc"; // 정렬 순서
-    private int page=1;
-    private int size=3;
+    private String keyword;
+    private String sort;  // 정렬 기준
+    private String order; // 정렬 순서
+
 
     public Criteria(){
         this.current_page=1;
-        this.perPageNum=2;
+        this.perPageNum=5;
     }
 
     //현재 페이지 게시글 시작번호
