@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쪽지 쓰기</title>
+    <link rel="stylesheet" th:href="@{/css/menu/note/write.css}">
+</head>
+<body>
+<div class="note-container">
+    <h2>쪽지 쓰기</h2>
+
+    <form th:action="@{/note/write}" method="post" class="note-form">
+        <!-- 답장인 경우 받는 사람이 미리 설정됨 -->
+        <div class="form-group">
+            <label for="receiverId">받는 사람</label>
+            <input type="text" id="receiverNickname" name="receiverNickname"
+                   th:value="${replyToNickname}" required>
+            <input type="hidden" id="receiverId" name="receiverId"
+                   th:value="${replyToId}">
+        </div>
+
+        <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" name="content" rows="10" required></textarea>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-send">보내기</button>
+            <button type="button" class="btn-cancel" onclick="history.back()">취소</button>
+        </div>
+    </form>
+</div>
+
+<!-- 사용자 검색을 위한 모달 -->
+<div id="userSearchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-container">
+            <input type="text" id="userSearch" placeholder="사용자 검색...">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    // 사용자 검색 기능
+    const receiverInput = document.getElementById('receiverNickname');
+    const searchResults = document.getElementById('searchResults');
+    const modal = document.getElementById('userSearchModal');
+
+    receiverInput.addEventListener('focus', () => {
+        modal.style.display = 'block';
+    });
+
+    document.getElementById('userSearch').addEventListener('input', async (e) => {
+        const searchTerm = e.target.value;
+        if (searchTerm.length < 2) return;
+
+        try {
+            const response = await fetch(`/api/users/search?term=${searchTerm}`);
+            const users = await response.json();
+
+            searchResults.innerHTML = users.map(user => `
+                    <div class="user-item" data-id="${user.userId}" data-nickname="${user.nickname}">
+                        ${user.nickname}
+                    </div>
+                `).join('');
+        } catch (error) {
+            console.error('사용자 검색 중 오류 발생:', error);
+        }
+    });
+
+    // 사용자 선택 시 처리
+    searchResults.addEventListener('click', (e) => {
+        const userItem = e.target.closest('.user-item');
+        if (!userItem) return;
+
+        document.getElementById('receiverId').value = userItem.dataset.id;
+        receiverInput.value = userItem.dataset.nickname;
+        modal.style.display = 'none';
+    });
+</script>
+</body>
+</html>

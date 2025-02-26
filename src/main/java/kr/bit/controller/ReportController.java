@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/menu")
+@RequestMapping("/menu/report")
 public class ReportController {
-    @GetMapping("/stats")
-    public String stats() {
-        return "menu/stats";
+    @GetMapping("/list")
+    public String report() {
+        return "menu/report/list";
     }
 }
