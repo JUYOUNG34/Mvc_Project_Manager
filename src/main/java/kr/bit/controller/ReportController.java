@@ -1,6 +1,6 @@
 package kr.bit.controller;
 
-import kr.bit.service.NoticeService;
+
 import kr.bit.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
