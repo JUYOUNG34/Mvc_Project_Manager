@@ -26,7 +26,7 @@
             <th>닉네임</th>
             <th>차단 날짜</th>
             <th>신고 사유</th>
-           
+            <th>차단 해제</th>
         </tr>
         </thead>
         <tbody>
@@ -37,22 +37,35 @@
             <td th:text="${blacklist.reportReason}">신고 사유</td>
             <td>
                 <button class="btn btn-unblock" th:data-user-id="${blacklist.id}">차단 해제</button>
+                <form th:action="@{/menu/user/blacklist/unblock}" method="post">
+                    <input type="hidden" name="id" th:value="${blacklist.id}" />
+                    <button type="submit" class="btn btn-unblock">차단 해제</button>
+                </form>
             </td>
         </tr>
         </tbody>
     </table>
-
+    <div class="search-form">
+        <form th:action="@{/menu/user/blacklist}" method="get">
+            <select name="type">
+                <option value="nickname" th:selected="${criteria.type == 'nickname'}">닉네임</option>
+                <option value="userId" th:selected="${criteria.type == 'userId'}">사용자 ID</option>
+            </select>
+            <input type="text" name="keyword" th:value="${criteria.keyword}" placeholder="검색어 입력">
+            <button type="submit">검색</button>
+        </form>
+    </div>
     <div th:if="${#lists.isEmpty(blacklists)}" class="no-blacklist">
         현재 차단된 사용자가 없습니다.
     </div>
 
+    <!-- 페이징 버튼 -->
     <div class="pagination" th:if="${blacklists != null and blacklists.size() > 0}">
-        <button th:if="${currentPage > 1}" th:onclick="'goToPage(' + (${currentPage} - 1) + ')'">이전</button>
+        <a th:if="${currentPage > 1}" th:href="@{/menu/user/blacklist(current_page=${currentPage - 1}, type=${criteria.type}, keyword=${criteria.keyword})}">이전</a>
         <span th:text="${currentPage} + ' / ' + ${totalPages}">1 / 10</span>
-        <button th:if="${currentPage < totalPages}" th:onclick="'goToPage(' + (${currentPage} + 1) + ')'">다음</button>
+        <a th:if="${currentPage < totalPages}" th:href="@{/menu/user/blacklist(current_page=${currentPage + 1}, type=${criteria.type}, keyword=${criteria.keyword})}">다음</a>
     </div>
 </div>
-
 <script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function() {
         const unblockButtons = document.querySelectorAll('.btn-unblock');
@@ -85,7 +98,6 @@
             });
         });
     });
-
 
 </script>
 </body>

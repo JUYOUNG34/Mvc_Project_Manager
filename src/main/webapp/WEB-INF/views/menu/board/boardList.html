@@ -53,8 +53,6 @@
     });
 
     function loadPage(page, sortType, order) {
-      console.log(sortType);
-      console.log(order);
       let criteria = {
         current_page: page,
         type: $("#searchType").val(),
@@ -62,7 +60,6 @@
         sort: sortType ? sortType : null,
         order: sortType ? order : null
       };
-
       let queryString = $.param(criteria);
 
       $.ajax({

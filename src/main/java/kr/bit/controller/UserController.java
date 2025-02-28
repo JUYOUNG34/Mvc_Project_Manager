@@ -4,6 +4,7 @@ package kr.bit.controller;
 
 import kr.bit.entity.*;
 import kr.bit.service.LogService;
+import kr.bit.service.BlacklistService;
 import kr.bit.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -159,10 +160,49 @@ public class UserController {
     }
 
 
+
+    @Autowired
+    private BlacklistService blacklistService;
+
     @GetMapping("/blacklist")
-    public String blackList(){
+    public String blackList(Criteria criteria, Model model) {
+        if (criteria.getCurrent_page() <= 0) {
+            criteria.setCurrent_page(1);
+        }
+
+        if (criteria.getType() == null || criteria.getType().isEmpty()) {
+            criteria.setType("nickname");
+        }
+
+        if (criteria.getKeyword() == null) {
+            criteria.setKeyword("");
+        }
+
+        List<Blacklist> blacklists = blacklistService.getBlacklist(criteria);
+        int totalCount = blacklistService.getTotalCount(criteria);
+
+        PageCre pageCre = new PageCre();
+        pageCre.setCriteria(criteria);
+        pageCre.setTotalCount(totalCount);
+
+        model.addAttribute("blacklists", blacklists);
+        model.addAttribute("pageCre", pageCre);
+        model.addAttribute("currentPage", criteria.getCurrent_page());
+        model.addAttribute("totalPages", (int) Math.ceil((double) totalCount / criteria.getPerPageNum()));
+        model.addAttribute("criteria", criteria);
+
         return "menu/user/blacklist";
     }
+    @PostMapping("/blacklist/unblock")
+    public String unblockUser(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
+        boolean success = blacklistService.unblockUser(id);
 
+        if (success) {
+            redirectAttributes.addFlashAttribute("message", "사용자 차단이 해제되었습니다.");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "차단 정보를 찾을 수 없습니다.");
+        }
 
+        return "redirect:/menu/user/blacklist";
+    }
 }
