@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href ="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+    <link rel="stylesheet" th:href="@{/css/menu/report/list.css}">
+    <title>공지사항 게시판</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/sider :: sidebar}"></div>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>아이디(닉네임)</th>
+            <th>제목</th>
+            <th>작성날짜</th>
+            <th>공지여부</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div class ="search-container" th:each="notice:${notices}">
+            <tbody>
+<tr th:each="notices : ${notices}">
+    <td>
+        <a th:href="@{/menu/board/notice/detail/{id}(id=${notices.id})}" th:text="${notices.id}" ></a>
+    </td>
+    <td th:text="${notices.writer_id}"></td>
+    <td th:text="${notices.title}"></td>
+    <td th:text="${notices.created_at}"></td>
+    <td th:text="${notices.is_notice}"></td>
+
+
+</tr>
+            <tr th:if="${#lists.isEmpty(notices)}">
+                <td colspan="6">공지사항이 없습니다.</td>
+            </tr>
+            </tbody>
+
+        </div>
+        </tbody>
+    </table>
+</div>
+
+
+<!--<div class="search-bar">-->
+<!--    <form id="searchForm" th:action="@{/menu/board/notice/list}" method="get">-->
+<!--        <select id="reporter_id" name="reporter_id">-->
+<!--            <option value="">신고한 유저 선택</option>-->
+<!--            <option th:each="reports : ${reports}"-->
+<!--                    th:value="${reports.reported_id}"-->
+<!--                    th:text="${reports.reported_id}"-->
+<!--                    th:selected="${reports.reporter_id != null && reports.reporter_id == reports.reported_id}">-->
+<!--            </option>-->
+<!--        </select>-->
+
+<!--        <input type="text" name="searchKeyword" th:value="${searchKeyword}" placeholder="검색어 입력">-->
+<!--        <button type="submit" id="search">검색</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+
+
+</body>
+</html>
