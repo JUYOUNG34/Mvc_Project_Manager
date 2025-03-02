@@ -1,0 +1,573 @@
+02-Mar-2025 19:30:10.855 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.100
+02-Mar-2025 19:30:10.865 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Feb 13 2025 11:29:56 UTC
+02-Mar-2025 19:30:10.865 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.100.0
+02-Mar-2025 19:30:10.868 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+02-Mar-2025 19:30:10.880 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+02-Mar-2025 19:30:10.881 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+02-Mar-2025 19:30:10.882 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Users\eunh9\.jdks\corretto-17.0.14
+02-Mar-2025 19:30:10.883 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+7-LTS
+02-Mar-2025 19:30:10.885 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Amazon.com Inc.
+02-Mar-2025 19:30:10.886 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\03-02
+02-Mar-2025 19:30:10.898 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\apache-tomcat-9.0.100
+02-Mar-2025 19:30:10.901 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Mar-2025 19:30:10.907 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+02-Mar-2025 19:30:10.908 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+02-Mar-2025 19:30:10.908 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Mar-2025 19:30:10.908 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Mar-2025 19:30:10.909 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\apache-tomcat-9.0.100
+02-Mar-2025 19:30:10.911 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\03-02
+02-Mar-2025 19:30:10.912 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\03-02\temp
+02-Mar-2025 19:30:10.913 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\03-02\conf\logging.properties
+02-Mar-2025 19:30:10.913 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Mar-2025 19:30:10.914 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=62594:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\bin
+02-Mar-2025 19:30:10.916 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=UTF-8
+02-Mar-2025 19:30:11.494 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.3.1]을(를) 로드했습니다.
+02-Mar-2025 19:30:11.494 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+02-Mar-2025 19:30:11.494 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+02-Mar-2025 19:30:11.520 정보 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+02-Mar-2025 19:30:12.752 정보 [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+02-Mar-2025 19:30:12.813 정보 [main] org.apache.catalina.startup.Catalina.load [2882] 밀리초 내에 서버가 초기화되었습니다.
+02-Mar-2025 19:30:13.034 정보 [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+02-Mar-2025 19:30:13.034 정보 [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.100]
+02-Mar-2025 19:30:13.096 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]을(를) 배치합니다.
+02-Mar-2025 19:30:20.291 정보 [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+02-Mar-2025 19:30:34.895 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]의 배치가 [21,795] 밀리초 내에 완료되었습니다.
+02-Mar-2025 19:30:34.912 정보 [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+02-Mar-2025 19:30:34.961 정보 [main] org.apache.catalina.startup.Catalina.start 서버가 [22148] 밀리초 내에 시작되었습니다.
+02-Mar-2025 19:34:41.836 정보 [Thread-1] org.apache.coyote.AbstractProtocol.pause 프로토콜 핸들러 ["http-nio-8080"]을(를) 일시 정지 중
+02-Mar-2025 19:34:44.591 정보 [Thread-1] org.apache.catalina.core.StandardService.stopInternal 서비스 [Catalina]을(를) 중지시킵니다.
+02-Mar-2025 19:34:47.779 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc 웹 애플리케이션 [ROOT]이(가) JDBC 드라이버 [com.mysql.cj.jdbc.Driver]을(를) 등록했지만, 웹 애플리케이션이 중지될 때, 해당 JDBC 드라이버의 등록을 제거하지 못했습니다. 메모리 누수를 방지하기 위하여, 등록을 강제로 제거했습니다.
+02-Mar-2025 19:34:47.781 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads 웹 애플리케이션 [ROOT]이(가) [mysql-cj-abandoned-connection-cleanup](이)라는 이름의 쓰레드를 시작시킨 것으로 보이지만, 해당 쓰레드를 중지시키지 못했습니다. 이는 메모리 누수를 유발할 가능성이 큽니다. 해당 쓰레드의 스택 트레이스:
+ java.base@17.0.14/java.lang.Object.wait(Native Method)
+ java.base@17.0.14/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.14/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:34:47.796 정보 [Thread-1] org.apache.coyote.AbstractProtocol.stop 프로토콜 핸들러 ["http-nio-8080"]을(를) 중지시킵니다.
+02-Mar-2025 19:34:47.809 정보 [Thread-1] org.apache.coyote.AbstractProtocol.destroy 프로토콜 핸들러 ["http-nio-8080"]을(를) 소멸시킵니다.
+02-Mar-2025 19:34:47.862 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:34:47.863 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:34:47.864 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:35:13.373 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.100
+02-Mar-2025 19:35:13.380 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Feb 13 2025 11:29:56 UTC
+02-Mar-2025 19:35:13.380 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.100.0
+02-Mar-2025 19:35:13.381 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+02-Mar-2025 19:35:13.381 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+02-Mar-2025 19:35:13.381 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+02-Mar-2025 19:35:13.382 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Users\eunh9\.jdks\corretto-17.0.14
+02-Mar-2025 19:35:13.382 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+7-LTS
+02-Mar-2025 19:35:13.382 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Amazon.com Inc.
+02-Mar-2025 19:35:13.382 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\03-02
+02-Mar-2025 19:35:13.382 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\apache-tomcat-9.0.100
+02-Mar-2025 19:35:13.409 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Mar-2025 19:35:13.410 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+02-Mar-2025 19:35:13.410 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+02-Mar-2025 19:35:13.410 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Mar-2025 19:35:13.410 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Mar-2025 19:35:13.411 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\apache-tomcat-9.0.100
+02-Mar-2025 19:35:13.412 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\03-02
+02-Mar-2025 19:35:13.416 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\03-02\temp
+02-Mar-2025 19:35:13.417 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\03-02\conf\logging.properties
+02-Mar-2025 19:35:13.418 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Mar-2025 19:35:13.418 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=62935:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\bin
+02-Mar-2025 19:35:13.418 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=UTF-8
+02-Mar-2025 19:35:13.851 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.3.1]을(를) 로드했습니다.
+02-Mar-2025 19:35:13.852 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+02-Mar-2025 19:35:13.854 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+02-Mar-2025 19:35:13.878 정보 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+02-Mar-2025 19:35:14.877 정보 [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+02-Mar-2025 19:35:14.957 정보 [main] org.apache.catalina.startup.Catalina.load [2348] 밀리초 내에 서버가 초기화되었습니다.
+02-Mar-2025 19:35:15.099 정보 [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+02-Mar-2025 19:35:15.100 정보 [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.100]
+02-Mar-2025 19:35:15.125 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]을(를) 배치합니다.
+02-Mar-2025 19:35:21.160 정보 [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+02-Mar-2025 19:35:30.516 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]의 배치가 [15,387] 밀리초 내에 완료되었습니다.
+02-Mar-2025 19:35:30.528 정보 [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+02-Mar-2025 19:35:30.582 정보 [main] org.apache.catalina.startup.Catalina.start 서버가 [15624] 밀리초 내에 시작되었습니다.
+02-Mar-2025 19:49:01.611 정보 [Thread-1] org.apache.coyote.AbstractProtocol.pause 프로토콜 핸들러 ["http-nio-8080"]을(를) 일시 정지 중
+02-Mar-2025 19:49:02.107 정보 [Thread-1] org.apache.catalina.core.StandardService.stopInternal 서비스 [Catalina]을(를) 중지시킵니다.
+02-Mar-2025 19:49:02.183 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc 웹 애플리케이션 [ROOT]이(가) JDBC 드라이버 [com.mysql.cj.jdbc.Driver]을(를) 등록했지만, 웹 애플리케이션이 중지될 때, 해당 JDBC 드라이버의 등록을 제거하지 못했습니다. 메모리 누수를 방지하기 위하여, 등록을 강제로 제거했습니다.
+02-Mar-2025 19:49:02.184 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads 웹 애플리케이션 [ROOT]이(가) [mysql-cj-abandoned-connection-cleanup](이)라는 이름의 쓰레드를 시작시킨 것으로 보이지만, 해당 쓰레드를 중지시키지 못했습니다. 이는 메모리 누수를 유발할 가능성이 큽니다. 해당 쓰레드의 스택 트레이스:
+ java.base@17.0.14/java.lang.Object.wait(Native Method)
+ java.base@17.0.14/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.14/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:02.196 정보 [Thread-1] org.apache.coyote.AbstractProtocol.stop 프로토콜 핸들러 ["http-nio-8080"]을(를) 중지시킵니다.
+02-Mar-2025 19:49:02.209 정보 [Thread-1] org.apache.coyote.AbstractProtocol.destroy 프로토콜 핸들러 ["http-nio-8080"]을(를) 소멸시킵니다.
+02-Mar-2025 19:49:27.060 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.100
+02-Mar-2025 19:49:27.070 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Feb 13 2025 11:29:56 UTC
+02-Mar-2025 19:49:27.079 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.100.0
+02-Mar-2025 19:49:27.080 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+02-Mar-2025 19:49:27.080 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+02-Mar-2025 19:49:27.088 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+02-Mar-2025 19:49:27.089 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Users\eunh9\.jdks\corretto-17.0.14
+02-Mar-2025 19:49:27.089 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+7-LTS
+02-Mar-2025 19:49:27.091 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Amazon.com Inc.
+02-Mar-2025 19:49:27.092 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\03-02
+02-Mar-2025 19:49:27.093 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\apache-tomcat-9.0.100
+02-Mar-2025 19:49:27.195 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Mar-2025 19:49:27.196 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+02-Mar-2025 19:49:27.197 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+02-Mar-2025 19:49:27.197 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Mar-2025 19:49:27.197 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Mar-2025 19:49:27.197 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\apache-tomcat-9.0.100
+02-Mar-2025 19:49:27.198 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\03-02
+02-Mar-2025 19:49:27.198 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\03-02\temp
+02-Mar-2025 19:49:27.198 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\03-02\conf\logging.properties
+02-Mar-2025 19:49:27.198 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Mar-2025 19:49:27.199 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=63331:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\bin
+02-Mar-2025 19:49:27.199 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=UTF-8
+02-Mar-2025 19:49:27.218 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.3.1]을(를) 로드했습니다.
+02-Mar-2025 19:49:27.229 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+02-Mar-2025 19:49:27.231 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+02-Mar-2025 19:49:27.249 정보 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+02-Mar-2025 19:49:28.244 정보 [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+02-Mar-2025 19:49:28.291 정보 [main] org.apache.catalina.startup.Catalina.load [2107] 밀리초 내에 서버가 초기화되었습니다.
+02-Mar-2025 19:49:28.396 정보 [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+02-Mar-2025 19:49:28.396 정보 [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.100]
+02-Mar-2025 19:49:28.428 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]을(를) 배치합니다.
+02-Mar-2025 19:49:31.842 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.100
+02-Mar-2025 19:49:31.860 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Feb 13 2025 11:29:56 UTC
+02-Mar-2025 19:49:31.861 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.100.0
+02-Mar-2025 19:49:31.861 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+02-Mar-2025 19:49:31.862 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+02-Mar-2025 19:49:31.863 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+02-Mar-2025 19:49:31.863 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Users\eunh9\.jdks\corretto-17.0.14
+02-Mar-2025 19:49:31.864 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+7-LTS
+02-Mar-2025 19:49:31.865 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Amazon.com Inc.
+02-Mar-2025 19:49:31.865 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\03-02
+02-Mar-2025 19:49:31.868 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\apache-tomcat-9.0.100
+02-Mar-2025 19:49:31.925 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Mar-2025 19:49:31.926 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+02-Mar-2025 19:49:31.926 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+02-Mar-2025 19:49:31.926 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Mar-2025 19:49:31.926 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Mar-2025 19:49:31.927 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\apache-tomcat-9.0.100
+02-Mar-2025 19:49:31.928 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\03-02
+02-Mar-2025 19:49:31.929 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\03-02\temp
+02-Mar-2025 19:49:31.929 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\03-02\conf\logging.properties
+02-Mar-2025 19:49:31.929 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Mar-2025 19:49:31.929 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=63360:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\bin
+02-Mar-2025 19:49:31.930 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=UTF-8
+02-Mar-2025 19:49:31.936 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.3.1]을(를) 로드했습니다.
+02-Mar-2025 19:49:31.937 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+02-Mar-2025 19:49:31.938 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+02-Mar-2025 19:49:31.952 정보 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+02-Mar-2025 19:49:33.766 정보 [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+02-Mar-2025 19:49:33.900 심각 [main] org.apache.catalina.util.LifecycleBase.handleSubClassException 구성요소 [Connector["http-nio-8080"]]을(를) 초기화하지 못했습니다.
+	org.apache.catalina.LifecycleException: 프로토콜 핸들러 초기화가 실패했습니다.
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1048)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardService.initInternal(StandardService.java:525)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.core.StandardServer.initInternal(StandardServer.java:986)
+		at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:122)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:690)
+		at org.apache.catalina.startup.Catalina.load(Catalina.java:713)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.apache.catalina.startup.Bootstrap.load(Bootstrap.java:302)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:472)
+	Caused by: java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337)
+		at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294)
+		at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:268)
+		at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:223)
+		at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1373)
+		at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:1386)
+		at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:663)
+		at org.apache.coyote.http11.AbstractHttp11Protocol.init(AbstractHttp11Protocol.java:80)
+		at org.apache.catalina.connector.Connector.initInternal(Connector.java:1046)
+		... 13 more
+02-Mar-2025 19:49:33.905 정보 [main] org.apache.catalina.startup.Catalina.load [2817] 밀리초 내에 서버가 초기화되었습니다.
+02-Mar-2025 19:49:34.219 정보 [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+02-Mar-2025 19:49:34.220 정보 [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.100]
+02-Mar-2025 19:49:34.330 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]을(를) 배치합니다.
+02-Mar-2025 19:49:40.330 정보 [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+02-Mar-2025 19:49:45.968 정보 [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+02-Mar-2025 19:49:53.689 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]의 배치가 [25,256] 밀리초 내에 완료되었습니다.
+02-Mar-2025 19:49:53.708 정보 [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+02-Mar-2025 19:49:53.750 정보 [main] org.apache.catalina.startup.Catalina.start 서버가 [25459] 밀리초 내에 시작되었습니다.
+02-Mar-2025 19:49:57.626 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]의 배치가 [23,293] 밀리초 내에 완료되었습니다.
+02-Mar-2025 19:49:57.636 정보 [main] org.apache.catalina.startup.Catalina.start 서버가 [23730] 밀리초 내에 시작되었습니다.
+02-Mar-2025 19:49:57.638 심각 [main] org.apache.catalina.core.StandardServer.await 주소 [localhost]와(과) 포트 [8005]에, 서버 셧다운 소켓을 생성하지 못했습니다. (base 포트 [8005], offset [0])
+	java.net.BindException: Address already in use: bind
+		at java.base/sun.nio.ch.Net.bind0(Native Method)
+		at java.base/sun.nio.ch.Net.bind(Net.java:555)
+		at java.base/sun.nio.ch.Net.bind(Net.java:544)
+		at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:648)
+		at java.base/java.net.ServerSocket.bind(ServerSocket.java:388)
+		at java.base/java.net.ServerSocket.<init>(ServerSocket.java:274)
+		at org.apache.catalina.core.StandardServer.await(StandardServer.java:537)
+		at org.apache.catalina.startup.Catalina.await(Catalina.java:829)
+		at org.apache.catalina.startup.Catalina.start(Catalina.java:777)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+		at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+		at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+		at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:345)
+		at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:473)
+02-Mar-2025 19:49:57.639 정보 [main] org.apache.coyote.AbstractProtocol.pause 프로토콜 핸들러 ["http-nio-8080"]을(를) 일시 정지 중
+02-Mar-2025 19:49:57.639 정보 [main] org.apache.catalina.core.StandardService.stopInternal 서비스 [Catalina]을(를) 중지시킵니다.
+02-Mar-2025 19:49:57.726 경고 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc 웹 애플리케이션 [ROOT]이(가) JDBC 드라이버 [com.mysql.cj.jdbc.Driver]을(를) 등록했지만, 웹 애플리케이션이 중지될 때, 해당 JDBC 드라이버의 등록을 제거하지 못했습니다. 메모리 누수를 방지하기 위하여, 등록을 강제로 제거했습니다.
+02-Mar-2025 19:49:57.727 경고 [main] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads 웹 애플리케이션 [ROOT]이(가) [mysql-cj-abandoned-connection-cleanup](이)라는 이름의 쓰레드를 시작시킨 것으로 보이지만, 해당 쓰레드를 중지시키지 못했습니다. 이는 메모리 누수를 유발할 가능성이 큽니다. 해당 쓰레드의 스택 트레이스:
+ java.base@17.0.14/java.lang.Object.wait(Native Method)
+ java.base@17.0.14/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.14/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.737 정보 [main] org.apache.coyote.AbstractProtocol.stop 프로토콜 핸들러 ["http-nio-8080"]을(를) 중지시킵니다.
+02-Mar-2025 19:49:57.738 정보 [main] org.apache.coyote.AbstractProtocol.destroy 프로토콜 핸들러 ["http-nio-8080"]을(를) 소멸시킵니다.
+02-Mar-2025 19:49:57.801 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.802 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.804 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.804 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.805 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.806 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.806 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.807 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.807 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:49:57.808 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:00.766 정보 [Thread-1] org.apache.coyote.AbstractProtocol.pause 프로토콜 핸들러 ["http-nio-8080"]을(를) 일시 정지 중
+02-Mar-2025 19:50:01.470 정보 [Thread-1] org.apache.catalina.core.StandardService.stopInternal 서비스 [Catalina]을(를) 중지시킵니다.
+02-Mar-2025 19:50:01.577 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc 웹 애플리케이션 [ROOT]이(가) JDBC 드라이버 [com.mysql.cj.jdbc.Driver]을(를) 등록했지만, 웹 애플리케이션이 중지될 때, 해당 JDBC 드라이버의 등록을 제거하지 못했습니다. 메모리 누수를 방지하기 위하여, 등록을 강제로 제거했습니다.
+02-Mar-2025 19:50:01.578 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads 웹 애플리케이션 [ROOT]이(가) [mysql-cj-abandoned-connection-cleanup](이)라는 이름의 쓰레드를 시작시킨 것으로 보이지만, 해당 쓰레드를 중지시키지 못했습니다. 이는 메모리 누수를 유발할 가능성이 큽니다. 해당 쓰레드의 스택 트레이스:
+ java.base@17.0.14/java.lang.Object.wait(Native Method)
+ java.base@17.0.14/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.14/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.586 정보 [Thread-1] org.apache.coyote.AbstractProtocol.stop 프로토콜 핸들러 ["http-nio-8080"]을(를) 중지시킵니다.
+02-Mar-2025 19:50:01.598 정보 [Thread-1] org.apache.coyote.AbstractProtocol.destroy 프로토콜 핸들러 ["http-nio-8080"]을(를) 소멸시킵니다.
+02-Mar-2025 19:50:01.672 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.674 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.675 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.681 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.682 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.683 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.683 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.684 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.687 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:01.697 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:50:15.603 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 서버 버전 이름:    Apache Tomcat/9.0.100
+02-Mar-2025 19:50:15.611 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 빌드 시각:  Feb 13 2025 11:29:56 UTC
+02-Mar-2025 19:50:15.611 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log Server 버전 번호:  9.0.100.0
+02-Mar-2025 19:50:15.611 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 이름:     Windows 10
+02-Mar-2025 19:50:15.612 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 운영체제 버전:     10.0
+02-Mar-2025 19:50:15.612 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 아키텍처:          amd64
+02-Mar-2025 19:50:15.612 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 자바 홈:           C:\Users\eunh9\.jdks\corretto-17.0.14
+02-Mar-2025 19:50:15.613 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 버전:          17.0.14+7-LTS
+02-Mar-2025 19:50:15.614 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 벤더:          Amazon.com Inc.
+02-Mar-2025 19:50:15.614 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:     C:\03-02
+02-Mar-2025 19:50:15.615 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:     C:\apache-tomcat-9.0.100
+02-Mar-2025 19:50:15.635 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.lang=ALL-UNNAMED
+02-Mar-2025 19:50:15.635 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.io=ALL-UNNAMED
+02-Mar-2025 19:50:15.636 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util=ALL-UNNAMED
+02-Mar-2025 19:50:15.636 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+02-Mar-2025 19:50:15.636 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+02-Mar-2025 19:50:15.637 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.home=C:\apache-tomcat-9.0.100
+02-Mar-2025 19:50:15.638 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dcatalina.base=C:\03-02
+02-Mar-2025 19:50:15.638 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.io.tmpdir=C:\03-02\temp
+02-Mar-2025 19:50:15.639 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.config.file=C:\03-02\conf\logging.properties
+02-Mar-2025 19:50:15.640 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+02-Mar-2025 19:50:15.640 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\lib\idea_rt.jar=63494:C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.3\bin
+02-Mar-2025 19:50:15.641 정보 [main] org.apache.catalina.startup.VersionLoggerListener.log 명령 행 아규먼트:  -Dfile.encoding=UTF-8
+02-Mar-2025 19:50:15.648 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 버전 [1.7.4]을(를) 사용한, APR 기반 Apache Tomcat Native 라이브러리 [1.3.1]을(를) 로드했습니다.
+02-Mar-2025 19:50:15.648 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR 용량정보들: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+02-Mar-2025 19:50:15.649 정보 [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL 설정: useAprConnector [false], useOpenSSL [true]
+02-Mar-2025 19:50:15.663 정보 [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL이 성공적으로 초기화되었습니다: [OpenSSL 3.0.14 4 Jun 2024]
+02-Mar-2025 19:50:16.514 정보 [main] org.apache.coyote.AbstractProtocol.init 프로토콜 핸들러 ["http-nio-8080"]을(를) 초기화합니다.
+02-Mar-2025 19:50:16.565 정보 [main] org.apache.catalina.startup.Catalina.load [1549] 밀리초 내에 서버가 초기화되었습니다.
+02-Mar-2025 19:50:16.676 정보 [main] org.apache.catalina.core.StandardService.startInternal 서비스 [Catalina]을(를) 시작합니다.
+02-Mar-2025 19:50:16.677 정보 [main] org.apache.catalina.core.StandardEngine.startInternal 서버 엔진을 시작합니다: [Apache Tomcat/9.0.100]
+02-Mar-2025 19:50:16.702 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]을(를) 배치합니다.
+02-Mar-2025 19:50:22.413 정보 [main] org.apache.jasper.servlet.TldScanner.scanJars 적어도 하나의 JAR가 TLD들을 찾기 위해 스캔되었으나 아무 것도 찾지 못했습니다. 스캔했으나 TLD가 없는 JAR들의 전체 목록을 보시려면, 로그 레벨을 디버그 레벨로 설정하십시오. 스캔 과정에서 불필요한 JAR들을 건너뛰면, 시스템 시작 시간과 JSP 컴파일 시간을 단축시킬 수 있습니다.
+02-Mar-2025 19:50:30.558 정보 [main] org.apache.catalina.startup.HostConfig.deployDescriptor 배치 descriptor [C:\03-02\conf\Catalina\localhost\ROOT.xml]의 배치가 [13,852] 밀리초 내에 완료되었습니다.
+02-Mar-2025 19:50:30.568 정보 [main] org.apache.coyote.AbstractProtocol.start 프로토콜 핸들러 ["http-nio-8080"]을(를) 시작합니다.
+02-Mar-2025 19:50:30.603 정보 [main] org.apache.catalina.startup.Catalina.start 서버가 [14035] 밀리초 내에 시작되었습니다.
+02-Mar-2025 19:53:08.787 정보 [Thread-1] org.apache.coyote.AbstractProtocol.pause 프로토콜 핸들러 ["http-nio-8080"]을(를) 일시 정지 중
+02-Mar-2025 19:53:09.388 정보 [Thread-1] org.apache.catalina.core.StandardService.stopInternal 서비스 [Catalina]을(를) 중지시킵니다.
+02-Mar-2025 19:53:09.488 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesJdbc 웹 애플리케이션 [ROOT]이(가) JDBC 드라이버 [com.mysql.cj.jdbc.Driver]을(를) 등록했지만, 웹 애플리케이션이 중지될 때, 해당 JDBC 드라이버의 등록을 제거하지 못했습니다. 메모리 누수를 방지하기 위하여, 등록을 강제로 제거했습니다.
+02-Mar-2025 19:53:09.490 경고 [Thread-1] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads 웹 애플리케이션 [ROOT]이(가) [mysql-cj-abandoned-connection-cleanup](이)라는 이름의 쓰레드를 시작시킨 것으로 보이지만, 해당 쓰레드를 중지시키지 못했습니다. 이는 메모리 누수를 유발할 가능성이 큽니다. 해당 쓰레드의 스택 트레이스:
+ java.base@17.0.14/java.lang.Object.wait(Native Method)
+ java.base@17.0.14/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:85)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ java.base@17.0.14/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.14/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.506 정보 [Thread-1] org.apache.coyote.AbstractProtocol.stop 프로토콜 핸들러 ["http-nio-8080"]을(를) 중지시킵니다.
+02-Mar-2025 19:53:09.519 정보 [Thread-1] org.apache.coyote.AbstractProtocol.destroy 프로토콜 핸들러 ["http-nio-8080"]을(를) 소멸시킵니다.
+02-Mar-2025 19:53:09.606 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.629 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.630 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.657 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.659 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.660 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.685 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.688 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
+02-Mar-2025 19:53:09.688 정보 [mysql-cj-abandoned-connection-cleanup] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+	java.lang.IllegalStateException: 불허되는 접근: 이 웹 애플리케이션 인스턴스는 이미 중지되었습니다. []을(를) 로드할 수 없습니다. 디버그 목적 및 불허되는 접근을 발생시킨 해당 쓰레드를 종료시키기 위한 시도로서, 다음 스택 트레이스가 생성됩니다.
+		at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1369)
+		at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:995)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.checkThreadContextClassLoader(AbandonedConnectionCleanupThread.java:117)
+		at com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:84)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+		at java.base/java.lang.Thread.run(Thread.java:840)
