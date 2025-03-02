@@ -52,23 +52,23 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/events/**", "/controller/images/events/**")
+        registry.addResourceHandler("/images/events/**")
                 .addResourceLocations(
                         "file:C:/Mvc_Project_Manager/src/main/resources/static/images/events/",
                         "classpath:/static/images/events/"
                 );
 
 
-        registry.addResourceHandler("/css/**", "/controller/css/**")
+        registry.addResourceHandler("/css/**")
                 .addResourceLocations(
                         "file:C:/Mvc_Project_Manager/src/main/resources/static/css/",
                         "classpath:/static/css/"
                 );
 
-        registry.addResourceHandler("/resources/**", "/controller/resources/**")
+        registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
 
-        registry.addResourceHandler("/static/**", "/controller/static/**")
+        registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
     }
 
