@@ -106,7 +106,6 @@ body {
     background-color: #bb2d3b;
 }
 
-/* 추가 버튼 스타일 수정 */
 .add-button {
     margin-right: 50px;
     background-color: #8c8787;
@@ -123,13 +122,13 @@ body {
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
-    z-index: 1000; /* 높은 z-index 추가 */
-    text-decoration: none; /* 링크 밑줄 제거 */
-    cursor: pointer; /* 커서 포인터로 변경 */
+    z-index: 1000;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .add-button:hover {
-    background-color: #3c3c3e;
+    background-color: #434345;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(39, 37, 138, 0.4);
 }
@@ -137,7 +136,7 @@ body {
 .add-button i {
     margin-right: 5px;
 }
-/* 페이징 스타일 */
+
 .pagination {
     display: flex;
     justify-content: center;
