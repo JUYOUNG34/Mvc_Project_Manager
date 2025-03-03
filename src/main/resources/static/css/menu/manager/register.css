@@ -1,0 +1,86 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh;
+    margin: 0;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 30em;
+    max-width: 500px;
+    text-align: center;
+}
+h2 {
+    margin-bottom: 25px;
+    font-size: 1.75em;
+    color: #333333;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+.form-group input[type="text"]::placeholder,
+.form-group input[type="password"]::placeholder {
+    color: #aaaaaa;
+}
+.form-group button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+.form-group button:hover {
+    background-color: #0056b3;
+}
+.error {
+    color: red;
+    font-size: 0.8em;
+}
+.able {
+    color: green;
+    font-size: 0.8em;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 480px) {
+    .form-container {
+        width: 95%;
+        margin: 10px;
+        padding: 15px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .form-group select {
+        padding: 8px;
+    }
+}

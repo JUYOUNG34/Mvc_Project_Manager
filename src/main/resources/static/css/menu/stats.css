@@ -1,0 +1,71 @@
+
+body {
+    background-color: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+
+}
+
+.main-wrapper {
+    margin-left: 130px;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    height: 330px;
+    position: relative;
+}
+
+.card-header {
+    background-color: transparent;
+    border: none;
+    padding: 1.25rem 1.5rem;
+}
+
+.card-header h5 {
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.count {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #0066ff;
+}
+
+.chart-container {
+    height: 250px;
+    padding: 1rem;
+}
+
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        margin-bottom: 1.5rem;
+    }
+}
