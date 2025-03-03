@@ -1,6 +1,8 @@
 package kr.bit.controller;
 
+import kr.bit.entity.Criteria;
 import kr.bit.entity.Events;
+import kr.bit.entity.PageCre;
 import kr.bit.service.EventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -25,9 +28,19 @@ public class EventController {
     private EventService eventService;
 
     @GetMapping("/list")
-    public String eventList(Model model){
-        model.addAttribute("event", eventService.getAllEvents());
-        return "menu/event/list";
+    public String eventList(Model model, Criteria cri) {
+        // 페이징된 이벤트 목록 가져오기
+        List<Events> eventList = eventService.getEventListWithPaging(cri);
+
+        // 페이징 정보 설정
+        PageCre pageMaker = new PageCre();
+        pageMaker.setCriteria(cri);
+        pageMaker.setTotalCount(eventService.getTotalCount());
+
+        model.addAttribute("event", eventList);
+        model.addAttribute("pageMaker", pageMaker);
+
+        return "menu/event/list";  // 템플릿 경로 유지
     }
 
     @GetMapping("/add")
@@ -42,7 +55,6 @@ public class EventController {
                            @RequestParam(value = "end_date", required = false) String endDate,
                            @RequestParam(value = "file", required = false) MultipartFile file,
                            Model model) {
-
 
         if (name == null || name.trim().isEmpty()) {
             model.addAttribute("error", "이벤트 제목을 입력해주세요.");
