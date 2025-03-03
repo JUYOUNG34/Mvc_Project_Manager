@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 대시보드</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" th:href="@{/css/menu/stats.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+<div th:insert="fragments/sider :: sidebar"></div>
+<div class="main-wrapper">
+
+    <div class="container">
+        <input type="hidden" id="totalUsersData" th:value="${totalUsersData}">
+        <input type="hidden" id="userStatsData" th:value="${userStatsData}">
+        <input type="hidden" id="genderUsersData" th:value="${maleUsersData + ',' + femaleUsersData}">
+
+        <div class="d-flex align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold mb-1">관리자 대시보드</h2>
+                <p class="text-muted mb-0">실시간 통계 현황</p>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>전체 회원 수</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="count mb-2" id="totalUsersChart" ></div>
+                    <p class="text-muted mb-0">총 등록 회원</p>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>월별 가입자</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="signupChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h5>성별 분포</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="genderChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        function safeJSONParse(value, defaultValue) {
+            if (typeof value === 'number') return value;
+
+            try {
+                return JSON.parse(value) || defaultValue;
+            } catch (e) {
+                console.warn('JSON 파싱 에러:', e);
+                return defaultValue;
+            }
+        }
+
+
+        const totalUsers = document.getElementById('totalUsersData').value;
+        document.getElementById('totalUsersChart').textContent = totalUsers;
+
+
+        function parseUserStats(value) {
+            if (!value) return [];
+
+            try {
+                // 1. 대괄호 제거 및 객체 분리
+                const objects = value
+                    .replace(/^\[|\]$/g, '')  // 바깥쪽 대괄호 제거
+                    .split('}, {')  // 객체들을 분리
+                    .map(str => str.replace(/^{|}$/g, ''));  // 각 객체의 중괄호 제거
+
+                // 2. 각 객체를 파싱하여 JavaScript 객체로 변환
+                const parsedData = objects.map(obj => {
+                    const pairs = obj.split(', ');
+                    const result = {};
+
+                    pairs.forEach(pair => {
+                        const [key, value] = pair.split('=');
+                        // 숫자인 경우 숫자로 변환, 그 외는 문자열로 유지
+                        result[key] = isNaN(value) ? value : Number(value);
+                    });
+
+                    return result;
+                });
+
+                return parsedData;
+            } catch (e) {
+                console.error('데이터 파싱 실패:', e);
+                return [];
+            }
+        }
+
+        const userStatsElement = document.getElementById('userStatsData');
+        const userStatsData = parseUserStats(userStatsElement?.value);
+
+        // 디버깅용 로그
+        console.log('원본 데이터:', userStatsElement?.value);
+        console.log('파싱된 데이터:', userStatsData);
+
+        // 차트 생성
+        new Chart(document.getElementById('signupChart'), {
+            type: 'line',
+            data: {
+                labels: userStatsData.map(item => item.month || "없음"),
+                datasets: [{
+                    label: '가입자 수',
+                    data: userStatsData.map(item => item.count || 0),
+                    borderColor: '#0066ff',
+                    backgroundColor: 'rgba(0, 102, 255, 0.1)',
+                    tension: 0.3,
+                    fill: true,
+                    pointBackgroundColor: '#0066ff',
+                    pointRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0,0,0,0.04)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        //
+        const genderData = document.getElementById('genderUsersData').value.split(',');
+        // 콤마로 구분된 문자열인 "male수, female수"
+        const maleCount = parseInt(genderData[0]) || 0;
+        const femaleCount = parseInt(genderData[1]) || 0;
+        //genderData[1]은 이 배열의 두 번째 요소/ 여성 사용자 수
+
+        new Chart(document.getElementById('genderChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['남성', '여성'],
+                datasets: [{
+                    data: [maleCount, femaleCount],
+                    backgroundColor: ['#0066ff', '#ff4d4d'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                cutout: '75%'
+            }
+        });
+    </script>
+</div>
+</body>
+</html>
