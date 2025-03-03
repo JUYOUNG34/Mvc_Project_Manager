@@ -14,19 +14,7 @@ jobs:
       # 코드 체크아웃
       - uses: actions/checkout@v3
 
-      # JDK 17 설정
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'adopt'
-          cache: maven
-
-      # Maven으로 빌드
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
-
-      # 도커 이미지 빌드 및 푸시
+      # 도커 이미지 빌드 및 푸시 (Maven 빌드 생략)
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -48,13 +36,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 서버에 SSH로 접속하여 배포
+      # 서버에 SSH로 접속하여 배포 (비밀번호 인증 사용)
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.SSH_PASSWORD }}  # 키 대신 비밀번호 사용
           port: 22
           script: |
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/spring-mvc-app:latest
