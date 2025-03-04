@@ -1,6 +1,10 @@
 package kr.bit.controller;
 
+import kr.bit.entity.Criteria;
+import kr.bit.entity.Criteria;
 import kr.bit.entity.Events;
+import kr.bit.entity.PageCre;
+import kr.bit.entity.PageCre;
 import kr.bit.service.EventService;
 import kr.bit.service.LogService;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +23,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -35,9 +40,16 @@ public class EventController {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @GetMapping("/list")
-    public String eventList(@AuthenticationPrincipal UserDetails userDetails, Model model){
-        model.addAttribute("event", eventService.getAllEvents());
+    public String eventList(@AuthenticationPrincipal UserDetails userDetails, Criteria cri , Model model){
+        List<Events> eventList = eventService.getEventListWithPaging(cri);
         adminId=userDetails.getUsername();
+        // 페이징 정보 설정
+        PageCre pageMaker = new PageCre();
+        pageMaker.setCriteria(cri);
+        pageMaker.setTotalCount(eventService.getTotalCount());
+
+        model.addAttribute("event", eventList);
+        model.addAttribute("pageMaker", pageMaker);
         return "menu/event/list";
     }
 
@@ -53,7 +65,6 @@ public class EventController {
                            @RequestParam(value = "end_date", required = false) String endDate,
                            @RequestParam(value = "file", required = false) MultipartFile file,
                            Model model) {
-
 
         if (name == null || name.trim().isEmpty()) {
             model.addAttribute("error", "이벤트 제목을 입력해주세요.");

@@ -1,52 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지 수정</title>
+    <link th:style="stylesheet" th:href="css/board/notice/update.css">div>
     <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/sider.css}">
     <link rel="stylesheet" th:href="@{/css/menu/board/notice/update.css}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 <body>
 <div class="head">
     <div class="notice-update">
-        <label>공지 수정</label>
+        <label for="notice">공지 수정</label>
     </div>
     <div class="container">
-        <form id="updateForm" th:action="@{/menu/board/notice/update}" method="post">
-            <input type="hidden" id="id" name="id" th:value="${noticse.id}">
-
-            <div class="form-group">
-                <h1>제목</h1>
-                <input type="text" id="title" name="title" th:value="${notices.title}" required>
-            </div>
-
-
-            <div class="form-group">
-                <label for="content">내용</label>
-                <textarea id="content" name="content" th:value="${notice.content}" rows="5" required></textarea>
-            </div>
-
-            <div class="buttons">
-                <button type="submit" class="edit">수정</button>
-                <button type="button" class="cancel">취소</button>
-            </div>
-        </form>
+        <div class="form-group">
+            <h1>제목</h1>
+            <label for="title" class="title" th:text="${board.title}">금요일</label>
+        </div>
+        <div class="form-group">
+            <label for="writer_id">아이디 (닉네임)</label>
+            <input type="text" id="writer_id" th:value="${board.writer_id}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="created_at">작성날짜</label>
+            <input type="text" id="created_at" th:value="${#temporals.format(board.created_at, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="content">내용</label>
+            <textarea id="content" rows="3" th:text="${board.content}"></textarea>
+        </div>
+        <div class="buttons">
+            <button class="edit">수정</button>
+            <button class="cancel">취소</button>
+        </div>
     </div>
 </div>
-
-<!--&lt;!&ndash; JavaScript 코드 &ndash;&gt;-->
-<!--<script>-->
-<!--    $(document).ready(function() {-->
-<!--        // 취소 버튼 클릭 시 모달창 띄우고 list.html로 이동-->
-<!--        $(".cancel").click(function() {-->
-<!--            alert("취소되었습니다.");-->
-<!--            window.location.href = "/menu/notice/list";-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
 </body>
 </html>
+
