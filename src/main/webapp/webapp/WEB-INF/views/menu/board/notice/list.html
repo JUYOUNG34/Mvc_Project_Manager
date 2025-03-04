@@ -16,28 +16,32 @@
         <thead>
         <tr>
             <th>번호</th>
-            <th>아이디(닉네임)</th>
+            <th>닉네임</th>
             <th>제목</th>
             <th>작성날짜</th>
             <th>공지여부</th>
+            <th>삭제</th> <!-- 삭제 버튼을 위한 컬럼 추가 -->
         </tr>
         </thead>
         <tbody>
         <div class ="search-container" th:each="notice:${notices}">
             <tbody>
-<tr th:each="notices : ${notices}">
-    <td>
-        <a th:href="@{/menu/board/notice/detail/{id}(id=${notices.id})}" th:text="${notices.id}" ></a>
-    </td>
-    <td th:text="${notices.writer_id}"></td>
-    <td th:text="${notices.title}"></td>
-    <td th:text="${notices.created_at}"></td>
-    <td th:text="${notices.is_notice}"></td>
+            <tr th:each="notice, stat : ${notices}">
+                <td>
+                    <a th:href="@{/menu/board/notice/detail/{id}(id=${notice.id})}" th:text="${stat.count}"></a>
+                </td>
+                <td th:text="${notice.nickname}"></td>
+                <td th:text="${notice.title}"></td>
+                <td th:text="${notice.created_at}"></td>
+                <td th:if="${notice.is_notice eq 1}">Y</td>
+                <td th:if="${notice.is_notice eq 0}">N</td>
 
-
-</tr>
-            <tr th:if="${#lists.isEmpty(notices)}">
-                <td colspan="6">공지사항이 없습니다.</td>
+                <!-- 삭제 버튼 추가 -->
+                <td>
+                    <form th:action="@{/menu/board/notice/delete/{id}(id=${notice.id})}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                        <button type="submit">삭제</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
 
@@ -46,24 +50,21 @@
     </table>
 </div>
 
+<!-- 검색 폼 수정 - POST 메소드를 사용하여 유효성 검사 컨트롤러로 전송 -->
+<div class="search-bar">
+    <form id="searchForm" th:action="@{/menu/board/notice/list}" method="get">
+        <select id="searchType" name="searchType">
+            <!-- 선택된 검색 타입 유지를 위한 th:selected 추가 -->
+            <option value="nickname" th:selected="${searchType == 'nickname'}">닉네임</option>
+            <option value="title" th:selected="${searchType == 'title'}">제목</option>
+        </select>
+        <!-- 검색어 입력값 유지를 위한 th:value 추가 (이미 있음) -->
+        <input type="text" name="searchKeyword" th:value="${searchKeyword}" placeholder="검색어 입력">
+        <button type="submit" id="search">검색</button>
+    </form>
+    <a th:href="@{./add}"><button>추가</button></a>
+</div>
 
-<!--<div class="search-bar">-->
-<!--    <form id="searchForm" th:action="@{/menu/board/notice/list}" method="get">-->
-<!--        <select id="reporter_id" name="reporter_id">-->
-<!--            <option value="">신고한 유저 선택</option>-->
-<!--            <option th:each="reports : ${reports}"-->
-<!--                    th:value="${reports.reported_id}"-->
-<!--                    th:text="${reports.reported_id}"-->
-<!--                    th:selected="${reports.reporter_id != null && reports.reporter_id == reports.reported_id}">-->
-<!--            </option>-->
-<!--        </select>-->
-
-<!--        <input type="text" name="searchKeyword" th:value="${searchKeyword}" placeholder="검색어 입력">-->
-<!--        <button type="submit" id="search">검색</button>-->
-<!--    </form>-->
-<!--</div>-->
-
-
-
+</script>
 </body>
 </html>

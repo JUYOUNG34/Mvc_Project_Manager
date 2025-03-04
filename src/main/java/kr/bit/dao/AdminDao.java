@@ -36,4 +36,6 @@ public class AdminDao {
     public boolean isIdDuplicate(String id) {
         return adminMapper.countById(id) > 0;
     }
+
+    public String getAdminName(int id){return adminMapper.getAdminName(id);}
 }

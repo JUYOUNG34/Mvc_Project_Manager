@@ -46,4 +46,6 @@ public class AdminService {
     public boolean isIdDuplicate(String id) {
         return adminDao.isIdDuplicate(id);
     }
+
+    public String getAdminName(int id){return adminDao.getAdminName(id);}
 }

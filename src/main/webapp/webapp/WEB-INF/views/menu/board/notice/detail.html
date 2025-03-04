@@ -10,16 +10,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-
-<!--<script>-->
-<!--  function updateHiddenStatus() {-->
-<!--    let selectedValue = document.getElementById("statusSelect").value;-->
-<!--    document.getElementById("hiddenStatus").value = selectedValue;-->
-<!--    document.getElementById("selectedStatus").value = selectedValue;-->
-<!--  }-->
-<!--</script>-->
-
-
 <body>
 <div class="head">
   <div class="notice-detail">
@@ -28,46 +18,35 @@
   <div class="container">
     <div class="form-group">
       <h1>제목</h1>
-      <label class="title" th:text="${notices.title}"></label>
+      <h2><label class="title" th:text="${notices.title}"></label></h2>
     </div>
     <div class="form-group">
-      <label for="writer_id">아이디 (닉네임)</label>
-      <input type="text" id="writer_id" name="writer_id" th:value="${notices.writer_id}">
+      <label>아이디 (닉네임)</label>
+      <label th:text="${notices.writer_id}" ></label>
     </div>
     <div class="form-group">
-      <label for="create_at">작성날짜</label>
-      <input type="text" id="create_at" name="create_at" th:value="${notices.created_at}">
+      <label>내용</label>
+      <label th:text="${notices.content}" ></label>
     </div>
-    <div class="form-group">
-      <label for="content">내용</label>
-      <textarea id="content" name="content" rows="3" th:text="${notices.content}"></textarea>
-    </div>
+
     <div class="buttons">
-
-      <button  id="edit" name=th:data-id="${notices.id}>수정</button>
+      <button class="edit" th:attr="onclick='update(' + ${notices.id} + ')'" >수정</button>
       <button class="cancel">취소</button>
-    </div>
-<!--      <button class="edit" name=th:data-id="${notices.id}">수정</button>-->
-<!--      <button class="cancel">취소</button>-->
-    </div>
   </div>
-
-
-<!-- JavaScript 코드 -->
-<!--<script>-->
-<!--  $(document).ready(function() {-->
-<!--    // 수정 버튼 클릭 시 update.html로 이동-->
-<!--    $(".edit").click(function() {-->
-<!--      var boardId = $(this).data("id");  // 공지 ID 가져오기-->
-<!--      window.location.href = "/menu/notice/update/" + boardId;-->
-<!--    });-->
-
-<!--    // 취소 버튼 클릭 시 list.html로 이동-->
-<!--    $(".cancel").click(function() {-->
-<!--      window.location.href = "/menu/notice/list";-->
-<!--    });-->
-<!--  });-->
-<!--</script>-->
-
+  </div>
+  <script>
+    function update(id){
+      location.href=`../update/${id}`;
+    }
+  </script>
+  <script>
+    $(document).ready(function() {
+      $(".cancel").click(function () {
+        alert("취소 되었습니다.");
+        window.location.href = "/controller/menu/board/notice/list";
+      });
+    });
+  </script>
+</div>
 </body>
 </html>

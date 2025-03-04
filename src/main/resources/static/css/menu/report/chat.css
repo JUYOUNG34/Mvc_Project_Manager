@@ -1,0 +1,115 @@
+/* 전체 화면 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* 컨테이너 스타일 */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 2px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 대화 상대 정보 박스 */
+.chat-info {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*!* 버튼 그룹 (상대 정보 보기 + 차단 버튼) *!*/
+/*.button-group {*/
+/*    display: flex;*/
+/*    gap: 0px; !* 버튼 사이 간격 없앰 *!*/
+/*}*/
+
+/*!* 버튼 공통 스타일 *!*/
+/*.chat-info button, .chat-info .block-btn {*/
+/*    background-color: black;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    padding: 8px 12px;*/
+/*    border-radius: 0px;*/
+/*    cursor: pointer;*/
+/*    margin: 0; !* 버튼 간 여백 제거 *!*/
+/*}*/
+
+/*!* 버튼 호버 효과 *!*/
+/*.chat-info button:hover, .chat-info .block-btn:hover {*/
+/*    background-color: #444;*/
+/*}*/
+
+/*!* 첫 번째 버튼 (상대 정보 보기) 왼쪽 모서리 둥글게 *!*/
+/*.button-group button:first-child {*/
+/*    border-radius: 5px 0 0 5px;*/
+/*}*/
+
+/*!* 마지막 버튼 (차단) 오른쪽 모서리 둥글게 *!*/
+/*.button-group button:last-child {*/
+/*    border-radius: 0 5px 5px 0;*/
+/*}*/
+
+/* 채팅 메시지 박스 */
+.chat-box {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 2px;
+    height: 400px;
+    width: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /*border: 1px solid #ccc;*/
+}
+
+/* 개별 메시지 스타일 */
+.chat-message {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    /*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);*/
+    width: fit-content;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+/* 닉네임 및 타임스탬프 스타일 */
+.nickname {
+    font-weight: bold;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: gray;
+    margin-left: 10px;
+}
+
+/*!* 신고유저와 신고받은 유저 스타일 구분 *!*/
+/*.sender {*/
+/*    align-self: flex-start;*/
+/*    background-color: #e3f2fd; !* 연한 파란색 *!*/
+/*    border-left: 3px solid #2196F3;*/
+/*    padding: 8px;*/
+/*}*/
+
+/*.receiver {*/
+/*    align-self: flex-end;*/
+/*    background-color: #ffe0b2; !* 연한 주황색 *!*/
+/*    border-right: 3px solid #FF9800;*/
+/*    padding: 8px;*/
+/*}*/

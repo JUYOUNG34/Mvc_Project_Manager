@@ -21,19 +21,30 @@
             <th>신고 날짜</th>
             <th>처리 상태</th>
             <th>신고 사유</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
         <div class ="search-container" th:each="report:${reports}">
             <tbody>
-            <tr th:each="report : ${reports}">
-                <td th:text="${report.id}"></td>
+            <tr th:each="report, stat : ${reports}">
+                <td th:text="${stat.count}"></td>
                 <td th:text="${report.reporter_id}"></td>
                 <td th:text="${report.reported_id}"></td>
                 <td th:text="${report.report_date}"></td>
-                <td th:text="${report.status}"></td>
+                <td>
+                  <span th:if="${report.status == 'pending'}">처리중</span>
+                  <span th:if="${report.status == 'resolved'}">처리완료</span>
+                  <span th:if="${report.status == 'rejected'}">반려됨</span>
+                </td>
                 <td>
                     <a th:href="@{/menu/report/detail/{id}(id=${report.id})}">보기</a>
+                </td>
+                <td>
+                    <!-- 삭제 버튼 추가 -->
+                    <form th:action="@{/menu/report/delete/{id}(id=${report.id})}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                        <button type="submit" id="delete">삭제</button>
+                    </form>
                 </td>
 
             </tr>
@@ -50,21 +61,13 @@
 
 <div class="search-bar">
     <form id="searchForm" th:action="@{/menu/report/list}" method="get">
-        <select id="reporter_id" name="reporter_id">
-            <option value="">신고한 유저 선택</option>
-            <option th:each="reports : ${reports}"
-                    th:value="${reports.reported_id}"
-                    th:text="${reports.reported_id}"
-                    th:selected="${reports.reporter_id != null && reports.reporter_id == reports.reported_id}">
-            </option>
+        <select id="reporter_id" name="searchType">
+            <option value="reporter_id">신고한 유저 선택</option>
+            <option value="reported_id">신고 받은 유저</option>
         </select>
-
         <input type="text" name="searchKeyword" th:value="${searchKeyword}" placeholder="검색어 입력">
         <button type="submit" id="search">검색</button>
     </form>
 </div>
-
-
-
 </body>
 </html>

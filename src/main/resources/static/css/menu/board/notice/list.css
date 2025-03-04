@@ -4,37 +4,18 @@ body {
     margin: 0;
     padding: 0;
 }
-.con {
-    display: inline-block;
+.container {
+    position: absolute;
+    top: 300px;
+    left: 300px;
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1200px;
-    margin: 50px auto;
-}
-.add-button {
-    text-align: right;
-    margin-bottom: 10px;
-}
-.add-button button {
-    width: 10%;
-    padding: 5px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.add-button :hover {
-    background-color: #575757;
-    cursor: pointer;
+    width: 1400px;
 }
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 th, td {
     padding: 12px;
@@ -48,39 +29,20 @@ th {
 td {
     font-size: 0.9em;
 }
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+
 tr:hover {
     background-color: #f5f5f5;
 }
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-.pagination a {
-    margin: 0 3px;
-    padding: 4px 8px;
-    text-decoration: none;
-    color: #333f;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    font-size: 0.8em;
-}
-.pagination a:hover {
-    background-color: #f0f0f0;
-}
-.pagination a.active {
-    background-color: #333;
-    color: white;
-}
+
 .search-bar {
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
+    position: absolute;
+    left:1360px;
+    top:230px;
 }
 .search-bar select, .search-bar input[type="text"], .search-bar button {
     padding: 6px;

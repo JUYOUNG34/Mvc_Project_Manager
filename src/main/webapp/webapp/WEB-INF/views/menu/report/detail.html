@@ -1,45 +1,60 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신고 내역</title>
-    <link th:style="stylesheet" th:href="css/report/detail.css">
+    <link rel="stylesheet" th:href="@{/css/menu/report/detail.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+    <title>신고 페이지</title>
 </head>
 <body>
-<div class="container">
-    <table>
-        <thead>
-        <tr>
-            <th>번호</th>
-            <th>신고한 유저</th>
-            <th>신고 받은 유저</th>
-            <th>신고 날짜</th>
-            <th>처리 상태</th>
-            <th>신고 사유</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="reports : ${reports}">
-            <td th:text="${reports.id}"></td>
-            <td th:text="${reports.reporter_id}"></td>
-            <td th:text="${reports.reported_id}"></td>
-            <td th:text="${reports.report_date}"></td>
-            <td th:text="${reports.status}"></td>
-            <td th:text="${reports.report_content}"></td>
-        </tr>
-        </tbody>
-    </table>
+<div th:replace="~{fragments/header :: header}"></div>
+<!--<div th:replace="~{fragments/sider :: sidebar}"></div>-->
+
+    </div>
+    <div class="container">
+
+        <div class="form-group">
+            <label>신고 유저</label>
+            <label th:text="${report.reporter_id}"></label>
+        </div>
+        <div class="form-group">
+            <label>신고받은 유저</label>
+            <label th:text="${report.reported_id}"></label>
+        </div>
+        <div class="form-group">
+            <label for="report_content">신고 사유</label>
+            <textarea id="report_content" name="report_content" rows="3" th:text="${report.report_content}" readonly></textarea>
+        </div>
+        <div class="form-group">
+            <label>상태</label>
+            <label th:if="${report.status eq 'resolved'}">처리완료</label>
+            <label th:if="${report.status eq 'pending'}">처리중</label>
+        </div>
+
+            <div class="button-group">
+                <button class="confirm" th:attr="onclick='chat('+${report.id}+')'" >대화 확인</button>
+            </div>
+
+
+
+    </div>
 </div>
-
-<!--<div class="search-bar">-->
-<!--    <button type="button" id="reporter_id">신고한 유저</button>-->
-<!--    <input type="text" th:value="${searchKeyword}">-->
-<!--    <button type="button" id="search">검색</button>-->
-<!--</div>-->
-
-<!--<div class="pagination">-->
-<!--    <button th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:text="${pageNum}" th:classappend="${pageNum == currentPage} ? 'active' : ''"></button>-->
-<!--</div>-->
 </body>
+<script>
+    function chat(id){
+        location.href=`../chat/${id}`;
+    }
+</script>
+<script>
+    function updateHiddenStatus() {
+        let selectedValue = document.getElementById("statusSelect").value;
+        document.getElementById("hiddenStatus").value = selectedValue;
+        document.getElementById("selectedStatus").value = selectedValue;
+    }
+</script>
+
 </html>

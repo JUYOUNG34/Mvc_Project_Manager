@@ -31,4 +31,8 @@ public interface AdminMapper {
 
     @Select("SELECT COUNT(*) FROM admins WHERE id = #{id}")
     int countById(String id);
+
+    @Select("SELECT name from admins where admin_id= #{id}")
+    String getAdminName(int id);
+
 }
