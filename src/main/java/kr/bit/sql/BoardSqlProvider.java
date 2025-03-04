@@ -33,12 +33,11 @@ public class BoardSqlProvider {
             LEFT_OUTER_JOIN("users u ON b.writer_id = u.user_id");
             LEFT_OUTER_JOIN("admins a ON b.admin_writer_id = a.admin_id");
             WHERE("(b.writer_id IS NOT NULL OR b.admin_writer_id IS NOT NULL)");
-            if (criteria.getSort() != null && !criteria.getSort().isEmpty() &&
-                    criteria.getOrder() != null && !criteria.getOrder().isEmpty()) {
+            if (criteria.getType() != null && !criteria.getType().isEmpty()) {
                 switch (criteria.getType()) {
                     case "id":
                         AND();
-                        WHERE("b.id LIKE CONCAT('%', #{criteria.keyword}, '%')");
+                        WHERE("b.writer_id LIKE CONCAT('%', #{criteria.keyword}, '%')");
                         break;
                     case "nickname":
                         AND();

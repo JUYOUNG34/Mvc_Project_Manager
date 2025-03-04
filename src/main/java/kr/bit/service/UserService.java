@@ -51,7 +51,8 @@ public class UserService {
     public List<Messages> getMessages(int room_id){
         return userDao.getMessages(room_id);
     }
-    public Users oneUser(int room_id, int user_id){
-        return userDao.oneUser(room_id,user_id);
+    public Users oneUser(int user_id){
+        return userDao.oneUser(user_id);
     }
+    public int receiveUser(int user_id, int room_id){return userDao.receiveUser(user_id,room_id);}
 }

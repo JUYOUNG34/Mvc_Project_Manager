@@ -59,7 +59,7 @@ public class UserSqlProvider {
 
         // 기본 쿼리 문자열 생성
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM users u join chat_rooms cr on cr.participant_1_id = u.user_id or cr.participant_2_id = u.user_id ");
+        sql.append("SELECT * FROM users u join chat_rooms cr on cr.man_id = u.user_id or cr.woman_id = u.user_id ");
         sql.append("WHERE user_id = #{user_id} ");
 
         if (criteria.getType() != null && !criteria.getType().isEmpty()) {
@@ -73,10 +73,8 @@ public class UserSqlProvider {
             }
         }
         sql.append("ORDER BY created_at DESC ");
-
         // LIMIT 구문 추가
         sql.append("LIMIT #{criteria.pageStart}, #{criteria.perPageNum}");
-
         return sql.toString();
     }
     public String getChat_roomsCount(Map<String, Object> params) {
@@ -84,7 +82,7 @@ public class UserSqlProvider {
 
         // 기본 쿼리 문자열 생성
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT COUNT(*) FROM users u join chat_rooms cr on cr.participant_1_id = u.user_id or cr.participant_2_id = u.user_id ");
+        sql.append("SELECT COUNT(*) FROM users u join chat_rooms cr on cr.man_id = u.user_id or cr.woman_id = u.user_id ");
         sql.append("WHERE user_id = #{user_id} ");
 
         if (criteria.getType() != null && !criteria.getType().isEmpty()) {
@@ -97,10 +95,9 @@ public class UserSqlProvider {
                     break;
             }
         }
-        sql.append("ORDER BY created_at DESC ");
-
+//        sql.append("ORDER BY created_at DESC ");
         // LIMIT 구문 추가
-        sql.append("LIMIT #{criteria.pageStart}, #{criteria.perPageNum}");
+//        sql.append("LIMIT #{criteria.pageStart}, #{criteria.perPageNum}");
 
         return sql.toString();
     }

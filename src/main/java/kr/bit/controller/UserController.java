@@ -134,6 +134,7 @@ public class UserController {
     @GetMapping("/chat/list")
     public String chatList(@Param("user_id")int user_id,Criteria criteria ,Model model) {
         List<Chat_rooms> chatRooms = userService.getChat_rooms(user_id, criteria);
+        System.out.println(chatRooms);
         model.addAttribute("chatRooms",chatRooms);
         model.addAttribute("user_id",user_id);
 
@@ -151,8 +152,9 @@ public class UserController {
     @GetMapping("/chat/detail")
     public String chatDetail(@RequestParam("room_id") int room_id,@RequestParam("user_id")int user_id ,Model model){
         List<Messages> messages = userService.getMessages(room_id);
-        Users user = userService.oneUser(room_id,user_id);
-        System.out.println(user.getUser_id());
+        int receiveUserId = userService.receiveUser(user_id,room_id);
+        Users user = userService.oneUser(receiveUserId);
+
         model.addAttribute("messages",messages);
         model.addAttribute("user",user);
         return "menu/user/chat/detail";

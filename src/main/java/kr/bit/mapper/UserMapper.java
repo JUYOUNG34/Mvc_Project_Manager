@@ -34,7 +34,12 @@ public interface UserMapper {
     @Select("select * from messages m join users u on m.user_id = u.user_id where m.room_id = #{room_id}")
     List<Messages> getMessages(@Param("room_id") int room_id);
 
-    @Select("select * from users where user_id = (select distinct receiver_id from messages where room_id = #{room_id} and user_id = #{user_id}) ")
-    Users oneUser(@Param("room_id")int room_id,@Param("user_id")int user_id);
+    @Select("select * from users where user_id = #{user_id} ")
+    Users oneUser(@Param("user_id")int user_id);
+
+    @Select("SELECT woman_id as receiver_id FROM chat_rooms WHERE id = #{room_id} AND man_id = #{user_id} " +
+            "UNION " +
+            "SELECT man_id as receiver_id FROM chat_rooms WHERE id = #{room_id} AND woman_id = #{user_id}")
+    int receiveUser(@Param("user_id") int user_id, @Param("room_id") int room_id);
 
 }

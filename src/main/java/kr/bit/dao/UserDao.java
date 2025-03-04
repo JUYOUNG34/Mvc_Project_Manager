@@ -44,7 +44,9 @@ public class UserDao {
     public List<Messages> getMessages(int room_id){
         return userMapper.getMessages(room_id);
     }
-    public Users oneUser(int room_id, int user_id){
-        return userMapper.oneUser(room_id,user_id);
+    public Users oneUser(int user_id){
+        return userMapper.oneUser(user_id);
     }
+    public int receiveUser(int user_id,int room_id){return userMapper.receiveUser(user_id,room_id);}
+
 }
