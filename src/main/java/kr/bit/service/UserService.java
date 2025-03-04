@@ -34,8 +34,25 @@ public class UserService {
 
         return hobbiesStr;
     }
-    public List<Chat_rooms> getChat_rooms(int user_id){
-        return userDao.getChat_rooms(user_id);
+    public List<Chat_rooms> getChat_rooms(int user_id, Criteria criteria){
+        return userDao.getChat_rooms(user_id, criteria);
+    }
+    public int getChat_roomsCount(int user_id, Criteria criteria){
+        return userDao.getChat_roomsCount(user_id,criteria);
     }
 
+    public int modifyPoints(Points points){
+        return userDao.modifyPoints(points);
+    }
+    public int modifyPhoto_image_url(String photo_image_url, int user_id){
+        return userDao.modifyPhoto_image_url(photo_image_url,user_id);
+    }
+
+    public List<Messages> getMessages(int room_id){
+        return userDao.getMessages(room_id);
+    }
+    public Users oneUser(int user_id){
+        return userDao.oneUser(user_id);
+    }
+    public int receiveUser(int user_id, int room_id){return userDao.receiveUser(user_id,room_id);}
 }

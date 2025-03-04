@@ -1,5 +1,6 @@
 package kr.bit.service;
 
+import kr.bit.entity.Criteria;
 import kr.bit.entity.Events;
 import kr.bit.mapper.EventMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,19 @@ public class EventService {
         } catch (Exception e) {
             log.error("이벤트 추가 중 에러 발생", e);
             throw new RuntimeException("이벤트 추가 실패", e);
-
         }
     }
 
-    // 기존의 다른 메서드들 유지
     public List<Events> getAllEvents() {
         return eventMapper.getAllEvents();
+    }
+
+    public List<Events> getEventListWithPaging(Criteria cri) {
+        return eventMapper.getEventListWithPaging(cri);
+    }
+
+    public int getTotalCount() {
+        return eventMapper.getTotalCount();
     }
 
     public int updateEvent(Events event) {

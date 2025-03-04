@@ -1,24 +1,23 @@
 package kr.bit.mapper;
 
 import org.apache.ibatis.annotations.Select;
+import java.util.List;
+import java.util.Map;
 
 public interface Statsmapper {
-//    @Select("select gender, count(*) " +
-//            "from user_profiles")
-//   int genderStats();
-//
-//
-//    @Select("select count(*)" +
-//            "from users;")
-//    int totalUsers();
-//
-//
-//    @Select("SELECT " +
-//            "    DATE_FORMAT(created_at, '%Y-%m')" +
-//            "    COUNT(*) as count " +
-//            "FROM user_profiles " +
-//            "GROUP BY DATE_FORMAT(created_at, '%Y-%m')" +
-//            "ORDER BY month;")
-//    int userStats();
+    @Select("select gender, count(*) as count " +
+            "from user_profiles " +
+            "group by gender")
+    List<Map<String, Object>> getGenderStats();
 
+    @Select("select count(*) as totalcount " +
+            "from user_profiles")
+    int getTotalUsers();
+
+    @Select("select date_format(created_at, '%Y-%m') as month, " +
+            "count(*) as count " +
+            "from user_profiles " +
+            "group by date_format(created_at, '%Y-%m') " +
+            "order by month")
+    List<Map<String, Object>> getUserMonthlyStats();
 }

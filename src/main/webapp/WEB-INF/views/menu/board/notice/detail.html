@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+    <title>공지 보기</title>
+    <link rel="stylesheet" th:href="@{/css/menu/board/notice/detail.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<div class="head">
+    <div class="notice-detail">
+        <label>공지 보기</label>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <h1>제목</h1>
+            <h2><label class="title" th:text="${notices.title}"></label></h2>
+        </div>
+        <div class="form-group">
+            <label>아이디 (닉네임)</label>
+            <label th:text="${notices.writer_id}" ></label>
+        </div>
+        <div class="form-group">
+            <label>내용</label>
+            <label th:text="${notices.content}" ></label>
+        </div>
+
+        <div class="buttons">
+            <button class="edit" th:attr="onclick='update(' + ${notices.id} + ')'" >수정</button>
+            <button class="cancel">취소</button>
+        </div>
+    </div>
+    <script>
+        function update(id){
+            location.href=`../update/${id}`;
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".cancel").click(function () {
+                alert("취소 되었습니다.");
+                window.location.href = "/controller/menu/board/notice/list";
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

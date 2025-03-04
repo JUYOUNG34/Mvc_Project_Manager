@@ -1,6 +1,6 @@
 package kr.bit.mapper;
 
-import kr.bit.entity.Admins;
+import kr.bit.entity.Criteria;
 import kr.bit.entity.Events;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -13,12 +13,17 @@ public interface EventMapper {
     @Select("select * from events")
     List<Events> getAllEvents();
 
+    @Select("select * from events order by id desc limit #{pageStart}, #{perPageNum}")
+    List<Events> getEventListWithPaging(Criteria cri);
+
+    @Select("select count(*) from events")
+    int getTotalCount();
 
     @Insert("insert into events (name, image_url, start_date, end_date) " +
             "values (#{name}, #{image_url}, #{start_date}, #{end_date})")
     int insertEvent(Events event);
 
-    @Select(" select * from events where id =#{id}")
+    @Select("select * from events where id =#{id}")
     Events getEventById(int id);
 
     @Update("UPDATE events SET name = #{name}, " +
@@ -28,8 +33,6 @@ public interface EventMapper {
             "WHERE id = #{id}")
     int updateEvent(Events event);
 
-
     @Delete("delete from events where id=#{id}")
     int deleteEvent(int id);
-
 }

@@ -14,5 +14,8 @@ public class User_profiles {
     private int profile_image_id;
     private String drinking_level;
     private String smoking_status;
+    private String religion;
+    private String mbti;
 
+    private String nickname;
 }
