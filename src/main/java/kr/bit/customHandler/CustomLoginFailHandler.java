@@ -29,7 +29,7 @@ public class CustomLoginFailHandler implements AuthenticationFailureHandler {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         String username = request.getParameter("username");
-        String message = String.format("%s|%s|로그인 실패",  LocalDateTime.now().format(formatter), username);
+        String message = String.format("%s|%s|로그인 실패|%s",  LocalDateTime.now().format(formatter), username,"");
         logService.logAction(message);
 
         response.sendRedirect(request.getContextPath() + "/auth/login?error=true");

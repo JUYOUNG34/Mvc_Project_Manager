@@ -10,7 +10,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script th:inline="javascript">
+    <script>
 
         function passValidation() {
             let pass = $('#pass').val();
@@ -19,7 +19,7 @@
             if (!pattern.test(pass)) {
                 passValidation.removeClass('able');
                 passValidation.addClass('error');
-                passValidation.text('비밀번호는 영문 소문자, 숫자, 특수문자를 포함해야 합니다.');
+                passValidation.text('비밀번호는 소문자, 숫자, 특수문자를 포함해 최소 8자리여야 합니다.');
                 return false;
             } else {
                 passValidation.removeClass('error');
@@ -46,9 +46,15 @@
         }
 
         $(document).ready(function () {
-            $('#managerModifyBTN').click(function (event) {
-                if (!passValidation() || !passConfirm()) {
-                    event.preventDefault();
+            $('#managerModifyBTN').click(async function (event) {
+                console.log("Button clicked, event.preventDefault() called");
+                event.preventDefault();
+                const formIsValid = passValidation() && passConfirm();
+                if (formIsValid) {
+                    console.log("Form submission allowed");
+                    modifyProc();  // 폼 검증이 통과된 경우에만 호출
+                } else {
+                    console.log("Form submission prevented");
                 }
             });
         });
@@ -63,6 +69,7 @@
 
         function modifyProc() {
             let adminModify = getFormData($("#adminModifyForm"));
+            console.log("modifyProc called");
             $.ajax({
                 url: "modifyProc",
                 type: "put",
@@ -127,8 +134,11 @@
         <div class="form-group" sec:authorize="hasRole('service_manager')">
             <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
         </div>
+        <div class="form-group" sec:authorize="hasRole('master')">
+            <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
+        </div>
         <div class="form-group location">
-            <button type="button" id="managerModifyBTN" th:onclick="modifyProc('[[${admin.admin_id}]]')">수정</button>
+            <button type="button" id="managerModifyBTN">수정</button>
             <a href="#" onclick="history.back(); return false;" class="button" >취소</a>
         </div>
     </div>

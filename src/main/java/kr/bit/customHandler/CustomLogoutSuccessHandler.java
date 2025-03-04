@@ -30,7 +30,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
         if (authentication != null && authentication.getName() != null) {
             String admin_id = authentication.getName();
-            String message = String.format("%s|%s|로그아웃",  LocalDateTime.now().format(formatter), admin_id);
+            String message = String.format("%s|%s|로그아웃|%s",  LocalDateTime.now().format(formatter), admin_id,"");
             logService.logAction(message);
         }
 

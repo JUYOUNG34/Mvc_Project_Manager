@@ -3,26 +3,19 @@ package kr.bit.controller;
 import kr.bit.entity.Admins;
 import kr.bit.entity.Criteria;
 import kr.bit.entity.PageCre;
-import kr.bit.security.AdminUserDetailsService;
 import kr.bit.service.AdminService;
 import kr.bit.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 import java.util.List;
 
 @Slf4j
@@ -100,6 +93,10 @@ public class AdminController {
     @PutMapping("/modifyProc")
     public @ResponseBody String modifyProc(@RequestBody Admins admin){
         String result = "";
+        if (admin.getPass()==null || admin.getPass()==""){
+           String oldAdminPass= adminService.oneAdmin(admin.getId()).getPass();
+           admin.setPass(oldAdminPass);
+        }
         if(adminService.updateAdmin(admin)){
             result="true";
         }else {
@@ -126,7 +123,6 @@ public class AdminController {
         return result;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/myPassCheck/{id}")
     @ResponseBody
     private String myPassCheck(@PathVariable("id") String id){

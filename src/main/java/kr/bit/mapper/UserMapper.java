@@ -42,4 +42,6 @@ public interface UserMapper {
             "SELECT man_id as receiver_id FROM chat_rooms WHERE id = #{room_id} AND woman_id = #{user_id}")
     int receiveUser(@Param("user_id") int user_id, @Param("room_id") int room_id);
 
+
+
 }

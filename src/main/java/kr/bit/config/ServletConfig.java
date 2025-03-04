@@ -1,8 +1,11 @@
 package kr.bit.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -21,8 +24,12 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
+@PropertySource({"classpath:application.properties"})
 @ComponentScan(basePackages = {"kr.bit.controller", "kr.bit.service", "kr.bit.dao", "kr.bit.mapper", "kr.bit.security"})
 public class ServletConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private Environment env;
 
     @Bean
     public ViewResolver thymeleafViewResolver(SpringTemplateEngine templateEngine) {
@@ -69,6 +76,8 @@ public class ServletConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
+
+        registry.addResourceHandler("/uploads/**").addResourceLocations("file:///"+env.getProperty("upload.path"));
     }
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
