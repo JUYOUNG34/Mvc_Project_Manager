@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class LogService {
-    private static final String LOG_DIRECTORY = "C:/MVCProjectM/Mvc_Project_Manager/src/logs/";
+    private static final String LOG_DIRECTORY = "C:/logs/";
     private static final Logger log = LoggerFactory.getLogger(LogService.class);
     private static final Pattern LOG_FILE_PATTERN = Pattern.compile("admin-(\\d{4}-\\d{2}-\\d{2})\\.log");
 
