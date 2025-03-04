@@ -47,4 +47,6 @@ public class AdminService {
     public boolean deleteAdmin(String id){
         return adminDao.deleteAdmin(id) > 0;
     }
+
+    public String getAdminName(int id){return adminDao.getAdminName(id);}
 }

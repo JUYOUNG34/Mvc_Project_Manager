@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href ="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/sider.css}">
+    <link rel="stylesheet" th:href="@{/css/menu/report/list.css}">
+    <title>공지사항 게시판</title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/sider :: sidebar}"></div>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>닉네임</th>
+            <th>제목</th>
+            <th>작성날짜</th>
+            <th>공지여부</th>
+            <th>삭제</th> <!-- 삭제 버튼을 위한 컬럼 추가 -->
+        </tr>
+        </thead>
+        <tbody>
+        <div class ="search-container" th:each="notice:${notices}">
+            <tbody>
+            <tr th:each="notice, stat : ${notices}">
+                <td>
+                    <a th:href="@{/menu/board/notice/detail/{id}(id=${notice.id})}" th:text="${stat.count}"></a>
+                </td>
+                <td th:text="${notice.nickname}"></td>
+                <td th:text="${notice.title}"></td>
+                <td th:text="${notice.created_at}"></td>
+                <td th:if="${notice.is_notice eq 1}">Y</td>
+                <td th:if="${notice.is_notice eq 0}">N</td>
+
+                <!-- 삭제 버튼 추가 -->
+                <td>
+                    <form th:action="@{/menu/board/notice/delete/{id}(id=${notice.id})}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                        <button type="submit">삭제</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+
+        </div>
+        </tbody>
+    </table>
+</div>
+
+<!-- 검색 폼 수정 - POST 메소드를 사용하여 유효성 검사 컨트롤러로 전송 -->
+<div class="search-bar">
+    <form id="searchForm" th:action="@{/menu/board/notice/list}" method="get">
+        <select id="searchType" name="searchType">
+            <!-- 선택된 검색 타입 유지를 위한 th:selected 추가 -->
+            <option value="nickname" th:selected="${searchType == 'nickname'}">닉네임</option>
+            <option value="title" th:selected="${searchType == 'title'}">제목</option>
+        </select>
+        <!-- 검색어 입력값 유지를 위한 th:value 추가 (이미 있음) -->
+        <input type="text" name="searchKeyword" th:value="${searchKeyword}" placeholder="검색어 입력">
+        <button type="submit" id="search">검색</button>
+    </form>
+    <a th:href="@{./add}"><button>추가</button></a>
+</div>
+
+</script>
+</body>
+</html>

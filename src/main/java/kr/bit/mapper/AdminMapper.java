@@ -28,4 +28,8 @@ public interface AdminMapper {
     int updateAdmin(Admins admin);
     @Delete("delete from admins where id = #{id}")
     int deleteAdmin(@Param("id")String id);
+
+
+    @Select("SELECT name from admins where admin_id= #{id}")
+    String getAdminName(int id);
 }

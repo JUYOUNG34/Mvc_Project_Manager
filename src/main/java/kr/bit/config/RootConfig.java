@@ -45,8 +45,15 @@ public class RootConfig implements TransactionManagementConfigurer {
     public SqlSessionFactory sessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
+
+        // MyBatis 설정 추가
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class); // SQL 로그 출력
+        sessionFactoryBean.setConfiguration(configuration);
+
         return sessionFactoryBean.getObject();
     }
+
 
     @Bean
     public PlatformTransactionManager transactionManager() {

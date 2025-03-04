@@ -4,14 +4,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 500px
 }
 .container {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 900px;
+    width: 1000px;
 }
 .form-group {
     margin-bottom: 20px;

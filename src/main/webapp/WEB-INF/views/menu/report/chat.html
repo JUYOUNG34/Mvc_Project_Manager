@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>상세 채팅</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/menu/report/chat.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<!--<div th:replace="~{fragments/sidebar :: sidebarFragment}"></div>-->
+<div class="container">
+    <div class="chat-info">
+        <span class="nickname" th:text="'신고받은 유저: ' + ${report}"></span>
+<!--        <div class="button-group">-->
+<!--            <button>상대 정보 보기</button>-->
+<!--            <button class="block-btn">차단</button>-->
+<!--        </div>-->
+    </div>
+
+    <!-- 채팅 메시지 박스 -->
+    <div class="chat-box">
+        <div th:each="message : ${messages}">
+            <span class="nickname" th:text="${message.nickname}"></span>
+            <span class="timestamp" th:text="${message.created_at}"></span><br>
+            <span class="text" th:text="${message.message_content}"></span>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

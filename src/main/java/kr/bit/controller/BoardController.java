@@ -103,10 +103,5 @@ public class BoardController {
         model.addAttribute("board",board);
         return "menu/board/notice/detail";
     }
-    @GetMapping("/notice/add")
-    public String noticeAdd(){
-        return "menu/board/notice/add";
-    }
-
 
 }

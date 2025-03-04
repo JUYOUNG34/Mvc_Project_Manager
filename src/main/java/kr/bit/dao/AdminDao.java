@@ -39,4 +39,6 @@ public class AdminDao {
     public int deleteAdmin(String id){
         return adminMapper.deleteAdmin(id);
     }
+
+    public String getAdminName(int id){return adminMapper.getAdminName(id);}
 }

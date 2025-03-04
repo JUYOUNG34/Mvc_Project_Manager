@@ -18,4 +18,5 @@ public class Boards {
     private String created_at;
     private int is_notice;
     private int is_blind;
+
 }
