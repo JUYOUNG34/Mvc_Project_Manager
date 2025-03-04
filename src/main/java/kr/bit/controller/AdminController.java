@@ -11,7 +11,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.List;
 
 @Slf4j
@@ -32,21 +36,19 @@ public class AdminController {
     @Autowired
     private LogService logService;
 
+    private String adminId;
+
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    boolean isAuthenticated = auth != null &&
-            auth.isAuthenticated() &&
-            !(auth instanceof AnonymousAuthenticationToken);
-
-    // 사용자 ID 가져오기
-    String adminId = isAuthenticated ? auth.getName() : "Anonymous";
 
     @GetMapping("/list")
-    public String managerList(Criteria criteria, Model model){
+    public String managerList(@AuthenticationPrincipal UserDetails userDetails, Criteria criteria, Model model){
+
+        // UserDetails를 Admins 객체로 변환 (로그인 시에 Admins의 ID와 권한을 저장했다고 가정)
+        adminId = userDetails.getUsername();
+
         List<Admins> admins = adminService.getAdmins(criteria);
         model.addAttribute("admins",admins);
-
         int totalCount = adminService.getTotalCount(criteria);
 
         PageCre pageCre = new PageCre();
@@ -123,4 +125,12 @@ public class AdminController {
         logService.logAction(logMessage);
         return result;
     }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/myPassCheck/{id}")
+    @ResponseBody
+    private String myPassCheck(@PathVariable("id") String id){
+        return adminService.oneAdmin(id).getPass();
+    }
+
 }

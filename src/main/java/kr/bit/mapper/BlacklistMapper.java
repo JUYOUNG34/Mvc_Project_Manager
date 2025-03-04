@@ -3,6 +3,7 @@ package kr.bit.mapper;
 import kr.bit.entity.Blacklist;
 import kr.bit.entity.Criteria;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -34,4 +35,7 @@ public interface BlacklistMapper {
 
     @Delete("DELETE FROM user_blacklists WHERE id = #{id}")
     int removeFromBlacklist(@Param("id") int id);
+
+//    @Insert("insert into user_blacklists() values ()")
+
 }

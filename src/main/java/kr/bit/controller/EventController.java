@@ -2,8 +2,11 @@ package kr.bit.controller;
 
 import kr.bit.entity.Events;
 import kr.bit.service.EventService;
+import kr.bit.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Slf4j
@@ -24,9 +29,15 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
+    @Autowired
+    private LogService logService;
+    private String adminId;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
     @GetMapping("/list")
-    public String eventList(Model model){
+    public String eventList(@AuthenticationPrincipal UserDetails userDetails, Model model){
         model.addAttribute("event", eventService.getAllEvents());
+        adminId=userDetails.getUsername();
         return "menu/event/list";
     }
 
@@ -81,6 +92,9 @@ public class EventController {
 
             int result = eventService.insertEvent(event);
             System.out.println("이벤트 추가 결과: " + result);
+
+            String logMessage = String.format("%s|%s|%s|%s", LocalDateTime.now().format(formatter),adminId,"이벤트 등록","");
+            logService.logAction(logMessage);
 
             if (result > 0) {
                 return "redirect:/menu/event/list";
@@ -146,6 +160,8 @@ public class EventController {
             }
 
             eventService.updateEvent(event);
+            String logMessage = String.format("%s|%s|%s|%s", LocalDateTime.now().format(formatter),adminId,"이벤트 수정","이벤트 이름 : "+name);
+            logService.logAction(logMessage);
             return "redirect:/menu/event/list";
         } catch (Exception e) {
             log.error("이벤트 수정 중 에러 발생", e);
@@ -157,6 +173,8 @@ public class EventController {
 
     @PostMapping("/delete/{id}")
     public String deleteEvent(@PathVariable int id){
+        String logMessage = String.format("%s|%s|%s|%s", LocalDateTime.now().format(formatter),adminId,"이벤트 삭제","이벤트 번호 : " + id);
+        logService.logAction(logMessage);
         eventService.deleteEvent(id);
         return "redirect:/menu/event/list";
     }

@@ -10,7 +10,9 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,18 +33,15 @@ public class BoardController {
     @Autowired
     private LogService logService;
 
+    private String adminId;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    boolean isAuthenticated = auth != null &&
-            auth.isAuthenticated() &&
-            !(auth instanceof AnonymousAuthenticationToken);
-
-    // 사용자 ID 가져오기
-    String adminId = isAuthenticated ? auth.getName() : "Anonymous";
 
     @GetMapping("/boardList")
-    public String boardList(Criteria criteria, Model model){
+    public String boardList(@AuthenticationPrincipal UserDetails userDetails, Criteria criteria, Model model){
+
+        adminId=userDetails.getUsername();
+
         List<Boards> boards = boardService.getBoards(criteria);
         model.addAttribute("boards",boards);
         int totalCount = boardService.getTotalCount(criteria);
@@ -87,7 +86,7 @@ public class BoardController {
 
     @GetMapping("/detailBoard/{id}")
     public @ResponseBody Boards detailBoard(@PathVariable("id")int id){
-       return boardService.getDetailBoard(id);
+        return boardService.getDetailBoard(id);
     }
     @PutMapping("/blindProc/{id}")
     public @ResponseBody int boardBlind(@PathVariable("id")int board_id){
