@@ -124,7 +124,7 @@ public class NoticeController {
         //공지사항 추가
         boardService.insertNotice(board);
 
-        return "redirect:./list";
+        return "redirect:/menu/board/notice/list";
     }
 
     @GetMapping("/update/{id}")

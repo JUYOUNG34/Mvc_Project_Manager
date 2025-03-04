@@ -25,37 +25,38 @@ public interface BoardMapper {
     @Update("UPDATE boards SET is_blind = CASE WHEN is_blind = true THEN false ELSE true END WHERE writer_id = #{user_id}")
     int updateBoardBlind(@Param("user_id") int user_id);
 
-    @Update("update boards set is_blind = true where id = #{id}")
-    int blockBoard(int id);
 
-    @Select("SELECT * FROM boards where id = #{id}")
-    Boards getDetailNotice(@Param("id") int id);
+ @Update("update boards set is_blind = true where id = #{id}")
+ int blockBoard(int id);
 
-    @Select("SELECT * FROM boards WHERE is_notice = 1")
-    List<Boards> getAllNotices();
+ @Select("SELECT * FROM boards where id = #{id}")
+ Boards getDetailNotice(@Param("id") int id);
 
-    @Insert("insert into boards (title,content,is_notice,admin_writer_id) values (#{title},#{content},#{is_notice},#{admin_writer_id})")
-    void insertNotice(Boards board);
+ @Select("SELECT * FROM boards WHERE is_notice = 1")
+ List<Boards> getAllNotices();
 
-    // 게시글 업데이트 쿼리 추가
-    @Update("UPDATE boards SET title = #{title}, content = #{content} WHERE id = #{id}")
-    int updateBoard(Boards board);  // Board 객체를 받아 해당 id의 title과 content를 업데이트
+ @Insert("insert into boards (title,content,is_notice,admin_writer_id) values (#{title},#{content},#{is_notice},#{admin_writer_id})")
+ void insertNotice(Boards board);
 
-    // 공지사항 삭제
-    @Delete("DELETE FROM boards WHERE id = #{id}")
-    void deleteNotice(int id);
+ // 게시글 업데이트 쿼리 추가
+ @Update("UPDATE boards SET title = #{title}, content = #{content} WHERE id = #{id}")
+ int updateBoard(Boards board);  // Board 객체를 받아 해당 id의 title과 content를 업데이트
+
+ // 공지사항 삭제
+ @Delete("DELETE FROM boards WHERE id = #{id}")
+ void deleteNotice(int id);
 
 // // 아이디(작성자)로 공지사항 검색 쿼리 추가
 // @Select("SELECT * FROM boards WHERE is_notice = 1 AND admin_writer_id IN " +
 //         "(SELECT admin_id FROM admins WHERE admin_name LIKE CONCAT('%', #{keyword}, '%'))")
 // List<Boards> searchNoticesByWriterId(@Param("keyword") String keyword);
 
-    // 아이디(작성자)로 공지사항 검색 쿼리 추가
-    @Select("SELECT * FROM boards WHERE is_notice = 1 AND admin_writer_id IN " +
-            "(SELECT admin_id FROM admins WHERE name LIKE CONCAT('%', #{keyword}, '%'))")
-    List<Boards> searchNoticesByNickname(@Param("keyword") String keyword);
+ // 아이디(작성자)로 공지사항 검색 쿼리 추가
+ @Select("SELECT * FROM boards WHERE is_notice = 1 AND admin_writer_id IN " +
+         "(SELECT admin_id FROM admins WHERE name LIKE CONCAT('%', #{keyword}, '%'))")
+ List<Boards> searchNoticesByNickname(@Param("keyword") String keyword);
 
-    // 제목으로 공지사항 검색 쿼리 추가
-    @Select("SELECT * FROM boards WHERE is_notice = 1 AND title LIKE CONCAT('%', #{keyword}, '%')")
-    List<Boards> searchNoticesByTitle(@Param("keyword") String keyword);
+ // 제목으로 공지사항 검색 쿼리 추가
+ @Select("SELECT * FROM boards WHERE is_notice = 1 AND title LIKE CONCAT('%', #{keyword}, '%')")
+ List<Boards> searchNoticesByTitle(@Param("keyword") String keyword);
 }
