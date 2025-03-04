@@ -1,0 +1,35 @@
+.sidebar-side {
+    display: flex;
+    width: 150px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 130px;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    padding-top: 60px;
+}
+.sidebar a {
+    padding: 5px 15px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+.sidebar a:hover {
+    background-color: #575757;
+}
+.arrow-icon {
+    font-size: 10px;
+}
+.main-content {
+    flex-grow: 1;
+    margin-left: 150px;
+}

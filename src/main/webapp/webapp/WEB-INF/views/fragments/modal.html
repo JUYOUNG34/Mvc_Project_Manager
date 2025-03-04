@@ -1,0 +1,19 @@
+<div class="modal" id="headerModal" tabindex="-1" th:fragment="modal" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="headerModalTitle">내 정보수정</h5>
+      </div>
+      <div class="modal-body">
+        <p id="modalBodyId">아이디</p>
+        <input title="myId" type="text" id="myId" readonly>
+        <p id="modalBodyPass">비밀번호</p>
+        <input title="myPass" type="password" id="myPass">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="goAdminModify()">확인</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>

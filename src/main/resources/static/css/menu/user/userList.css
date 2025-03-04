@@ -1,0 +1,163 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.con {
+    /*display: inline-block;*/
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    margin: 10% auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid #dddddd;
+    text-align: center;
+}
+th {
+    background-color: #333333;
+    color: white;
+    font-size: 1em;
+}
+td {
+    font-size: 0.9em;
+}
+.remark-column {
+    width: 150px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #f5f5f5;
+}
+a.button {
+    padding: 6px 12px;
+    margin: 4px;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+a.button.block{
+    background-color: #ed2e12;
+}
+a.button:hover {
+    background-color: #0056b3;
+}
+a.button.block:hover {
+    background-color: #ca230c;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    list-style: none;
+    padding: 0;
+}
+.pagination li {
+    margin: 0 3px;
+}
+.pagination li a {
+    padding: 4px 8px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+.pagination li a:hover {
+    background-color: #f0f0f0;
+}
+.pagination li a.active {
+    background-color: #007bff;
+    color: white;
+}
+#userListTap{
+    font-weight: bolder;
+    background-color: #575757;
+}
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.8em;
+    }
+    a.button {
+        font-size: 0.7em;
+        padding: 4px 8px;
+    }
+    .pagination li a {
+        font-size: 0.7em;
+        padding: 3px 6px;
+    }
+}
+@media (max-width: 480px) {
+    th, td {
+        font-size: 0.7em;
+        padding: 8px;
+    }
+    a.button {
+        font-size: 0.6em;
+        padding: 3px 6px;
+        white-space: nowrap;
+    }
+    .remark-column {
+        width: 100px;
+    }
+    .pagination li a {
+        font-size: 0.6em;
+        padding: 2px 4px;
+    }
+}
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.search-bar select, .search-bar input[type="text"], .search-bar button {
+    padding: 6px;
+    font-size: 0.9em;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-right: 0px;
+}
+.search-bar select {
+    background-color: #ffffff;
+}
+.search-bar input[type="text"] {
+    margin-left: -1px;
+}
+.search-bar button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: -1px;
+}
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+.search-bar-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
