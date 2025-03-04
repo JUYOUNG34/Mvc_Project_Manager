@@ -71,7 +71,7 @@
             </div>
             <!-- 포토 정보 -->
             <div class="section profile-picture">
-                <img id="profileImage" th:src="@{/images/userPhotoImage/{fileName}(fileName=${userProfile.photo_image_url})}" alt="유저 사진" onclick="imageModify()" class="img-thumbnail" width="200">
+                <img id="profileImage" th:src="@{/uploads/user_photos/{fileName}(fileName=${userProfile.photo_image_url})}" alt="유저 사진" onclick="imageModify()" class="img-thumbnail" width="200">
                 <input type="file" title="formFile" id="formFile" name="formFile" accept="image/*" style="display: none">
             </div>
             <div class="button-container">
@@ -106,7 +106,7 @@
                 <h5 class="modal-title" id="uploadModalLabel">사진 업로드</h5>
             </div>
             <div class="modal-body">
-                <img id="modalProfileImage" th:src="@{${userProfile.photo_image_url}}" alt="유저 사진" class="img-thumbnail" height="200" width="200">
+                <img id="modalProfileImage" th:src="@{/uploads/user_photos/{fileName}(fileName=${userProfile.photo_image_url})}" alt="유저 사진" class="img-thumbnail" height="200" width="200">
                 <input type="file" id="fileInput" accept="image/*" style="display: block; margin-top: 20px;" onchange="previewImage(event)">
             </div>
             <div class="modal-footer">

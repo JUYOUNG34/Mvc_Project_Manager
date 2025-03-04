@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>관리자 리스트</title>
+  <title>게시판 목록</title>
   <link rel="stylesheet" th:href="@{/css/header.css}">
   <link rel="stylesheet" th:href="@{/css/sider.css}">
   <link rel="stylesheet" th:href="@{/css/menu/board/boardList.css}">
@@ -217,6 +217,8 @@
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <div th:replace="~{fragments/sider :: sidebar}"></div>
+<div th:replace="fragments/modal :: modal"></div>
+
 <div class="container">
   <div class="con">
     <table id="boardTable">

@@ -28,7 +28,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         String admin_id = authentication.getName();
-        String message = String.format("%s|%s|로그인", LocalDateTime.now().format(formatter),admin_id);
+        String message = String.format("%s|%s|로그인|%s", LocalDateTime.now().format(formatter),admin_id,"");
         logService.logAction(message);
         String targetUrl ="/menu/stats";
 

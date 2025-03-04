@@ -8,6 +8,9 @@ import kr.bit.service.BlacklistService;
 import kr.bit.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,8 +35,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
+@PropertySource({"classpath:application.properties"})
 @RequestMapping("/menu/user")
 public class UserController {
+
+    @Autowired
+    private Environment env;
 
     @Autowired
     private UserService userService;
@@ -82,24 +90,21 @@ public class UserController {
     @PostMapping("/userDetail/modifyProc")
     public String userDetailModify(@RequestParam("formFile") MultipartFile formFile,
                                    Points points, Model model, RedirectAttributes rttr){
-        String savePath = "C:/MVCProjectM/Mvc_Project_Manager/src/main/resources/static";
 
         int user_id = points.getUser_id();
         User_profiles oldProfile = userService.oneUser_profile(user_id);
-
         if(!formFile.isEmpty()){
             String originalFilename = formFile.getOriginalFilename();
 
             String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
             String newFileName = UUID.randomUUID().toString() + fileExtension;
 
-
-            String newFileUrl = "/image/userPhotoImage/"+newFileName;
-            String oldPhotoUrl ="/image/userPhotoImage/"+oldProfile.getPhoto_image_url();
+            String savePath =  env.getProperty("upload.path")+"user_photos";
+//            String newFileUrl = newFileName;
+            String oldPhotoUrl = oldProfile.getPhoto_image_url();
             System.out.println(oldPhotoUrl);
-
             try {
-                Path filePath = Paths.get(savePath, newFileUrl);
+                Path filePath = Paths.get(savePath, newFileName);
 
                 Path directoryPath = filePath.getParent();
 
@@ -114,10 +119,11 @@ public class UserController {
                 int result1 = userService.modifyPhoto_image_url(newFileName,user_id);
 
                 int result2 = userService.modifyPoints(points);
-
+                System.out.println("파일저장된곳: "+filePath);
                 rttr.addAttribute("msgType","성공");
                 rttr.addAttribute("msg","수정 되었습니다.");
             } catch (Exception e) {
+                System.out.println("실패" +e);
                 rttr.addAttribute("msgType","실패");
                 rttr.addAttribute("msg","오류가 발생했습니다.");
             }
@@ -194,7 +200,7 @@ public class UserController {
 
         return "menu/user/blacklist";
     }
-//    @PutMapping("/blockUser/{user_id}")
+    //    @PutMapping("/blockUser/{user_id}")
 //    @ResponseBody
 //    public int blockUser(@PathVariable("user_id") int user_id){
 //      int result = userService.blockUser(user_id);
