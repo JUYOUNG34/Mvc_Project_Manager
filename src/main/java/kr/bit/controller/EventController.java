@@ -9,6 +9,9 @@ import kr.bit.service.EventService;
 import kr.bit.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,11 @@ import java.util.UUID;
 @Controller
 @RequestMapping({"/menu/event", "/controller/menu/event"})
 public class EventController {
+
+
+    @Value("${upload.path}")
+    private String envUploadPath;
+
 
     @Autowired
     private EventService eventService;
@@ -79,8 +87,8 @@ public class EventController {
 
             // 파일 업로드 처리
             if (file != null && !file.isEmpty()) {
-                // 절대 경로 설정
-                String uploadDir = "C:/Mvc_Project_Manager/src/main/resources/static/images/events";
+
+                String uploadDir = envUploadPath+"events";
                 File uploadPath = new File(uploadDir);
 
                 if (!uploadPath.exists()) {
@@ -94,11 +102,8 @@ public class EventController {
                 Path targetPath = Paths.get(uploadDir, fileName);
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
-                // 웹 경로로 저장 - 경로 수정
-                event.setImage_url("/controller/images/events/" + fileName);
-            } else {
-                // 기본 이미지 경로 설정
-                event.setImage_url("/controller/images/events/default-event.jpg");
+
+                event.setImage_url( fileName);
             }
 
             int result = eventService.insertEvent(event);
@@ -115,6 +120,7 @@ public class EventController {
             }
         }
         catch (Exception e) {
+            System.out.println("에러:"+e);
             log.error("이벤트 추가 중 에러 발생", e);
             model.addAttribute("error", "이벤트 등록에 실패했습니다: " + e.getMessage());
             return "menu/event/add";
@@ -148,8 +154,8 @@ public class EventController {
 
             // 파일 업로드 처리
             if (file != null && !file.isEmpty()) {
-                // 절대 경로 설정
-                String uploadDir = "C:/Mvc_Project_Manager/src/main/resources/static/images/events";
+
+                String uploadDir = envUploadPath+"events";
                 File uploadPath = new File(uploadDir);
 
                 if (!uploadPath.exists()) {
@@ -164,10 +170,7 @@ public class EventController {
                 Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
 
                 // 웹 경로로 저장
-                event.setImage_url("/controller/images/events/" + fileName);
-            } else {
-                // 기존 이미지 URL 유지
-                event.setImage_url(imageUrl);
+                event.setImage_url(fileName);
             }
 
             eventService.updateEvent(event);

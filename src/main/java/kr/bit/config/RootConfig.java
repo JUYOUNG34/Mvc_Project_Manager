@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement(proxyTargetClass = true) // JDK 동적 프록시 사용
 @MapperScan(basePackages = {"kr.bit.mapper"})
-@PropertySource({"classpath:db.properties"})
+@PropertySource({"classpath:db.properties","classpath:application.properties"})
 @ComponentScan(basePackages = "kr.bit")
 @ComponentScan(basePackages = {"kr.bit.service", "kr.bit.dao", "kr.bit.security","kr.bit.aspect", "kr.bit.customHandler"})
 public class RootConfig implements TransactionManagementConfigurer {

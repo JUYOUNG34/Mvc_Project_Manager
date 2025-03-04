@@ -1,6 +1,7 @@
 package kr.bit.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,12 +25,11 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@PropertySource({"classpath:application.properties"})
 @ComponentScan(basePackages = {"kr.bit.controller", "kr.bit.service", "kr.bit.dao", "kr.bit.mapper", "kr.bit.security"})
 public class ServletConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private Environment env;
+    @Value("${upload.path}")
+    private String envUploadPath;
 
     @Bean
     public ViewResolver thymeleafViewResolver(SpringTemplateEngine templateEngine) {
@@ -66,7 +66,10 @@ public class ServletConfig implements WebMvcConfigurer {
                         "file:C:/Mvc_Project_Manager/src/main/resources/static/images/events/",
                         "classpath:/static/images/events/"
                 );
-
+//
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:///"+envUploadPath);
+        System.out.println("@@@@@@@@"+envUploadPath);
 
         registry.addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/static/css/");
@@ -76,14 +79,12 @@ public class ServletConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
-
-        registry.addResourceHandler("/uploads/**").addResourceLocations("file:///"+env.getProperty("upload.path"));
     }
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new MappingJackson2HttpMessageConverter());
     }
-//    @Override
+    //    @Override
 //    public void addInterceptors(InterceptorRegistry registry) {
 //        registry.addInterceptor(new kr.bit.security.SecurityInterceptor())
 //                .excludePathPatterns("/auth/login", "/css/**", "/images/**", "/resources/**", "/static/**");
