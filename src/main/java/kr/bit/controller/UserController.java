@@ -1,7 +1,5 @@
 package kr.bit.controller;
 
-
-
 import kr.bit.entity.*;
 import kr.bit.service.AdminService;
 import kr.bit.service.LogService;
@@ -9,23 +7,15 @@ import kr.bit.service.BlacklistService;
 import kr.bit.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -192,14 +182,14 @@ public class UserController {
             criteria.setKeyword("");
         }
 
-        List<Blacklist> blacklists = blacklistService.getBlacklist(criteria);
+        List<Blacklist> blacklist = blacklistService.getBlacklist(criteria);
         int totalCount = blacklistService.getTotalCount(criteria);
 
         PageCre pageCre = new PageCre();
         pageCre.setCriteria(criteria);
         pageCre.setTotalCount(totalCount);
 
-        model.addAttribute("blacklists", blacklists);
+        model.addAttribute("blacklist", blacklist);
         model.addAttribute("pageCre", pageCre);
         model.addAttribute("currentPage", criteria.getCurrent_page());
         model.addAttribute("totalPages", (int) Math.ceil((double) totalCount / criteria.getPerPageNum()));

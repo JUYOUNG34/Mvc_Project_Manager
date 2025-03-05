@@ -14,11 +14,9 @@ import java.util.List;
 @Repository
 public interface BlacklistMapper {
 
-    @Select("select b.id, b.blocked_user_id as userId, u.nickname, b.blocked_at as blockedAt, " +
-            "r.report_content as reportReason " +
+    @Select("select b.id, b.blocked_user_id, u.nickname, b.blocked_at " +
             "from user_blacklists b " +
             "join users u on b.blocked_user_id = u.user_id " +
-            "join reports r on b.report_id = r.id " +
             "where (#{criteria.type} = 'nickname' AND u.nickname LIKE CONCAT('%', #{criteria.keyword}, '%')) " +
             "   OR (#{criteria.type} = 'userId' AND CAST(b.blocked_user_id AS CHAR) LIKE CONCAT('%', #{criteria.keyword}, '%')) " +
             "   OR #{criteria.keyword} = '' " +
@@ -39,8 +37,8 @@ public interface BlacklistMapper {
 
     @Insert("insert into user_blacklists(blocked_user_id,blocker_id) values (#{user_id},#{admin_id})")
     int blockUser(@Param("user_id") int user_id, @Param("admin_id")int admin_id);
-    @Select("select id from user_blacklists where blocked_user_id = #{blockUserId}")
-    Integer oneBlockUserID(@Param("blockUserId") int blockUserId);
+    @Select("select id from user_blacklists where blocked_user_id = #{blocked_user_id} ")
+    Integer oneBlockUserID(@Param("blocked_user_id") int blocked_user_id);
     @Delete("DELETE FROM user_blacklists WHERE blocked_user_id = #{blocked_user_id}")
     int blockCancel(@Param("blocked_user_id") int blocked_user_id);
 
