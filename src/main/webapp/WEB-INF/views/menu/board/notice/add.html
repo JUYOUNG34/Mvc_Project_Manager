@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/sider :: sidebar}"></div>
 <div class="head">
     <div class="notice-update">
         <label>공지 추가</label>
@@ -40,7 +42,7 @@
     $(document).ready(function() {
         $(".cancel").click(function () {
             alert("취소 되었습니다.");
-            window.location.href = "list";
+            window.location.href = "/controller/menu/board/notice/list";
         });
     });
 </script>
