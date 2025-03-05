@@ -33,8 +33,8 @@
         <tr th:each="blacklist : ${blacklists}">
             <td th:text="${blacklist.id}">사용자 ID</td>
             <td th:text="${blacklist.nickname}">닉네임</td>
-            <td th:text="${#dates.format(blacklist.blockedAt, 'yyyy-MM-dd HH:mm:ss')}">차단 날짜</td>
-            <td th:text="${blacklist.reportReason}">신고 사유</td>
+            <td th:text="${#dates.format(blacklist.blocked_at, 'yyyy-MM-dd HH:mm:ss')}">차단 날짜</td>
+            <td th:text="${blacklist.report_content}">신고 사유</td>
             <td>
                 <button class="btn btn-unblock" th:data-user-id="${blacklist.id}">차단 해제</button>
                 <form th:action="@{/menu/user/blacklist/unblock}" method="post">

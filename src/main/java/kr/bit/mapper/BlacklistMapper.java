@@ -14,9 +14,6 @@ import java.util.List;
 @Repository
 public interface BlacklistMapper {
 
-    @Select("select * from user_blacklists")
-    List<Blacklist> getAllBlack();
-
     @Select("select b.id, b.blocked_user_id as userId, u.nickname, b.blocked_at as blockedAt, " +
             "r.report_content as reportReason " +
             "from user_blacklists b " +

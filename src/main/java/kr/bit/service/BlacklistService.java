@@ -15,12 +15,7 @@ public class BlacklistService {
 
     @Autowired
     private BlacklistDAO blacklistDAO;
-    @Autowired
-    private BlacklistMapper blacklistMapper;
 
-    public List<Blacklist> getAllBlack() {
-        return blacklistMapper.getAllBlack();
-    }
 
     public List<Blacklist> getBlacklist(Criteria criteria) {
         return blacklistDAO.getBlacklist(criteria);
