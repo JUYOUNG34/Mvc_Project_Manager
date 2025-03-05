@@ -20,10 +20,10 @@ public interface BoardMapper {
     List<Boards> getBoards(@Param("criteria") Criteria criteria);
    @SelectProvider(type = BoardSqlProvider.class,method = "getTotalCount")
     int getTotalCount(@Param("criteria") Criteria criteria);
-   @Select("select * from boards b join users u on b.writer_id = u.user_id where user_id=#{user_id}")
-    Boards getDetailBoard(@Param("user_id") int user_id);
-    @Update("UPDATE boards SET is_blind = CASE WHEN is_blind = true THEN false ELSE true END WHERE writer_id = #{user_id}")
-    int updateBoardBlind(@Param("user_id") int user_id);
+   @Select("select * from boards b join users u on b.writer_id = u.user_id where b.id=#{id}")
+    Boards getDetailBoard(@Param("id") int id);
+    @Update("UPDATE boards SET is_blind = CASE WHEN is_blind = true THEN false ELSE true END WHERE id = #{id}")
+    int updateBoardBlind(@Param("id") int id);
 
 
  @Update("update boards set is_blind = true where id = #{id}")

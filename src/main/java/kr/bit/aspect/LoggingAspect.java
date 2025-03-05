@@ -43,26 +43,25 @@ public class LoggingAspect {
 //    public void applicationPackagePointcut() {
 //    }
 
-    @Before("execution(* kr.bit.service..*(..))")
-    public void logBeforeMethodExecution(JoinPoint joinPoint) {
-        String methodName = joinPoint.getSignature().toShortString();
-        System.out.println(methodName);
-        // 🚨 동일 요청 내에서 이미 실행된 메서드라면 로그 기록 생략
-        if (executedMethods.get().contains(methodName)) {
-            return;
-        }
-
-        executedMethods.get().add(methodName);
-
-        String admin_id = getCurrentUsername();
-        String message = String.format("%s|%s|%s",
-                LocalDateTime.now(), admin_id, methodName);
-
-        logService.logAction(message);
-    }
-    @After("execution(* kr.bit.service..*(..))")
-    public void clearExecutedMethods() {
-        System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-        executedMethods.remove();
-    }
+//    @Before("execution(* kr.bit.service..*(..))")
+//    public void logBeforeMethodExecution(JoinPoint joinPoint) {
+//        String methodName = joinPoint.getSignature().toShortString();
+//        System.out.println(methodName);
+//        // 🚨 동일 요청 내에서 이미 실행된 메서드라면 로그 기록 생략
+//        if (executedMethods.get().contains(methodName)) {
+//            return;
+//        }
+//
+//        executedMethods.get().add(methodName);
+//
+//        String admin_id = getCurrentUsername();
+//        String message = String.format("%s|%s|%s",
+//                LocalDateTime.now(), admin_id, methodName);
+//
+//        logService.logAction(message);
+//    }
+//    @After("execution(* kr.bit.service..*(..))")
+//    public void clearExecutedMethods() {
+//        executedMethods.remove();
+//    }
 }
