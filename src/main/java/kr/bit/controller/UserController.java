@@ -3,6 +3,7 @@ package kr.bit.controller;
 
 
 import kr.bit.entity.*;
+import kr.bit.service.AdminService;
 import kr.bit.service.LogService;
 import kr.bit.service.BlacklistService;
 import kr.bit.service.UserService;
@@ -47,6 +48,9 @@ public class UserController {
 
     @Autowired
     private LogService logService;
+
+    @Autowired
+    private AdminService adminService;
 
     private String adminId;
 
@@ -160,7 +164,10 @@ public class UserController {
         List<Messages> messages = userService.getMessages(room_id);
         int receiveUserId = userService.receiveUser(user_id,room_id);
         Users user = userService.oneUser(receiveUserId);
+        Integer blockId = blacklistService.oneBlockUserID(user_id);
 
+        model.addAttribute("blockId",blockId);
+        model.addAttribute("userId",user_id);
         model.addAttribute("messages",messages);
         model.addAttribute("user",user);
         return "menu/user/chat/detail";
@@ -200,12 +207,17 @@ public class UserController {
 
         return "menu/user/blacklist";
     }
-    //    @PutMapping("/blockUser/{user_id}")
-//    @ResponseBody
-//    public int blockUser(@PathVariable("user_id") int user_id){
-//      int result = userService.blockUser(user_id);
-//        return result;
-//    }
+    @PostMapping("/chat/blockUser/{user_id}")
+    @ResponseBody
+    public int blockUser(@PathVariable("user_id") int user_id){
+       int blockAdmin= adminService.oneAdmin(adminId).getAdmin_id();
+        return blacklistService.blockUser(user_id,blockAdmin);
+    }
+    @DeleteMapping("/chat/blockCancel/{blocked_user_id}")
+    @ResponseBody
+    public int blockCancel(@PathVariable("blocked_user_id") int blocked_user_id){
+        return blacklistService.blockCancel(blocked_user_id);
+    }
     @PostMapping("/blacklist/unblock")
     public String unblockUser(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
         boolean success = blacklistService.unblockUser(id);

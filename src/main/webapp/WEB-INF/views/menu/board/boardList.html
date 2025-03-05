@@ -105,9 +105,9 @@
         row += '<td>' + rowNumber + '</td>';
         row += '<td>';
         if (board.writer_id > 0) {
-          row += '<a class="td_a_tag" href="/controller/menu/user/userDetail?user_id=' + board.writer_id + '">' + board.writer_id + '</a>';
+          row += '<a class="td_a_tag" href="/menu/user/userDetail?user_id=' + board.writer_id + '">' + board.writer_id + '</a>';
         } else {
-          row += '<a class="td_a_tag" href="/controller/menu/manager/list?type=id&keyword=' + board.admin_id + '">' + board.admin_id + '</a>';
+          row += '<a class="td_a_tag" href="/menu/manager/list?type=id&keyword=' + board.admin_id + '">' + board.admin_id + '</a>';
         }
         row += '</td>';
         row += '<td>' + (board.nickname || board.name) + '</td>';
@@ -115,7 +115,7 @@
         if (board.writer_id > 0) {
           row += '<a class="td_a_tag" href="javascript:detailBoard(' + board.id + ')">' + board.title + ' (' + board.report_count + ')</a>';
         } else {
-          row += '<a class="td_a_tag" href="/controller/menu/board/notice/detail?admin_writer_id=' + board.id + '">' + board.title + ' (' + board.report_count + ')</a>';
+          row += '<a class="td_a_tag" href="/menu/board/notice/detail?admin_writer_id=' + board.id + '">' + board.title + ' (' + board.report_count + ')</a>';
         }
         row += '</td>';
         row += '<td>' + board.report_count + '</td>';
@@ -162,7 +162,7 @@
 
     function boardHtml(result) {
       let bodyHtml = `
-        <div class="mb-5">
+        <div class="mb-3">
           <h6 class="fw-bold">제목</h6>
           <p>${result.title}</p>
         </div>

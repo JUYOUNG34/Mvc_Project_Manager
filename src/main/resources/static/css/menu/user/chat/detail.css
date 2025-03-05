@@ -60,6 +60,31 @@ body {
     font-weight: bolder;
     background-color: #575757;
 }
+#userBlockBTN{
+    border: 0;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+#userBlockCancelBTN{
+    border: 0;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+#userBlockBTN:hover{
+    background-color: #0056b3;
+
+}
+#userBlockCancelBTN:hover{
+    background-color: #0056b3;
+}
 @media (max-width: 768px) {
     .header .nickname {
         font-size: 1em;

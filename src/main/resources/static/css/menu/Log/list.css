@@ -12,6 +12,7 @@ main {
 }
 
 table {
+    text-align: center;
     width: 50%;
     border-collapse: collapse;
     background-color: white;

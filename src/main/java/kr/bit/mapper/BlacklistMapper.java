@@ -36,6 +36,11 @@ public interface BlacklistMapper {
     @Delete("DELETE FROM user_blacklists WHERE id = #{id}")
     int removeFromBlacklist(@Param("id") int id);
 
-//    @Insert("insert into user_blacklists() values ()")
+    @Insert("insert into user_blacklists(blocked_user_id,blocker_id) values (#{user_id},#{admin_id})")
+    int blockUser(@Param("user_id") int user_id, @Param("admin_id")int admin_id);
+    @Select("select id from user_blacklists where blocked_user_id = #{blockUserId}")
+    Integer oneBlockUserID(@Param("blockUserId") int blockUserId);
+    @Delete("DELETE FROM user_blacklists WHERE blocked_user_id = #{blocked_user_id}")
+    int blockCancel(@Param("blocked_user_id") int blocked_user_id);
 
 }

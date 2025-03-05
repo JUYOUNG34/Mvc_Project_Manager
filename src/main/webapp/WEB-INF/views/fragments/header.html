@@ -31,11 +31,11 @@
                 let myPass = $("#myPass").val();
                 // console.log(myPass);
                 $.ajax({
-                    url:"/controller/menu/manager/myPassCheck/"+myId,
+                    url:"/menu/manager/myPassCheck/"+myId,
                     type:"POST",
                     success:function (result){
                         if(result === myPass){
-                            window.location.href="/controller/menu/manager/modify?id="+myId;
+                            window.location.href="/menu/manager/modify?id="+myId;
                         }else {
                             $("#myPassValidation").text("비밀번호 확인해 주세요");
                             $("#myPassValidation").css("color","red");
