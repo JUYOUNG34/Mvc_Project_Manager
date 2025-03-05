@@ -2,6 +2,7 @@ package kr.bit.mapper;
 
 import kr.bit.entity.Blacklist;
 import kr.bit.entity.Criteria;
+import kr.bit.entity.Events;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Repository
 public interface BlacklistMapper {
+
+    @Select("select * from user_blacklists")
+    List<Blacklist> getAllBlack();
 
     @Select("select b.id, b.blocked_user_id as userId, u.nickname, b.blocked_at as blockedAt, " +
             "r.report_content as reportReason " +

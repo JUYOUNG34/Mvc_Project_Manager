@@ -8,6 +8,7 @@ import kr.bit.entity.Criteria;
 
 import kr.bit.entity.Reports;
 import kr.bit.mapper.BoardMapper;
+import kr.bit.mapper.EventMapper;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import java.util.List;
 
 @Service
 public class BoardService {
+
+    @Autowired
+    private EventMapper eventMapper;
 
     @Autowired
     private BoardDao boardDao;

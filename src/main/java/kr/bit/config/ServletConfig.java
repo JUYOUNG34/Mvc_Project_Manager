@@ -67,7 +67,7 @@ public class ServletConfig implements WebMvcConfigurer {
                         "classpath:/static/images/events/"
                 );
 //
-        registry.addResourceHandler("/uploads/**")
+        registry.addResourceHandler("/mnt/uploads//**")
                 .addResourceLocations("file:///"+envUploadPath);
         System.out.println("@@@@@@@@"+envUploadPath);
 
