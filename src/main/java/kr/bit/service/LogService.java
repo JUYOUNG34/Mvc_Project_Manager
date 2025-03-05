@@ -4,8 +4,12 @@ import kr.bit.dao.LogDao;
 import kr.bit.dao.LoginDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -21,8 +25,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
+@PropertySource({"classpath:application.properties"})
 public class LogService {
-    private static final String LOG_DIRECTORY = "C:/logs/";
+
+
+    @Value("${log.path}")
+    private String path;
+
+
+//    private static final String LOG_DIRECTORY = "C:/logs/";
     private static final Logger log = LoggerFactory.getLogger(LogService.class);
     private static final Pattern LOG_FILE_PATTERN = Pattern.compile("admin-(\\d{4}-\\d{2}-\\d{2})\\.log");
 
@@ -35,7 +46,7 @@ public class LogService {
     public void logAction(String logMessage) {
         ensureLogDirectoryExists();
         String date = LocalDate.now().toString();  // 오늘 날짜
-        String logFilePath = LOG_DIRECTORY + "admin-" + date + ".log";
+        String logFilePath = path + "admin-" + date + ".log";
         Path path = Paths.get(logFilePath);
         try {
             Files.write(path, (logMessage + System.lineSeparator()).getBytes(),
@@ -47,7 +58,7 @@ public class LogService {
     }
 
     private void ensureLogDirectoryExists() {
-        Path logDirectory = Paths.get(LOG_DIRECTORY);
+        Path logDirectory = Paths.get(path);
         if (!Files.exists(logDirectory)) {
             try {
                 Files.createDirectories(logDirectory);
@@ -60,7 +71,7 @@ public class LogService {
     public List<String> getAllLogDates() throws IOException {
         ensureLogDirectoryExists();
         List<String> dates = new ArrayList<>();
-        Files.list(Paths.get(LOG_DIRECTORY)).forEach(path -> {
+        Files.list(Paths.get(path)).forEach(path -> {
             Matcher matcher = LOG_FILE_PATTERN.matcher(path.getFileName().toString());
             if (matcher.matches()) {
                 dates.add(matcher.group(1));
@@ -70,7 +81,7 @@ public class LogService {
     }
     // 해당 날짜 로그 읽기
     public List<String> readLogsByDate(String date) throws IOException {
-        String logFilePath = LOG_DIRECTORY + "admin-" + date + ".log";
+        String logFilePath = path + "admin-" + date + ".log";
         Path path = Paths.get(logFilePath);
         if (Files.exists(path)) {
             return Files.readAllLines(path);

@@ -95,6 +95,16 @@ a.button.block:hover {
     font-weight: bolder;
     background-color: #575757;
 }
+#cancelBTN{
+    padding: 6px 12px;
+    margin: 4px;
+    color: rgba(237, 46, 18, 0.76);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1em;
+    white-space: nowrap;
+}
 @media (max-width: 768px) {
     th, td {
         font-size: 0.8em;

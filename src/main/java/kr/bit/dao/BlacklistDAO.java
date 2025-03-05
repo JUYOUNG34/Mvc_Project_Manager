@@ -25,4 +25,8 @@ public class BlacklistDAO {
     public int removeFromBlacklist(int id) {
         return blacklistMapper.removeFromBlacklist(id);
     }
+
+    public int blockUser(int user_id, int admin_id){return blacklistMapper.blockUser(user_id,admin_id);}
+    public Integer oneBlockUserID(int blockUserId){return blacklistMapper.oneBlockUserID(blockUserId);}
+    public int blockCancel(int blocked_user_id){return blacklistMapper.blockCancel(blocked_user_id);}
 }

@@ -26,7 +26,7 @@
             console.log(id);
             $("#modalTitle").text("수정");
             $("#modalBody").text("수정 하시겠습니까?");
-            $("#confirmButton").attr("href", '/controller/menu/manager/modify?id='+id);
+            $("#confirmButton").attr("href", '/menu/manager/modify?id='+id);
             $("#checkModal").modal("show");
         }
         function deleteModal(id){
