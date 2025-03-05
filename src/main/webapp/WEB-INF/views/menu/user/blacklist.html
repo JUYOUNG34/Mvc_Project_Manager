@@ -36,7 +36,7 @@
             <td>
                 <form th:action="@{/menu/user/blacklist/unblock}" method="post">
                     <input type="hidden" name="id" th:value="${item.id}" />
-                    <button type="submit" class="btn btn-unblock">차단 해제</button>
+                    <button type="submit" class="btn btn-unblock" th:data-id="${item.id}">차단 해제</button>
                 </form>
             </td>
         </tr>
@@ -46,7 +46,7 @@
         <form th:action="@{/menu/user/blacklist}" method="get">
             <select name="type">
                 <option value="nickname" th:selected="${criteria.type == 'nickname'}">닉네임</option>
-                <option value="userId" th:selected="${criteria.type == 'blocked_user_id;'}">사용자 ID</option>
+                <option value="userId" th:selected="${criteria.type == 'userId'}">사용자 ID</option>
             </select>
             <input type="text" name="keyword" th:value="${criteria.keyword}" placeholder="검색어 입력">
             <button type="submit">검색</button>
@@ -68,34 +68,19 @@
         const unblockButtons = document.querySelectorAll('.btn-unblock');
 
         unblockButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const userId = this.getAttribute('data-user-id');
+            button.addEventListener('click', function(e) {
+                // 폼 기본 제출을 방지하지 않습니다 - 폼 제출이 정상적으로 작동하게 합니다
+                // 따라서 e.preventDefault()는 여기서 사용하지 않습니다
 
-                fetch('/menu/user/blacklist/unblock', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // 'X-CSRF-TOKEN': /*[[${_csrf.token}]]*/ ''
-                    },
-                    body: JSON.stringify({ userId: userId })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('사용자 차단 해제 완료');
-                            location.reload();
-                        } else {
-                            alert('차단 해제 중 오류가 발생했습니다: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('차단 해제 중 네트워크 오류가 발생했습니다.');
-                    });
+                // 차단 해제 버튼이 클릭되면 폼이 제출됩니다
+                // 필요한 경우 여기에 추가 로직을 구현할 수 있습니다
+
+                // 사용자 경험을 위한 추가 피드백
+                button.disabled = true;
+                button.textContent = '처리 중...';
             });
         });
     });
-
 </script>
 </body>
 </html>

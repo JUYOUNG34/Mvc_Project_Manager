@@ -182,6 +182,11 @@ public class UserController {
             criteria.setKeyword("");
         }
 
+        // criteria.type이 userId일 경우 실제 SQL 조회할 때 일치하도록 보장
+        if ("userId".equals(criteria.getType())) {
+            criteria.setType("userId");
+        }
+
         List<Blacklist> blacklist = blacklistService.getBlacklist(criteria);
         int totalCount = blacklistService.getTotalCount(criteria);
 
