@@ -28,7 +28,7 @@ public class BlacklistService {
         return blacklistDAO.removeFromBlacklist(id) > 0;
     }
     public int blockUser(int user_id, int admin_id){return blacklistDAO.blockUser(user_id,admin_id);}
-    public Integer oneBlockUserID(int blockUserId){return blacklistDAO.oneBlockUserID(blockUserId);}
+    public Integer oneBlockUserID(int blocked_user_id){return blacklistDAO.oneBlockUserID(blocked_user_id);}
     public int blockCancel(int blocked_user_id){return blacklistDAO.blockCancel(blocked_user_id);}
 
 }

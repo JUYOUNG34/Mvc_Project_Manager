@@ -58,7 +58,7 @@ h1 {
 
 .btn-unblock {
     background-color: #dc3545;
-    color: white;
+    color: red;
 }
 
 .btn-unblock:hover {

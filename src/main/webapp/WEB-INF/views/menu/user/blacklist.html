@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>사용자 차단 목록</title>
@@ -25,20 +25,17 @@
             <th>ID</th>
             <th>닉네임</th>
             <th>차단 날짜</th>
-            <th>신고 사유</th>
             <th>차단 해제</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="blacklist : ${blacklists}">
-            <td th:text="${blacklist.id}">사용자 ID</td>
-            <td th:text="${blacklist.nickname}">닉네임</td>
-            <td th:text="${#dates.format(blacklist.blocked_at, 'yyyy-MM-dd HH:mm:ss')}">차단 날짜</td>
-            <td th:text="${blacklist.report_content}">신고 사유</td>
+        <tr th:each="item : ${blacklist}">
+            <td th:text="${item.id}">ID</td>
+            <td th:text="${item.nickname}">닉네임</td>
+            <td th:text="${item.blocked_at}">차단 날짜</td>
             <td>
-                <button class="btn btn-unblock" th:data-user-id="${blacklist.id}">차단 해제</button>
                 <form th:action="@{/menu/user/blacklist/unblock}" method="post">
-                    <input type="hidden" name="id" th:value="${blacklist.id}" />
+                    <input type="hidden" name="id" th:value="${item.id}" />
                     <button type="submit" class="btn btn-unblock">차단 해제</button>
                 </form>
             </td>
@@ -49,18 +46,18 @@
         <form th:action="@{/menu/user/blacklist}" method="get">
             <select name="type">
                 <option value="nickname" th:selected="${criteria.type == 'nickname'}">닉네임</option>
-                <option value="userId" th:selected="${criteria.type == 'userId'}">사용자 ID</option>
+                <option value="userId" th:selected="${criteria.type == 'blocked_user_id;'}">사용자 ID</option>
             </select>
             <input type="text" name="keyword" th:value="${criteria.keyword}" placeholder="검색어 입력">
             <button type="submit">검색</button>
         </form>
     </div>
-    <div th:if="${#lists.isEmpty(blacklists)}" class="no-blacklist">
+    <div th:if="${#lists.isEmpty(blacklist)}" class="no-blacklist">
         현재 차단된 사용자가 없습니다.
     </div>
 
     <!-- 페이징 버튼 -->
-    <div class="pagination" th:if="${blacklists != null and blacklists.size() > 0}">
+    <div class="pagination" th:if="${blacklist != null and !blacklist.isEmpty()}">
         <a th:if="${currentPage > 1}" th:href="@{/menu/user/blacklist(current_page=${currentPage - 1}, type=${criteria.type}, keyword=${criteria.keyword})}">이전</a>
         <span th:text="${currentPage} + ' / ' + ${totalPages}">1 / 10</span>
         <a th:if="${currentPage < totalPages}" th:href="@{/menu/user/blacklist(current_page=${currentPage + 1}, type=${criteria.type}, keyword=${criteria.keyword})}">다음</a>
@@ -78,7 +75,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': /*[[${_csrf.token}]]*/ ''
+                        // 'X-CSRF-TOKEN': /*[[${_csrf.token}]]*/ ''
                     },
                     body: JSON.stringify({ userId: userId })
                 })

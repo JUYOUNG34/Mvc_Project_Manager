@@ -47,7 +47,7 @@
 <div th:replace="~{fragments/modal :: modal}"></div>
 
 <div class="con">
-    <a id="cancelBTN" href="blacklist">차단목록</a>
+    <a id="cancelBTN" th:href="@{/menu/user/blacklist}">차단목록</a>
     <table>
         <thead>
         <tr>
