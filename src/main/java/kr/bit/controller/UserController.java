@@ -201,11 +201,17 @@ public class UserController {
     @ResponseBody
     public int blockUser(@PathVariable("user_id") int user_id){
        int blockAdmin= adminService.oneAdmin(adminId).getAdmin_id();
+        String logMessage = String.format("%s|%s|%s|%s",
+                LocalDateTime.now().format(formatter),adminId,"유저 차단 : "+user_id, "");
+        logService.logAction(logMessage);
         return blacklistService.blockUser(user_id,blockAdmin);
     }
     @DeleteMapping("/chat/blockCancel/{blocked_user_id}")
     @ResponseBody
     public int blockCancel(@PathVariable("blocked_user_id") int blocked_user_id){
+        String logMessage = String.format("%s|%s|%s|%s",
+                LocalDateTime.now().format(formatter),adminId,"유저 차단 해제 : "+blocked_user_id, "");
+        logService.logAction(logMessage);
         return blacklistService.blockCancel(blocked_user_id);
     }
     @PostMapping("/blacklist/unblock")

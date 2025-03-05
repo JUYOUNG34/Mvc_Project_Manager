@@ -19,9 +19,6 @@
         url: "detailLog/" + date,
         type: "get",
         dataType: "json",
-        // beforeSend: function (xhr) {
-        //   xhr.setRequestHeader(csrfHeader, csrfToken);
-        // },
         success: function (result) {
           detailLogTable(result,date);
         },
