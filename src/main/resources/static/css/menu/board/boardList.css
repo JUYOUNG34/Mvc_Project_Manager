@@ -10,8 +10,8 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 1000px;
+    /*width: 90%;*/
+    width: 1100px;
     margin: 10% auto;
 }
 table {
@@ -98,7 +98,7 @@ a.button.block:hover {
     font-weight: bolder;
     background-color: #575757;
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     th, td {
         font-size: 0.8em;
     }

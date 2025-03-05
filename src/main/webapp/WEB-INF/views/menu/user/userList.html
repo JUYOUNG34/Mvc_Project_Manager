@@ -22,21 +22,6 @@
                 pageFrm.submit();
             });
         });
-        function showUserBlock(user_id){
-           let confirm1 = confirm("차단하시겠습니까?")
-            if(confirm1){
-                $.ajax({
-                    url : "blockUser/"+user_id,
-                    type : "put",
-                    success: function(response){
-                       if(response > 0){
-                           $("#blockModalBody").html(user_id+`가 차단되었습니다. <br> 차단 목록으로 이동하시겠습니까?`);
-                           $("#userBlockModal").modal('show');
-                       }
-                    }
-                })
-            }
-        }
     </script>
 
 
@@ -70,7 +55,6 @@
                 <div class="button-container">
                     <a th:href="@{/menu/user/userDetail(user_id=${userProfile.user_id})}" class="button detail">상세</a>
                     <a th:href="@{/menu/user/chat/list(user_id=${userProfile.user_id})}" class="button checkList">대화목록</a>
-<!--                    <a href="javascript:showUserBlock(user_id)" class="button block">차단</a>-->
                 </div>
             </td>
         </tr>
