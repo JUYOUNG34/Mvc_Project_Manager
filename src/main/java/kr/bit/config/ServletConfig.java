@@ -63,8 +63,8 @@ public class ServletConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/events/**")
                 .addResourceLocations(
-                        "file:C:/Mvc_Project_Manager/src/main/resources/static/images/events/",
-                        "classpath:/static/images/events/"
+                        "C:/mnt/uploads/",
+                        "classpath:/static/mnt/uploads"
                 );
 //
         registry.addResourceHandler("/mnt/uploads//**")

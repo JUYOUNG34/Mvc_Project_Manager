@@ -34,9 +34,9 @@
 
     <div class="event-item" th:each="event : ${event}">
         <img class="event-image"
-             th:src="${event.image_url != null && !event.image_url.isEmpty() ? '/mnt/uploads//events/'+event.image_url : '/mnt/uploads//events/default-event.jpg'}"
+             th:src="${event.image_url != null && !event.image_url.isEmpty() ? '/mnt/uploads/events/'+event.image_url : '/mnt/uploads/events/default-event.jpg'}"
              th:alt="${event.name}"
-             onerror="this.onerror=null; this.src='/mnt/uploads//events/default-event.jpg';">
+             onerror="this.onerror=null; this.src='/mnt/uploads/events/default-event.jpg';">
         <div class="event-info">
             <div class="event-title" th:text="${event.name}">이벤트 제목</div>
             <div class="event-date">
