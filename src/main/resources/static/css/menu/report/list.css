@@ -1,144 +1,97 @@
-/* 기본적인 스타일링 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
-
-h2.page-title {
-    text-align: center;
-    padding: 20px 0;
-    color: #333;
-    font-size: 24px;
-}
-
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 1200px;
 }
-
-/* 테이블 스타일 */
+.page-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #27258a;
+    padding-bottom: 10px;
+    display: inline-block;
+}
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 5px;
 }
-
-table th, table td {
+tr {
+    margin-left: 150px;
+}
+th, td {
     padding: 12px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
 }
-
-table th {
-    background-color: #007bff;
-    color: white;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table td a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-table td a:hover {
-    text-decoration: underline;
-}
-
-table td button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-table td button:hover {
-    background-color: #c82333;
-}
-
-/* 검색 바 */
-.search-bar {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.search-bar select,
-.search-bar input,
-.search-bar button {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-.search-bar select {
-    width: 200px;
-}
-
-.search-bar input {
-    width: 250px;
-}
-
-.search-bar button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 100px;
-}
-
-.search-bar button:hover {
-    background-color: #0056b3;
-}
-
-/* 경고 메시지 스타일 */
-tr th, tr td {
-    font-size: 16px;
-}
-
-.search-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.search-container form {
-    width: 100%;
-}
-
-/* 신고 내역이 없을 때 메시지 */
-tr th[colspan="6"] {
-    color: #ff0000;
+th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-size: 13px;
     text-align: center;
 }
-
-/* 미디어 쿼리: 작은 화면에서 반응형 디자인 적용 */
-@media (max-width: 768px) {
-    table th, table td {
-        padding: 8px;
-    }
-
-    .search-bar {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .search-bar select,
-    .search-bar input,
-    .search-bar button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+td {
+    font-size: 0.9em;
+}
+tr:hover {
+    background-color: #f5f5f5;
+}
+tbody button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    position: absolute;
+    left:1240px;
+    top:250px;
+}
+.search-bar select, .search-bar input[type="text"], .search-bar button {
+    padding: 6px;
+    font-size: 0.9em;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-right: 0;
+}
+.search-bar select {
+    background-color: #ffffff;
+}
+.search-bar input[type="text"] {
+    margin-left: -1px;
+}
+.search-bar button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.search-bar button:hover {
+    background-color: #575757;
+}
+.search-bar-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
 }
