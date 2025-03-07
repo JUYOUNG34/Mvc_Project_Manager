@@ -14,54 +14,54 @@
     <script th:inline="javascript">
         let user_id=/*[(${userId})]*/;
 
-       function userBlockConfirm(){
-           // user_id=
-           console.log(user_id);
-           if(confirm("차단하시겠습니까?")){
-               userBlock();
-           }
-       }
-       function userBlock(){
-           $.ajax({
-               url:"blockUser/"+user_id,
-               type:"POST",
-               success:function (result){
-                   console.log(result);
-                   if(result > 0){
-                       $("#modalBlockTitle").text("성공");
-                       $("#blockModalBody").text( user_id +"가 차단되었습니다.")
-                       $("#userBlockModal").modal('show');
-                   }else{
-                       $("#modalBlockTitle").text("실패");
-                       $("#blockModalBody").text( "차단 실패 하셨습니다.")
-                       $("#userBlockModal").modal('show');
-                   }
-               }
-           })
-       }
-       function userBlockCancelConfirm(){
-           if(confirm("차단취소하시겠습니까?")){
-               userBlockCancel();
-           }
-       }
-       function userBlockCancel(){
-           $.ajax({
-               url:"blockCancel/"+user_id,
-               type:"DELETE",
-               success:function (result){
-                   console.log(result)
-                   if(result>0){
-                       $("#modalBlockTitle").text("성공");
-                       $("#blockModalBody").text( user_id +"가 차단 취소 되었습니다.")
-                       $("#userBlockModal").modal("show");
-                   }else{
-                       $("#modalBlockTitle").text("실패");
-                       $("#blockModalBody").text( "차단 취소 실패 하셨습니다.")
-                       $("#userBlockModal").modal("show");
-                   }
-               }
-           })
-       }
+        function userBlockConfirm(){
+            // user_id=
+            console.log(user_id);
+            if(confirm("차단하시겠습니까?")){
+                userBlock();
+            }
+        }
+        function userBlock(){
+            $.ajax({
+                url:"blockUser/"+user_id,
+                type:"POST",
+                success:function (result){
+                    console.log(result);
+                    if(result > 0){
+                        $("#modalBlockTitle").text("성공");
+                        $("#blockModalBody").text( user_id +"가 차단되었습니다.")
+                        $("#userBlockModal").modal('show');
+                    }else{
+                        $("#modalBlockTitle").text("실패");
+                        $("#blockModalBody").text( "차단 실패 하셨습니다.")
+                        $("#userBlockModal").modal('show');
+                    }
+                }
+            })
+        }
+        function userBlockCancelConfirm(){
+            if(confirm("차단취소하시겠습니까?")){
+                userBlockCancel();
+            }
+        }
+        function userBlockCancel(){
+            $.ajax({
+                url:"blockCancel/"+user_id,
+                type:"DELETE",
+                success:function (result){
+                    console.log(result)
+                    if(result>0){
+                        $("#modalBlockTitle").text("성공");
+                        $("#blockModalBody").text( user_id +"가 차단 취소 되었습니다.")
+                        $("#userBlockModal").modal("show");
+                    }else{
+                        $("#modalBlockTitle").text("실패");
+                        $("#blockModalBody").text( "차단 취소 실패 하셨습니다.")
+                        $("#userBlockModal").modal("show");
+                    }
+                }
+            })
+        }
 
     </script>
 
@@ -80,22 +80,22 @@
         <div class="chat-box">
             <div th:each="message : ${messages}">
                 <div th:if="${message.user_id != user.user_id}" class="chat-message sender">
-                    <span class="nickname" th:text="'유저 :' + ${message.nickname}"></span>
+                    <span style="background-color: lightskyblue" class="nickname" th:text="'유저 :' + ${message.nickname}"></span>
                     <span class="timestamp" th:text="${message.created_at}"></span><br>
                     <span class="text" th:text="${message.message_content}"></span>
                 </div>
                 <div th:if="${message.user_id == user.user_id}" class="chat-message receiver">
-                    <span class="nickname" th:text="'상대방 : ' + ${message.nickname}"></span>
+                    <span class="nickname" style="background-color: lightpink" th:text="'상대방 : ' + ${message.nickname}"></span>
                     <span class="timestamp" th:text="${message.created_at}"></span><br>
                     <span class="text" th:text="${message.message_content}"></span>
                 </div>
             </div>
         </div>
         <p th:if="${blockId == null}">
-        <button id="userBlockBTN" type="button" onclick="userBlockConfirm()">차단</button>
+            <button id="userBlockBTN" type="button" onclick="userBlockConfirm()">차단</button>
         </p>
         <p th:if="${blockId != null}">
-        <button id="userBlockCancelBTN" type="button" onclick="userBlockCancelConfirm()">차단 취소</button>
+            <button id="userBlockCancelBTN" type="button" onclick="userBlockCancelConfirm()">차단 취소</button>
         </p>
     </div>
 </div>

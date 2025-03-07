@@ -131,12 +131,16 @@
                 </select>
             </div>
         </div>
-        <div class="form-group" sec:authorize="hasRole('service_manager')">
-            <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
+
+        <div th:if="${#authentication.name} == ${admin.id}">
+            <div class="form-group" sec:authorize="hasRole('service_manager')">
+                <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
+            </div>
+            <div class="form-group" sec:authorize="hasRole('master')">
+                <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
+            </div>
         </div>
-        <div class="form-group" sec:authorize="hasRole('master')">
-            <input type="hidden" name="admin_level" th:field="*{admin.admin_level}">
-        </div>
+
         <div class="form-group location">
             <button type="button" id="managerModifyBTN">수정</button>
             <a href="#" onclick="history.back(); return false;" class="button" >취소</a>
