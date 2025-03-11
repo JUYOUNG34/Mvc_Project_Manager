@@ -40,11 +40,11 @@
       <td align="center"><a href="https://github.com/HwangHaseong">Haseong</td>
     </tr>
       <tr>
-      <td align="center"> - 전체 일정 관리<br>CI/CD 및 Cloud 서버<br>- 사용자 앱 개발(Full)<br>- 상세: 자유게시판 등</td>
-      <td align="center"> - 사용자 앱 개발(Full)<br> - 상세: 회원가입, 로그인,<br>- 메인화면, 채팅, 마이페이지 등</td>
-      <td align="center"> - 관리자 웹 개발 일정 관리<br>관리자 Cloud 서버<br>관리자 개발(Full)<br>인기게시판 구현<br>상세: 시큐리티, 통계, 이벤트 등</td>
-      <td align="center"> - 관리자 개발(Full)<br>- 상세 : 사용자, 관리자, <br>로그, 게시판 등</td>
-      <td align="center"> - 관리자 개발(Full)<br>- 상세:  신고, 공지사항 등</td>
+      <td align="center"> - 전체 일정 관리<br>CI/CD 및 Cloud 서버<br>- 사용자 앱 개발(Full)<br>- 상세: 자유게시판</td>
+      <td align="center"> - 사용자 앱 개발(Full)<br> - 상세: 회원가입, 로그인,<br>- 메인화면, 채팅, 마이페이지</td>
+      <td align="center"> - 관리자 웹 개발 일정 관리<br>관리자 Cloud 서버<br>관리자 개발(Full)<br>인기게시판 구현<br>상세: 시큐리티, 통계, 이벤트</td>
+      <td align="center"> - 관리자 개발(Full)<br>- 상세 : 사용자, 관리자, <br>로그, 게시판</td>
+      <td align="center"> - 관리자 개발(Full)<br>- 상세:  신고, 공지사항</td>
     </tr>
   </tbody>
 </table>
