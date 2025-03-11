@@ -23,3 +23,37 @@
 | ![김정현](https://github.com/identicons/jasonlong.png) | ![배태선](https://github.com/identicons/jasonlong.png) | ![김주영](https://github.com/identicons/jasonlong.png) | ![조연식](https://github.com/identicons/jasonlong.png) | ![황하성](https://github.com/identicons/jasonlong.png) |
 | [Jeongheon](https://github.com/kjh1125) | [Teasun](https://github.com/C4T4767) | [JuYoung](https://github.com/JUYOUNG34) | [Yeonsik](https://github.com/dustlr7193) | [Haseong](https://github.com/HwangHaseong) |
 | - 전체 일정 관리<br>- CI/CD 및 Cloud 서버<br>- 사용자 앱 개발(Full)<br>- 상세: 자유게시판 | - 사용자 앱 개발(Full)<br>- 상세: 회원가입, 로그인,<br>메인화면, 채팅, 마이페이지 | - 관리자 웹 개발 일정 관리<br>- 관리자 Cloud 서버<br>- 관리자 개발(Full)<br>- 상세: 시큐리티, 통계, 이벤트 | - 관리자 개발(Full)<br>- 상세: 사용자, 관리자,<br>로그, 게시판 | - 관리자 개발(Full)<br>- 상세: 공지사항,<br>신고 |
+
+# 프로젝트 기술 스택
+
+## Development/Library
+| 카테고리 | 기술 |
+|---------|------|
+| **Backend** | Java 17, Spring MVC, Spring Security, MyBatis, Thymeleaf |
+| **Frontend** | Bootstrap, JavaScript, Socket.io, Chart.js, AJAX |
+
+## API
+| 제공업체 | 용도 |
+|---------|------|
+| Google | 로그인 |
+| Naver | 로그인 |
+| Kakao | 로그인, 지도 |
+
+## Infrastructure
+| 구분 | 기술 |
+|-----|------|
+| **서버** | Tomcat, Jenkins, Docker |
+| **클라우드** | NAVER CLOUD |
+
+## Database
+| 종류 | 용도 |
+|-----|------|
+| MySQL | 관계형 데이터베이스 |
+| Redis | 인메모리 데이터 저장소 |
+
+## Collaboration
+| 도구 | 용도 |
+|-----|------|
+| GitHub | 버전 관리 및 협업 |
+| Slack | 팀 커뮤니케이션 |
+| Figma | UI/UX 디자인 |
