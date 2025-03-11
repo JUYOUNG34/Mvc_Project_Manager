@@ -47,7 +47,7 @@
 ![Google Login](https://img.shields.io/badge/Google%20Login-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Naver Login](https://img.shields.io/badge/Naver%20Login-03C75A?style=for-the-badge&logo=naver&logoColor=white)
 ![Kakao Login](https://img.shields.io/badge/Kakao%20Login-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
-![Kakao Maps](https://img.shields.io/badge/Kakao%20Maps-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
+
 
 ## Infrastructure
 ![Tomcat](https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)
