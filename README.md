@@ -10,7 +10,7 @@
 - 사용자 친화적 인터페이스와 관리자 시스템 구축
 
 ## ✨ 링크
-- **프로젝트 바로가기**: 
+- **프로젝트 바로가기**
   - 유저: [https://blindtime.kro.kr/](https://blindtime.kro.kr/)
   - 관리자: [http://admin.blindtime.kro.kr/](http://admin.blindtime.kro.kr/)
 - **프로젝트 제안서**: [데이팅 앱 (블라인드, 랜덤 채팅).pdf](https://github.com/user-attachments/files/19158560/default.pdf)
