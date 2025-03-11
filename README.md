@@ -29,8 +29,8 @@
 ## Development/Library
 | 카테고리 | 기술 |
 |---------|------|
-| **Backend** | Java 17, Spring MVC, Spring Security, MyBatis, Thymeleaf |
-| **Frontend** | Bootstrap, JavaScript, Socket.io, Chart.js, AJAX |
+| **Backend** | Java 17, Spring MVC, Spring Security, MyBatis, Socket.io|
+| **Frontend** | Bootstrap, JavaScript, Chart.js, AJAX, Thymeleaf|
 
 ## API
 | 제공업체 | 용도 |
