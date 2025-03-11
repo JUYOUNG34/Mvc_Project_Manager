@@ -2,7 +2,8 @@
 
 <div align="center">
   
-![Banner](https://via.placeholder.com/800x200/3498db/ffffff?text=BlindTime)
+![banner](https://github.com/user-attachments/assets/acc35919-e4fd-49c5-9519-982b75bddede)
+
 
 **랜덤 유저와 실시간으로 연결되는 데이팅 앱 서비스**
 
@@ -143,14 +144,6 @@ gantt
     발표 및 시연        : 2024-03-10, 1d
 ```
 
-## 📸 스크린샷
 
-<div align="center">
-<img src="https://via.placeholder.com/250x500/3498db/ffffff?text=로그인" width="200">
-<img src="https://via.placeholder.com/250x500/3498db/ffffff?text=메인화면" width="200">
-<img src="https://via.placeholder.com/250x500/3498db/ffffff?text=채팅화면" width="200">
-</div>
-
----
 
 © 2024 블라인드타임 팀. 모든 권리 보유.
