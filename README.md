@@ -26,34 +26,39 @@
 
 # 프로젝트 기술 스택
 
-## Development/Library
-| 카테고리 | 기술 |
-|---------|------|
-| **Backend** | Java 17, Spring MVC, Spring Security, MyBatis, Socket.io|
-| **Frontend** | Bootstrap, JavaScript, Chart.js, AJAX, Thymeleaf|
+## Backend
+![Java 17](https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=java&logoColor=white)
+![Spring MVC](https://img.shields.io/badge/Spring%20MVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)
+![MyBatis](https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=mybatis&logoColor=white)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white)
+
+## Frontend
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![AJAX](https://img.shields.io/badge/AJAX-0769AD?style=for-the-badge&logo=ajax&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
+
+## Realtime Communication
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
 
 ## API
-| 제공업체 | 용도 |
-|---------|------|
-| Google | 로그인 |
-| Naver | 로그인 |
-| Kakao | 로그인, 지도 |
+![Google Login](https://img.shields.io/badge/Google%20Login-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Naver Login](https://img.shields.io/badge/Naver%20Login-03C75A?style=for-the-badge&logo=naver&logoColor=white)
+![Kakao Login](https://img.shields.io/badge/Kakao%20Login-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
+![Kakao Maps](https://img.shields.io/badge/Kakao%20Maps-FFCD00?style=for-the-badge&logo=kakao&logoColor=black)
 
 ## Infrastructure
-| 구분 | 기술 |
-|-----|------|
-| **서버** | Tomcat, Jenkins, Docker |
-| **클라우드** | NAVER CLOUD |
+![Tomcat](https://img.shields.io/badge/Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![NAVER CLOUD](https://img.shields.io/badge/NAVER%20CLOUD-03C75A?style=for-the-badge&logo=naver&logoColor=white)
 
 ## Database
-| 종류 | 용도 |
-|-----|------|
-| MySQL | 관계형 데이터베이스 |
-| Redis | 인메모리 데이터 저장소 |
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 
 ## Collaboration
-| 도구 | 용도 |
-|-----|------|
-| GitHub | 버전 관리 및 협업 |
-| Slack | 팀 커뮤니케이션 |
-| Figma | UI/UX 디자인 |
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
