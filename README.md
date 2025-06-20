@@ -26,16 +26,6 @@
 | **프로젝트 제안서** | [데이팅 앱 (블라인드, 랜덤 채팅).pdf](https://github.com/user-attachments/files/19158560/default.pdf) |
 | **프로젝트 보고서** | [Canva 링크](https://www.canva.com/design/DAGhTqV58Ps/0lGyzc8-rDttqzwHqTN8mw/edit) |
 
-## 💻 팀 구성원
-
-<div align="center">
-
-| 🐻‍❄️ 김정현<br>(팀장) | 🦝 배태선<br>(부팀장) | 🐔 김주영 | 🦅 조연식 | 🐻 황하성 |
-|:---:|:---:|:---:|:---:|:---:|
-| ![김정현](https://github.com/identicons/jasonlong.png) | ![배태선](https://github.com/identicons/jasonlong.png) | ![김주영](https://github.com/identicons/jasonlong.png) | ![조연식](https://github.com/identicons/jasonlong.png) | ![황하성](https://github.com/identicons/jasonlong.png) |
-| [GitHub](https://github.com/kjh1125) | [GitHub](https://github.com/C4T4767) | [GitHub](https://github.com/JUYOUNG34) | [GitHub](https://github.com/dustlr7193) | [GitHub](https://github.com/HwangHaseong) |
-
-</div>
 
 ### 역할 분담
 
